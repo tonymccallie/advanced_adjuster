@@ -9,7 +9,7 @@
 	</div>
 	<div class="span8" data-bind="with: user">
 		<form class="topcoat-well">
-			<input class="span12 input" type="text" placeholder="User ID"/>
+			<input class="span12 input" type="number" placeholder="User ID"/>
 			<a data-bind="fastClick: recoverSubmit" href="#" class="noajax btn btn-block btn-large btn-primary">Email Recovery Instructions</a>
 			<a data-bind="fastClick: $root.loadPage.bind($data,'login')" href="#" class="noajax btn btn-block btn-large">Return to Login</a>
 		</form>

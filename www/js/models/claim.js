@@ -11,6 +11,7 @@ define(['knockout','router','jquery'], function(ko, router, jquery) {
         self.data = {
             id:data.Claim.id
         };
+        
         $.each(data.Claim, function(index,item) {
             self.data[index] = item;
 //            if($.inArray(index,observableArray) >= 0) {
@@ -48,7 +49,16 @@ define(['knockout','router','jquery'], function(ko, router, jquery) {
         
         self.processPicture = function(data) {
             self.data[self.selectedPicture] = data;
-            $('#photoinfo').html(data);
+            router.loadPage('pictures');
+            //$('#photoinfo').html(data);
+        }
+        
+        self.advanced = function() {
+            router.loadPage('advanced');
+        }
+        
+        self.engineer = function() {
+            router.loadPage('engineer');
         }
     }
 });

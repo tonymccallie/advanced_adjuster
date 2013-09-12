@@ -11,7 +11,7 @@
 	</div>
 	<div class="span8" data-bind="with: user">
 		<form id="user_login" class="topcoat-well">
-			<input name="data[User][userID]" class="span12 input" type="text" placeholder="User ID"/>
+			<input name="data[User][userID]" class="span12 input" type="number" placeholder="User ID"/>
 			<input name="data[User][passwd]" class="span12" type="password" placeholder="Password"/>
 			<a data-bind="fastClick: loginSubmit" href="#" class="noajax btn btn-block btn-large btn-primary">Login</a>
 			<a data-bind="fastClick: $root.loadPage.bind($data,'register')" href="#" class="noajax btn btn-block btn-large">Register</a>
