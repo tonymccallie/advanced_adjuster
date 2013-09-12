@@ -1,0 +1,470 @@
+<div data-bind="with: selectedClaim">
+	<div class="row-fluid">
+		<div class="span12">
+			<h4>Preliminary Report</h4>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="well">
+				<h3 data-bind="text: data.last_name+', '+data.first_name">Name</h3>
+				<h4 data-bind="html: data.address1+'<br />'+data.city+', '+data.state+' '+data.zip">1234 Street Ave.<br />Amarillo, TX 79102</h4>
+				<h4 data-bind="text: data.phone">Phone Number</a>
+			</div>
+		</div>
+	</div>
+	<form id="preliminary_form" class="form-horizontal">
+	<div class="row-fluid">
+		<div class="span12">
+			<h4>Insurance</h4>
+			<div class="control-group">
+				<label class="control-label">Advance Payment requested?</label>
+				<div class="controls">
+                    <div class="btn-group">
+                        <input data-bind="checked: data.adv_payment" type="radio" name="data[Claim][adv_payment]" id="adv_payment1" value="1" />
+                        <label class="btn icon-" for="adv_payment1">Yes</label>
+                        <input data-bind="checked: data.adv_payment" type="radio" name="data[Claim][adv_payment]" id="adv_payment0" value="0" />
+                        <label class="btn icon-" for="adv_payment0">No</label>
+                    </div>
+				</div>
+			</div>
+			<h4>Risk</h4>
+			<div class="control-group">
+				<label class="control-label">Type of building?</label>
+				<div class="controls">
+					<select data-bind="value: data.building_type" name="data[Claim][building_type]" class="span12">
+						<option>Single Family</option>
+						<option>2-4 Family</option>
+						<option>Condo Association</option>
+						<option>Condo unit</option>
+						<option>Other Residentail</option>
+						<option>Non-Residential</option>
+						<option>Mobile Home/Travel Trailer</option>
+					</select>
+					<input data-bind="value: data.building_make" name="data[Claim][building_make]" type="text" class="span12" placeholder="Make">
+					<input data-bind="value: data.building_model" name="data[Claim][building_model]" type="text" class="span12" placeholder="Model">
+					<input data-bind="value: data.building_serial" name="data[Claim][building_serial]" type="text" class="span12" placeholder="Serial Number">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Occupancy</label>
+				<div class="controls">
+					<select data-bind="value: data.occupancy" name="data[Claim][occupancy]" class="span12">
+						<option>Owner</option>
+						<option>Tenant</option>
+						<option>State/Government Owned</option>
+						<option>Unoccupied</option>
+					</select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Residency</label>
+				<div class="controls">
+					<select data-bind="value: data.residency" name="data[Claim][residency]" class="span12">
+						<option>Princpal</option>
+						<option>Seasonal</option>
+					</select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Title Verified?</label>
+				<div class="controls">
+                    <div class="btn-group">
+                        <input data-bind="checked: data.title_verified" type="radio" name="data[Claim][title_verified]" id="title_verified1" value="1" />
+                        <label class="btn icon-" for="title_verified1">Yes</label>
+                        <input data-bind="checked: data.title_verified" type="radio" name="data[Claim][title_verified]" id="title_verified0" value="0" />
+                        <label class="btn icon-" for="title_verified0">No</label>
+                    </div>
+					<input data-bind="value: data.title_verify_source" name="data[Claim][title_verify_source]" type="text" class="span12" placeholder="Source of verification">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Number of floors in building including basement?</label>
+				<div class="controls">
+					<select data-bind="value: data.number_of_floors" name="data[Claim][number_of_floors]" class="span12">
+						<option>1</option>
+						<option>2</option>
+						<option>3 or more</option>
+					</select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Is this building a split level?</label>
+				<div class="controls">
+					<div class="btn-group">
+                        <input data-bind="checked: data.split_level" type="radio" name="data[Claim][split_level]" id="split_level1" value="1" />
+                        <label class="btn icon-" for="split_level1">Yes</label>
+                        <input data-bind="checked: data.split_level" type="radio" name="data[Claim][split_level]" id="split_level0" value="0" />
+                        <label class="btn icon-" for="split_level0">No</label>
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">In case of multiple occupancy, indicate floor(s) occupied by insured.</label>
+				<div class="controls">
+                    <div class="btn-group">
+                        <input data-bind="checked: data.multiple_occupancy_basement" type="checkbox" name="data[Claim][multiple_occupancy_basement]" id="multiple_occupancy_basement" value="1" />
+                        <label class="btn icon-" for="multiple_occupancy_basement">Basement</label>
+                        <input data-bind="checked: data.multiple_occupancy_first" type="checkbox" name="data[Claim][multiple_occupancy_first]" id="multiple_occupancy_first" value="1" />
+                        <label class="btn icon-" for="multiple_occupancy_first">First</label>
+                        <input data-bind="checked: data.multiple_occupancy_above" type="checkbox" name="data[Claim][multiple_occupancy_above]" id="multiple_occupancy_above" value="1" />
+                        <label class="btn icon-" for="multiple_occupancy_above">Second and/or Above</label>
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Type of Basement:</label>
+				<div class="controls">
+                    <div class="btn-group">
+                        <input data-bind="checked: data.type_of_basement" type="radio" name="data[Claim][type_of_basement]" id="type_of_basement0" value="None" />
+                        <label class="btn icon-" for="type_of_basement0">None</label>
+                        <input data-bind="checked: data.type_of_basement" type="radio" name="data[Claim][type_of_basement]" id="type_of_basement1" value="Unfinished" />
+                        <label class="btn icon-" for="type_of_basement1">Unfinished</label>
+                        <input data-bind="checked: data.type_of_basement" type="radio" name="data[Claim][type_of_basement]" id="type_of_basement2" value="Finished" />
+                        <label class="btn icon-" for="type_of_basement2">Finished</label>
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Building Elevated?</label>
+				<div class="controls">
+					<div class="btn-group">
+                        <input data-bind="checked: data.building_elevated" type="radio" name="data[Claim][building_elevated]" id="building_elevated1" value="1" />
+                        <label class="btn icon-" for="building_elevated1">Yes</label>
+                        <input data-bind="checked: data.building_elevated" type="radio" name="data[Claim][building_elevated]" id="building_elevated0" value="0" />
+                        <label class="btn icon-" for="building_elevated0">No</label>
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Is basement area floodproofed?</label>
+				<div class="controls">
+					<div class="btn-group">
+                        <input data-bind="checked: data.basement_floodproofed" type="radio" name="data[Claim][basement_floodproofed]" id="basement_floodproofed1" value="1" />
+                        <label class="btn icon-" for="basement_floodproofed1">Yes</label>
+                        <input data-bind="checked: data.basement_floodproofed" type="radio" name="data[Claim][basement_floodproofed]" id="basement_floodproofed0" value="0" />
+                        <label class="btn icon-" for="basement_floodproofed0">No</label>
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Foundation area enclosure:</label>
+				<div class="controls">
+                    <div class="btn-group">
+                        <input data-bind="checked: data.foundation_area_enclosure" type="radio" name="data[Claim][foundation_area_enclosure]" id="foundation_area_enclosure0" value="None" />
+                        <label class="btn icon-" for="foundation_area_enclosure0">None</label>
+                        <input data-bind="checked: data.foundation_area_enclosure" type="radio" name="data[Claim][foundation_area_enclosure]" id="foundation_area_enclosure1" value="Breakaway Walls" />
+                        <label class="btn icon-" for="foundation_area_enclosure1">Breakaway Walls</label>
+                        <input data-bind="checked: data.foundation_area_enclosure" type="radio" name="data[Claim][foundation_area_enclosure]" id="foundation_area_enclosure2" value="Unfinished" />
+                        <label class="btn icon-" for="foundation_area_enclosure2">Unfinished</label>
+                        <input data-bind="checked: data.foundation_area_enclosure" type="radio" name="data[Claim][foundation_area_enclosure]" id="foundation_area_enclosure3" value="Finished" />
+                        <label class="btn icon-" for="foundation_area_enclosure3">Finished</label>
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Is risk under construction?</label>
+				<div class="controls">
+                    <div class="btn-group">
+                        <input data-bind="checked: data.risk_under_construction" type="radio" name="data[Claim][risk_under_construction]" id="risk_under_construction0" value="No" />
+                        <label class="btn icon-" for="risk_under_construction0">No</label>
+                        <input data-bind="checked: data.risk_under_construction" type="radio" name="data[Claim][risk_under_construction]" id="risk_under_construction1" value="New Building" />
+                        <label class="btn icon-" for="risk_under_construction1">New Building</label>
+                        <input data-bind="checked: data.risk_under_construction" type="radio" name="data[Claim][risk_under_construction]" id="risk_under_construction2" value="Improvement in progress" />
+                        <label class="btn icon-" for="risk_under_construction2">Improvement in progress</label>
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">FIRM Date?</label>
+				<div class="controls">
+					<input data-bind="value: data.firm_data" type="text" name="data[Claim][firm_data]" class="span12" placeholder="Date">
+					<div class="btn-group">
+                        <input data-bind="checked: data.pre_post_firm" type="radio" name="data[Claim][pre_post_firm]" id="pre_post_firm0" value="Pre FIRM" />
+                        <label class="btn icon-" for="pre_post_firm0">Pre FIRM</label>
+                        <input data-bind="checked: data.pre_post_firm" type="radio" name="data[Claim][pre_post_firm]" id="pre_post_firm1" value="Post FIRM" />
+                        <label class="btn icon-" for="pre_post_firm1">Post FIRM</label>
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Prior conditions of building?</label>
+				<div class="controls">
+                    <div class="btn-group">
+                        <input data-bind="checked: data.prior_conditions" type="radio" name="data[Claim][prior_conditions]" id="prior_conditions0" value="Poor" />
+                        <label class="btn icon-" for="prior_conditions0">Poor</label>
+                        <input data-bind="checked: data.prior_conditions" type="radio" name="data[Claim][prior_conditions]" id="prior_conditions1" value="Fair" />
+                        <label class="btn icon-" for="prior_conditions1">Fair</label>
+                        <input data-bind="checked: data.prior_conditions" type="radio" name="data[Claim][prior_conditions]" id="prior_conditions2" value="Good" />
+                        <label class="btn icon-" for="prior_conditions2">Good</label>
+                        <input data-bind="checked: data.prior_conditions" type="radio" name="data[Claim][prior_conditions]" id="prior_conditions3" value="Very Good" />
+                        <label class="btn icon-" for="prior_conditions3">Very Good</label>
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Prior conditions of contents?</label>
+				<div class="controls">
+					<div class="btn-group">
+                        <input data-bind="checked: data.prior_content_conditions" type="radio" name="data[Claim][prior_content_conditions]" id="prior_content_conditions0" value="Poor" />
+                        <label class="btn icon-" for="prior_content_conditions0">Poor</label>
+                        <input data-bind="checked: data.prior_content_conditions" type="radio" name="data[Claim][prior_content_conditions]" id="prior_content_conditions1" value="Fair" />
+                        <label class="btn icon-" for="prior_content_conditions1">Fair</label>
+                        <input data-bind="checked: data.prior_content_conditions" type="radio" name="data[Claim][prior_content_conditions]" id="prior_content_conditions2" value="Good" />
+                        <label class="btn icon-" for="prior_content_conditions2">Good</label>
+                        <input data-bind="checked: data.prior_content_conditions" type="radio" name="data[Claim][prior_content_conditions]" id="prior_content_conditions3" value="Very Good" />
+                        <label class="btn icon-" for="prior_content_conditions3">Very Good</label>
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Piles?</label>
+				<div class="controls">
+                    <div class="btn-group">
+                        <input data-bind="checked: data.piles" type="radio" name="data[Claim][piles]" id="piles0" value="Concrete" />
+                        <label class="btn icon-" for="piles0">Concrete</label>
+                        <input data-bind="checked: data.piles" type="radio" name="data[Claim][piles]" id="piles1" value="Wood" />
+                        <label class="btn icon-" for="piles1">Wood</label>
+                        <input data-bind="checked: data.piles" type="radio" name="data[Claim][piles]" id="piles2" value="Steel" />
+                        <label class="btn icon-" for="piles2">Steel</label>
+                        <input data-bind="checked: data.piles" type="radio" name="data[Claim][piles]" id="piles3" value="Wood Post" />
+                        <label class="btn icon-" for="piles3">Wood Post</label>
+                    </div>
+                    <div class="btn-group">
+                        <input data-bind="checked: data.piles" type="radio" name="data[Claim][piles]" id="piles4" value="Concrete Slab" />
+                        <label class="btn icon-" for="piles4">Concrete Slab</label>
+                        <input data-bind="checked: data.piles" type="radio" name="data[Claim][piles]" id="piles5" value="Other" />
+                        <label class="btn icon-" for="piles5">Other</label>
+                    </div>
+					<input data-bind="value: data.piles_other" type="text" name="data[Claim][piles_other]" class="span12" placeholder="Other">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Piers?</label>
+				<div class="controls">                    
+                    <div class="btn-group">
+                        <input data-bind="checked: data.piers" type="radio" name="data[Claim][piers]" id="piers0" value="Reinf. concrete" />
+                        <label class="btn icon-" for="piers0">Reinf. concrete</label>
+                        <input data-bind="checked: data.piers" type="radio" name="data[Claim][piers]" id="piers1" value="Reinf. block" />
+                        <label class="btn icon-" for="piers1">Reinf. block</label>
+                        <input data-bind="checked: data.piers" type="radio" name="data[Claim][piers]" id="piers2" value="Unreinf. block" />
+                        <label class="btn icon-" for="piers2">Unreinf. block</label>
+                    </div>
+                    <div class="btn-group">
+                        <input data-bind="checked: data.piers" type="radio" name="data[Claim][piers]" id="piers3" value="Brick" />
+                        <label class="btn icon-" for="piers3">Brick</label>
+                        <input data-bind="checked: data.piers" type="radio" name="data[Claim][piers]" id="piers4" value="Other" />
+                        <label class="btn icon-" for="piers4">Other</label>
+                    </div>
+					<input data-bind="value: data.piers_other" type="text" name="data[Claim][piers_other]" class="span12" placeholder="Other">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Walls?</label>
+				<div class="controls">
+                    <div class="btn-group">
+                        <input data-bind="checked: data.walls" type="radio" name="data[Claim][walls]" id="walls0" value="Reinf. concrete" />
+                        <label class="btn icon-" for="walls0">Reinf. concrete</label>
+                        <input data-bind="checked: data.walls" type="radio" name="data[Claim][walls]" id="walls1" value="Block" />
+                        <label class="btn icon-" for="walls1">Block</label>
+                        <input data-bind="checked: data.walls" type="radio" name="data[Claim][walls]" id="walls2" value="Reinf. concrete shear" />
+                        <label class="btn icon-" for="walls2">Reinf. concrete shear</label>
+                    </div>
+                    <div class="btn-group">
+                        <input data-bind="checked: data.walls" type="radio" name="data[Claim][walls]" id="walls3" value="Treated plywood" />
+                        <label class="btn icon-" for="walls3">Treated plywood</label>
+                        <input data-bind="checked: data.walls" type="radio" name="data[Claim][walls]" id="walls4" value="Brick" />
+                        <label class="btn icon-" for="walls4">Brick</label>
+                        <input data-bind="checked: data.walls" type="radio" name="data[Claim][walls]" id="walls5" value="Other" />
+                        <label class="btn icon-" for="walls5">Other</label>
+                    </div>
+					<input data-bind="value: data.walls_other" type="text" name="data[Claim][walls_other]" class="span12" placeholder="Other">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Exterior Wall Structure?</label>
+				<div class="controls"> 
+                    <div class="btn-group">
+                        <input data-bind="checked: data.exterior_wall_structure" type="radio" name="data[Claim][exterior_wall_structure]" id="exterior_wall_structure0" value="Reinf. concrete" />
+                        <label class="btn icon-" for="exterior_wall_structure0">Reinf. concrete</label>
+                        <input data-bind="checked: data.exterior_wall_structure" type="radio" name="data[Claim][exterior_wall_structure]" id="exterior_wall_structure1" value="Concrete block" />
+                        <label class="btn icon-" for="exterior_wall_structure1">Concrete block</label>
+                        <input data-bind="checked: data.exterior_wall_structure" type="radio" name="data[Claim][exterior_wall_structure]" id="exterior_wall_structure2" value="Steel & glass" />
+                        <label class="btn icon-" for="exterior_wall_structure2">Steel & glass</label>
+                    </div>
+                    <div class="btn-group">
+                        <input data-bind="checked: data.exterior_wall_structure" type="radio" name="data[Claim][exterior_wall_structure]" id="exterior_wall_structure3" value="Brick or stone" />
+                        <label class="btn icon-" for="exterior_wall_structure3">Brick or stone</label>
+                        <input data-bind="checked: data.exterior_wall_structure" type="radio" name="data[Claim][exterior_wall_structure]" id="exterior_wall_structure4" value="Other" />
+                        <label class="btn icon-" for="exterior_wall_structure4">Other</label>
+                    </div>
+					<input data-bind="value: data.exterior_wall_other" type="text" name="data[Claim][exterior_wall_other]" class="span12" placeholder="Other">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Exterior Wall Surface Treatment</label>
+				<div class="controls">
+                    <div class="btn-group">
+                        <input data-bind="checked: data.exterior_wall_treatment" type="radio" name="data[Claim][exterior_wall_treatment]" id="exterior_wall_treatment0" value="Unfinished" />
+                        <label class="btn icon-" for="exterior_wall_treatment0">Unfinished</label>
+                        <input data-bind="checked: data.exterior_wall_treatment" type="radio" name="data[Claim][exterior_wall_treatment]" id="exterior_wall_treatment1" value="Stone/brick veneer" />
+                        <label class="btn icon-" for="exterior_wall_treatment1">Stone/brick veneer</label>
+                        <input data-bind="checked: data.exterior_wall_treatment" type="radio" name="data[Claim][exterior_wall_treatment]" id="exterior_wall_treatment2" value="Stucco" />
+                        <label class="btn icon-" for="exterior_wall_treatment2">Stucco</label>
+                    </div>
+                    <div class="btn-group">
+                        <input data-bind="checked: data.exterior_wall_treatment" type="radio" name="data[Claim][exterior_wall_treatment]" id="exterior_wall_treatment3" value="Wood siding" />
+                        <label class="btn icon-" for="exterior_wall_treatment3">Wood siding</label>
+                        <input data-bind="checked: data.exterior_wall_treatment" type="radio" name="data[Claim][exterior_wall_treatment]" id="exterior_wall_treatment4" value="Metal sheathing/siding" />
+                        <label class="btn icon-" for="exterior_wall_treatment4">Metal sheathing/siding</label>
+                    </div>
+                    <div class="btn-group">
+                        <input data-bind="checked: data.exterior_wall_treatment" type="radio" name="data[Claim][exterior_wall_treatment]" id="exterior_wall_treatment5" value="Vinyl sheathing/siding" />
+                        <label class="btn icon-" for="exterior_wall_treatment5">Vinyl sheathing/siding</label>
+                        <input data-bind="checked: data.exterior_wall_treatment" type="radio" name="data[Claim][exterior_wall_treatment]" id="exterior_wall_treatment6" value="Other" />
+                        <label class="btn icon-" for="exterior_wall_treatment6">Other</label>
+                    </div>
+					<input data-bind="value: data.exterior_treatment_other" type="text" name="data[Claim][exterior_treatment_other]" class="span12" placeholder="Other">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Contents are:</label>
+				<div class="controls">
+                    <div class="btn-group">
+                        <input data-bind="checked: data.contents" type="radio" name="data[Claim][contents]" id="contents0" value="Household" />
+                        <label class="btn icon-" for="contents0">Household</label>
+                        <input data-bind="checked: data.contents" type="radio" name="data[Claim][contents]" id="contents1" value="Other than household" />
+                        <label class="btn icon-" for="contents1">Other than household</label>
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Contents located in?</label>
+				<div class="controls">
+                    <div class="btn-group">
+                        <input data-bind="checked: data.contents_location" type="radio" name="data[Claim][contents_location]" id="contents_location0" value="Basement" />
+                        <label class="btn icon-" for="contents_location0">Basement</label>
+                        <input data-bind="checked: data.contents_location" type="radio" name="data[Claim][contents_location]" id="contents_location1" value="First Floor" />
+                        <label class="btn icon-" for="contents_location1">First Floor</label>
+                        <input data-bind="checked: data.contents_location" type="radio" name="data[Claim][contents_location]" id="contents_location2" value="First Floor and above" />
+                        <label class="btn icon-" for="contents_location2">First Floor and above</label>
+                    </div>
+                    <div class="btn-group">
+                        <input data-bind="checked: data.contents_location" type="radio" name="data[Claim][contents_location]" id="contents_location3" value="Second Floor and above" />
+                        <label class="btn icon-" for="contents_location3">Second Floor and above</label>
+                        <input data-bind="checked: data.contents_location" type="radio" name="data[Claim][contents_location]" id="contents_location4" value="Other" />
+                        <label class="btn icon-" for="contents_location4">Other</label>
+                    </div>
+					<input data-bind="value: data.contents_other" type="text" name="data[Claim][contents_other]" class="span12" placeholder="Other">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Nearest body of water:</label>
+				<div class="controls">
+					<input data-bind="value: data.nearest_water" type="text" name="data[Claim][nearest_water]" class="span12" placeholder="">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Distance from risk:</label>
+				<div class="controls">
+					<input data-bind="value: data.distance_from_risk" type="text" name="data[Claim][distance_from_risk]" class="span12" placeholder="">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Was there a general and temporary condition for flooding:</label>
+				<div class="controls">
+                    <div class="btn-group">
+                        <input data-bind="checked: data.temporary_condition" type="radio" name="data[Claim][temporary_condition]" id="temporary_condition0" value="No: explain fully under remarks" />
+                        <label class="btn icon-" for="temporary_condition0">No: explain fully under remarks</label>
+                    </div>
+                    <div class="btn-group">
+                        <input data-bind="checked: data.temporary_condition" type="radio" name="data[Claim][temporary_condition]" id="temporary_condition1" value="Yes: Indicate cause of loss" />
+                        <label class="btn icon-" for="temporary_condition1">Yes: Indicate cause of loss</label>
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Cause of loss:</label>
+				<div class="controls"> 
+                    <div class="btn-group">
+                        <input data-bind="checked: data.cause_of_loss" type="radio" name="data[Claim][cause_of_loss]" id="cause_of_loss0" value="Tidal water overflow" />
+                        <label class="btn icon-" for="cause_of_loss0">Tidal water overflow</label>
+                        <input data-bind="checked: data.cause_of_loss" type="radio" name="data[Claim][cause_of_loss]" id="cause_of_loss1" value="Stream, river, or lake overflow" />
+                        <label class="btn icon-" for="cause_of_loss1">Stream, river, or lake overflow</label>
+                    </div>
+                    <div class="btn-group">
+                        <input data-bind="checked: data.cause_of_loss" type="radio" name="data[Claim][cause_of_loss]" id="cause_of_loss2" value="Alluvial fan overflow" />
+                        <label class="btn icon-" for="cause_of_loss2">Alluvial fan overflow</label>
+                        <input data-bind="checked: data.cause_of_loss" type="radio" name="data[Claim][cause_of_loss]" id="cause_of_loss3" value="Accumulation of rainfall or snowmelt" />
+                        <label class="btn icon-" for="cause_of_loss3">Accumulation of rainfall or snowmelt</label>
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Flood characteristics:</label>
+				<div class="controls">
+                    <div class="btn-group">
+                        <input data-bind="checked: data.flood_characteristics" type="radio" name="data[Claim][flood_characteristics]" id="flood_characteristics0" value="Velocity flow" />
+                        <label class="btn icon-" for="flood_characteristics0">Velocity flow</label>
+                        <input data-bind="checked: data.flood_characteristics" type="radio" name="data[Claim][flood_characteristics]" id="flood_characteristics1" value="Low velocity flow or ponding" />
+                        <label class="btn icon-" for="flood_characteristics1">Low velocity flow or ponding</label>
+                    </div>
+                    <div class="btn-group">
+                        <input data-bind="checked: data.flood_characteristics" type="radio" name="data[Claim][flood_characteristics]" id="flood_characteristics2" value="Wave action" />
+                        <label class="btn icon-" for="flood_characteristics2">Wave action</label>
+                        <input data-bind="checked: data.flood_characteristics" type="radio" name="data[Claim][flood_characteristics]" id="flood_characteristics3" value="Mudflow" />
+                        <label class="btn icon-" for="flood_characteristics3">Mudflow</label>
+                        <input data-bind="checked: data.flood_characteristics" type="radio" name="data[Claim][flood_characteristics]" id="flood_characteristics4" value="Erosion" />
+                        <label class="btn icon-" for="flood_characteristics4">Erosion</label>
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Was flood associated with failure of a dam, storm drain system, pump(s), other flood control measuer, etc?</label>
+				<div class="controls">
+                    <div class="btn-group">
+                        <input data-bind="checked: data.associated_with_failure" type="radio" name="data[Claim][associated_with_failure]" id="associated_with_failure1" value="1" />
+                        <label class="btn icon-" for="associated_with_failure1">Yes</label>
+                        <input data-bind="checked: data.associated_with_failure" type="radio" name="data[Claim][associated_with_failure]" id="associated_with_failure0" value="0" />
+                        <label class="btn icon-" for="associated_with_failure0">No</label>
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Did other than natural cause contribute to flooding?</label>
+				<div class="controls">
+					<div class="btn-group">
+                        <input data-bind="checked: data.other_than_natural" type="radio" name="data[Claim][other_than_natural]" id="other_than_natural1" value="1" />
+                        <label class="btn icon-" for="other_than_natural1">Yes</label>
+                        <input data-bind="checked: data.other_than_natural" type="radio" name="data[Claim][other_than_natural]" id="other_than_natural0" value="0" />
+                        <label class="btn icon-" for="other_than_natural0">No</label>
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Date/time water entered building</label>
+				<div class="controls">
+					<input data-bind="value: data.date_water_entered" type="text" name="data[Claim][date_water_entered]" class="span12" placeholder="">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Date/time water receded building</label>
+				<div class="controls">
+					<input data-bind="value: data.date_water_receded" type="text" name="data[Claim][date_water_receded]" class="span12" placeholder="">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Length of time water remained in building</label>
+				<div class="controls">
+					<input data-bind="value: data.time_water" type="text" name="data[Claim][time_water]" class="span12" placeholder="">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span12">
+			<a href="#" data-bind="fastClick: preliminaryProcess" class="btn btn-primary pull-right">Save</a>		
+		</div>
+	</div>
+	</form>
+</div>

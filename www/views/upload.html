@@ -1,0 +1,27 @@
+<div class="row-fluid">
+	<div class="span12">
+		<h4>Upload</h4>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span12">
+		<ul class="nav nav-tabs nav-stacked">
+			<li class="nav-header">In Progress</li>
+			<!-- ko foreach : open_claims-->
+			<li class="uploader"><span  data-bind="text: data.number+' '+data.last_name">1217 Austin</span>
+				<div class="btn-group pull-right">
+					<a href="#" class="btn"><i class="icon-check-empty"></i> Preliminary</a>
+					<a href="#" class="btn"><i class="icon-check-empty"></i> Engineer</a>
+					<a href="#" class="btn"><i class="icon-check-empty"></i> Advance</a>
+				</div>
+				
+			</li>
+            <!-- /ko -->
+		</ul>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span">
+		<a href="#" data-bind="fastClick: upload" class="btn btn-primary btn-block">Upload Now</a>
+	</div>
+</div>
