@@ -34,13 +34,21 @@ define(['knockout','router','jquery'], function(ko, router, jquery) {
         }
         
         //PICTURES
+        self.selectedPicture = null;
+        
         self.pictures = function() {
             router.loadPage('pictures');
         }
         
         
-        self.getPhoto1 = function() {
-            navigator.camera.getPicture(self.processPicture1,null,quality);
+        self.getPhoto = function(field,data) {
+            self.selectedPicture = field;
+            navigator.camera.getPicture(self.processPicture,null,quality);
+        }
+        
+        self.processPicture = function(data) {
+            self.data[self.selectedPicture] = data;
+            $('#photoinfo').html(data);
         }
     }
 });

@@ -21,7 +21,12 @@ define(function() {
                         }
                         callback(converted);
                     }
-                }; 
+                };
+                navigator.camera = {
+                    getPicture: function(callback,ignore,quality) {
+                        callback('img/camera.png');
+                    }
+                };
             }
         },
         deviceready: function() {
