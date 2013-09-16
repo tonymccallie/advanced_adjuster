@@ -12,8 +12,8 @@ define(['knockout','router','jquery'], function(ko, router, jquery) {
             if(viewModel.claims.new_claims.indexOf(viewModel.selectedClaim()) >= 0) {
                 viewModel.claims.open_claims.push(viewModel.selectedClaim());
                 viewModel.claims.new_claims.remove(viewModel.selectedClaim());
-                //localStorage.setItem('advadj_claims',ko.toJSON(viewModel.claims.open_claims()));
             }
+            viewModel.claims.store();
         }
         
         self.data = {
@@ -40,6 +40,7 @@ define(['knockout','router','jquery'], function(ko, router, jquery) {
         }
         
         self.preliminaryProcess = function(data) {
+            self.open_claim();
             router.loadPage('reports');
         }
         
@@ -47,6 +48,7 @@ define(['knockout','router','jquery'], function(ko, router, jquery) {
         self.selectedPicture = null;
         
         self.pictures = function() {
+            self.open_claim();
             router.loadPage('pictures');
         }
         
@@ -57,16 +59,19 @@ define(['knockout','router','jquery'], function(ko, router, jquery) {
         }
         
         self.processPicture = function(data) {
+            self.open_claim();
             self.data[self.selectedPicture] = data;
             router.loadPage('pictures');
             //$('#photoinfo').html(data);
         }
         
         self.advanced = function() {
+            self.open_claim();
             router.loadPage('advanced');
         }
         
         self.engineer = function() {
+            self.open_claim();
             router.loadPage('engineer');
         }
     }

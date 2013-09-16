@@ -3,32 +3,38 @@ define(['knockout','router','models/claim'],function(ko, router, Claim) {
         var self = this;
         self.new_claims = ko.observableArray([]);
         self.open_claims = ko.observableArray([]);
+        self.claim_ids = [];
         self.selected = ko.observable();
         
         self.init = function() {
             if(localStorage.getItem('advadj_claims') !== null) {
                 var claims = ko.utils.parseJson(localStorage.getItem('advadj_claims'));
                 $.each(claims, function(index,item) {
-                    self.open_claims.push(new Claim(item));      
+                    self.open_claims.push(new Claim(item));
+                    self.claim_ids.push(item.Claim.id);
                 });
             }
             self.update();
         }
+    
+        self.store = function() {
+            var data = [];
+            $.each(viewModel.claims.open_claims(), function(index,item) {
+                data.push({ Claim: item.data});
+            });
+            localStorage.setItem('advadj_claims',ko.toJSON(data));
+        }
         
         self.update = function() {
-            if(localStorage.getItem('advadj_claim_ids') !== null) {
-                self.open_claim_ids(ko.utils.parseJson(localStorage.getItem('advadj_claim_ids')));
-            }
             router.request('app/claims/list',self.updateProcess,{data:{User:{id:viewModel.user().user_id()}}});
         }
         
         self.updateProcess = function(data) {
             var claim = null;
             $.each(data, function(index, item) {
-                claim = new Claim(item);
-                console.log([claim,viewModel.claims.new_claims.indexOf(claim)]);
-                if((viewModel.claims.new_claims.indexOf(claim) < 0)&&(viewModel.claims.open_claims.indexOf(claim) < 0)) {
-                    self.new_claims.push(claim);   
+                if(self.claim_ids.indexOf(item.Claim.id) < 0) {
+                    self.new_claims.push(new Claim(item));
+                    self.claim_ids.push(item.Claim.id);
                 }
             });
         }

@@ -14,7 +14,6 @@ define(['knockout','router','models/user','models/claims'], function(ko, router,
             //check login
             if(localStorage.getItem('advadj_user') !== null) {
 				self.user().load();
-				//self.messages().update();
 			} else {
 				self.loadPage('login');
 			}
