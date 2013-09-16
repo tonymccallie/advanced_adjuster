@@ -8,6 +8,14 @@ define(['knockout','router','jquery'], function(ko, router, jquery) {
             targetWidth:300
         };
         
+        self.open_claim = function() {
+            if(viewModel.claims.new_claims.indexOf(viewModel.selectedClaim()) >= 0) {
+                viewModel.claims.open_claims.push(viewModel.selectedClaim());
+                viewModel.claims.new_claims.remove(viewModel.selectedClaim());
+                //localStorage.setItem('advadj_claims',ko.toJSON(viewModel.claims.open_claims()));
+            }
+        }
+        
         self.data = {
             id:data.Claim.id
         };
@@ -27,6 +35,7 @@ define(['knockout','router','jquery'], function(ko, router, jquery) {
         
         //PRELIMINARY REPORT
         self.preliminary = function() {
+            self.open_claim();
             router.loadPage('preliminary');
         }
         

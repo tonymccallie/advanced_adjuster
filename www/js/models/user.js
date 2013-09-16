@@ -17,7 +17,7 @@ define(['knockout','router'],function(ko, router) {
             self.first_name(user.first_name);
             self.last_name(user.last_name);
             router.loadPage('reports');
-            viewModel.claims.update();
+            viewModel.claims.init();
         }
         
         //LOGIN
