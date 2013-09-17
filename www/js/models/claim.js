@@ -4,9 +4,14 @@ define(['knockout','router','jquery'], function(ko, router, jquery) {
         var observableArray = ['title_verified'];
         var quality = {
             quality:60,
+            destinationType : 0,
             targetHeight:300,
             targetWidth:300
         };
+        
+        self.upload_preliminary = ko.observable(false);
+        self.upload_advanced = ko.observable(false);
+        self.upload_engineer = ko.observable(false);
         
         self.open_claim = function() {
             if(viewModel.claims.new_claims.indexOf(viewModel.selectedClaim()) >= 0) {
@@ -60,7 +65,7 @@ define(['knockout','router','jquery'], function(ko, router, jquery) {
         
         self.processPicture = function(data) {
             self.open_claim();
-            self.data[self.selectedPicture] = data;
+            self.data[self.selectedPicture] = 'data:image/jpeg;base64,'+data;
             router.loadPage('pictures');
             //$('#photoinfo').html(data);
         }

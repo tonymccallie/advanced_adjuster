@@ -19,6 +19,14 @@ define(['knockout','router','models/user','models/claims'], function(ko, router,
 			}
         }
         
+        self.upload = function() {
+            router.loadPage('upload',self.processUpload);
+        }
+        
+        self.processUpload = function() {
+            $('.progress_bar').hide();
+        }
+        
         self.update = function() {
            
         }

@@ -79,6 +79,53 @@ define(['jquery','knockout'], function(jquery,ko) {
                     callback();
                 }
             });
+        },
+        post: function(url,data,progress,callback) {
+            var options = {
+                url: DOMAIN+url+'.json',
+                xhr: function() {
+                    var xhr = new window.XMLHttpRequest();
+                    
+                    xhr.upload.addEventListener("progress",function(evt) {
+                        if(evt.lengthComputable) {
+                            var percentageComplete = evt.loaded / evt.total;
+                            progress(percentageComplete);
+                        }
+                    });
+                    
+                    return xhr;
+                },
+                crossDomain: true,
+                success: function (data) {
+                    if(data.status == 'SUCCESS') {
+                        callback(data.data);
+                    } else {
+                        console.log(['debug',data]);
+                        //navigator.notification.alert('There was an error: ' + data.message,null,'Advanced Adjusting');
+                    }
+                },
+                complete: function(jqXHR, textStatus, errorThrown) {
+                    if(textStatus != 'success') {
+                        //alert(errorThrown);
+                        //navigator.notification.alert('There was a problem communicating with the server.',null,'GroupPost');
+                    }
+                },
+                dataType: 'json',
+                async: false
+            };
+            
+            if(typeof data === 'undefined') {
+                options.type = 'GET';
+            } else {
+                options.type = 'POST';
+                options.data = data;
+            }
+            
+            try {
+                $.ajax(options);
+            } catch(e) {
+                alert(e);
+            }
         }
     }
 });
