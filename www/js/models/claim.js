@@ -3,10 +3,10 @@ define(['knockout','router','jquery'], function(ko, router, jquery) {
         var self = this;
         var observableArray = ['title_verified'];
         var quality = {
-            quality:60,
+            quality:75,
             destinationType : 0,
-            targetHeight:300,
-            targetWidth:300
+            targetHeight:600,
+            targetWidth:600
         };
         
         self.upload_preliminary = ko.observable(false);
