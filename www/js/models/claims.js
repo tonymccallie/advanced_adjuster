@@ -71,7 +71,7 @@ define(['knockout','router','models/claim'],function(ko, router, Claim) {
                     item.upload_engineer(false);
                 }
             });
-            router.loadPage('reports');
+            $('.progress_bar').slideUp();
         }
     }
 });
