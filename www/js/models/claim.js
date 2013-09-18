@@ -1,4 +1,4 @@
-define(['knockout','router','jquery'], function(ko, router, jquery) {
+define(['knockout','router','jquery','util/signature'], function(ko, router, jquery, SignatureCapture ) {
     return function Claim(data) {
         var self = this;
         var observableArray = ['title_verified'];
@@ -8,6 +8,9 @@ define(['knockout','router','jquery'], function(ko, router, jquery) {
             targetHeight:600,
             targetWidth:600
         };
+        
+        self.signature = null;
+        self.witness = null;
         
         self.upload_preliminary = ko.observable(false);
         self.upload_advanced = ko.observable(false);
@@ -27,11 +30,6 @@ define(['knockout','router','jquery'], function(ko, router, jquery) {
         
         $.each(data.Claim, function(index,item) {
             self.data[index] = item;
-//            if($.inArray(index,observableArray) >= 0) {
-//                self.data[index] = ko.observable(item);
-//            } else {
-//                self.data[index] = item;
-//            }
         });
         
         self.select = function(claim) {
@@ -72,7 +70,35 @@ define(['knockout','router','jquery'], function(ko, router, jquery) {
         
         self.advanced = function() {
             self.open_claim();
-            router.loadPage('advanced');
+            router.loadPage('advanced',self.processAdvanced);
+        }
+        
+        self.processAdvanced = function() {
+            if(self.data.signature == "") {
+                self.signature = new SignatureCapture( "signature" );
+            }
+            if(self.data.witness == "") {
+                self.witness = new SignatureCapture( "witness" );
+            }
+        }
+        
+        self.clearSignature = function() {
+            self.signature.clear();
+        }
+        
+        self.clearWitness = function() {
+            self.witness.clear();
+        }
+        
+        self.saveSignatures = function() {
+            if(self.data.signature == "") {
+                self.data.signature = self.signature.toString();
+            }
+            if(self.data.witness == "") {
+                self.data.witness = self.witness.toString();
+            }
+            viewModel.claims.store();
+            router.loadPage('reports');
         }
         
         self.engineer = function() {

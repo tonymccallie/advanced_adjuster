@@ -6,7 +6,7 @@
 */
 var viewModel;
 var History = [];
-var DOMAIN = 'http://office.threeleaf.tv:8080/adjuster_bridge/'
+var DOMAIN = 'http://advadj.greyback.net/'
 var devtest = /localhost/.test(window.location.hostname);
 if(devtest) {
 	DOMAIN = 'http://localhost/adjuster_bridge/';

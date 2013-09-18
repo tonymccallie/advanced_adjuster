@@ -46,6 +46,11 @@ define(['knockout','router'],function(ko, router) {
             self.id = null;
             self.name = '';
             localStorage.removeItem('advadj_user');
+            localStorage.removeItem('advadj_claims');
+            viewModel.claims.new_claims([]);
+            viewModel.claims.open_claims([]);
+            viewModel.claims.claim_ids = [];
+            viewModel.selectedClaim(null);
             router.loadPage('login');
             navigator.notification.alert('You have been successfully logged out.',null,'Advanced Adjusting');
         }

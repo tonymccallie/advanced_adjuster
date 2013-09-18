@@ -47,62 +47,29 @@ define(['knockout','router','models/claim'],function(ko, router, Claim) {
             $('.progress_bar').slideDown();
             var pictures = 0;
             var tmpclaim;
-            var pics = [
-                {
-                    field:'pic_front_left', title: 'Front Left'
-                },
-                {
-                    field:'pic_front_right', title: 'Front Right'
-                },
-                {
-                    field:'pic_rear_left', title: 'Rear Left'
-                },
-                {
-                    field:'pic_rear_right', title: 'Rear Left'
-                },
-                {
-                    field:'pic_water_inside', title: 'Water Inside'
-                },
-                {
-                    field:'pic_water_outside', title: 'Water Outside'
-                },
-                {
-                    field:'pic_optional1', title: 'Optional 1'
-                },
-                {
-                    field:'pic_optional1', title: 'Optional 2'
-                },
-                {
-                    field:'pic_optional1', title: 'Optional 3'
-                },
-                {
-                    field:'pic_optional1', title: 'Optional 4'
-                }
-            ];
             
             //var file_options = new FileUploadOptions();
             
             $.each(self.open_claims(), function(index, item) {
-                if(item.upload_preliminary()) {
-                    self.progress.title('Report data');
+                    self.progress.title('Report '+item.data.claimFileID+' '+item.data.last_name);
                     tmpclaim = {
                         json: ko.toJSON(item)
                     };
                     router.post('app/claims/upload',tmpclaim,self.progress.total,function(data) {
                         console.log(['sucess',data]);
+                        item.upload_preliminary(false);
                     });
-                    $.each(pics,function(index,picfield) {
-                        if(item.data[picfield.field] != '') {
-                            console.log(['image',picfield.title])
-                            self.progress.title(picfield.title);
-                            router.post('app/claims/image',{file:item.data[picfield.field]},self.progress.total,function(data) {
-                                console.log(['sucess',data]);
-                            });
-                            pictures++;
-                        }
-                    });
+                if(item.upload_preliminary()) {
+                    item.upload_preliminary(false);
+                }
+                if(item.upload_advanced()) {
+                    item.upload_advanced(false);
+                }
+                if(item.upload_engineer()) {
+                    item.upload_engineer(false);
                 }
             });
+            $('.progress_bar').slideUp();
         }
     }
 });

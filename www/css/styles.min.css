@@ -1143,7 +1143,7 @@ form input[type=text]{margin-top:5px}
 #footer{background-color:#8a8a8a;background-image:-moz-linear-gradient(top, #999, #737373);background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#999), to(#737373));background-image:-webkit-linear-gradient(top, #999, #737373);background-image:-o-linear-gradient(top, #999, #737373);background-image:linear-gradient(to bottom, #999, #737373);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff999999', endColorstr='#ff737373', GradientType=0);position:fixed;bottom:0;left:0;height:60px;width:100%;padding-top:10px}#footer ul,#footer li{list-style:none;margin:0;padding:0}
 #footer li{width:25%;float:left;text-align:center}
 #footer a{display:block;color:#fff;text-align:center;position:relative;font-size:12px}#footer a:hover{text-decoration:none}
-#signature,#witness_signature{width:100%;background-color:#fff}
+#signature,#witness{width:100%;background-color:#fff}
 textarea{height:140px}
 .uploader{height:40px;padding:5px 10px}.uploader span{line-height:40px}
 .uploader .btn-group{margin-top:4px}
