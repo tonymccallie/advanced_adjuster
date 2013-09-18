@@ -37,6 +37,8 @@ define(['knockout','router','models/claim'],function(ko, router, Claim) {
             var claim = null;
             $.each(data, function(index, item) {
                 if(self.claim_ids.indexOf(item.Claim.id) < 0) {
+                    item.Claim.signature = "";
+                    item.Claim.witness = "";
                     self.new_claims.push(new Claim(item));
                     self.claim_ids.push(item.Claim.id);
                 }
