@@ -53,7 +53,7 @@ define(['knockout','router','models/claim'],function(ko, router, Claim) {
             //var file_options = new FileUploadOptions();
             
             $.each(self.open_claims(), function(index, item) {
-                    self.progress.title('Report '+item.data.claimFileID+' '+item.data.last_name);
+                    self.progress.title('Uploading Report: '+item.data.claimFileID+' '+item.data.last_name);
                     tmpclaim = {
                         json: ko.toJSON(item)
                     };
@@ -71,6 +71,7 @@ define(['knockout','router','models/claim'],function(ko, router, Claim) {
                     item.upload_engineer(false);
                 }
             });
+            router.loadPage('reports');
         }
     }
 });
