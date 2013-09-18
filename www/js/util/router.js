@@ -111,7 +111,7 @@ define(['jquery','knockout'], function(jquery,ko) {
                     }
                 },
                 dataType: 'json',
-                async: false
+                async: true
             };
             
             if(typeof data === 'undefined') {
