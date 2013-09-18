@@ -69,7 +69,6 @@ define(['knockout','router','models/claim'],function(ko, router, Claim) {
                     item.upload_engineer(false);
                 }
             });
-            $('.progress_bar').slideUp();
         }
     }
 });
