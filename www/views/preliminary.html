@@ -178,7 +178,7 @@
 			<div class="control-group">
 				<label class="control-label">FIRM Date?</label>
 				<div class="controls">
-					<input data-bind="value: data.firm_data" type="text" name="data[Claim][firm_data]" class="span12" placeholder="Date">
+					<input data-bind="value: data.firm_data" type="date" name="data[Claim][firm_data]" class="span12" placeholder="Date">
 					<div class="btn-group">
                         <input data-bind="checked: data.pre_post_firm" type="radio" name="data[Claim][pre_post_firm]" id="pre_post_firm0" value="Pre FIRM" />
                         <label class="btn icon-" for="pre_post_firm0">Pre FIRM</label>
@@ -342,18 +342,18 @@
 				<label class="control-label">Contents located in?</label>
 				<div class="controls">
                     <div class="btn-group">
-                        <input data-bind="checked: data.contents_location" type="radio" name="data[Claim][contents_location]" id="contents_location0" value="Basement" />
-                        <label class="btn icon-" for="contents_location0">Basement</label>
-                        <input data-bind="checked: data.contents_location" type="radio" name="data[Claim][contents_location]" id="contents_location1" value="First Floor" />
-                        <label class="btn icon-" for="contents_location1">First Floor</label>
-                        <input data-bind="checked: data.contents_location" type="radio" name="data[Claim][contents_location]" id="contents_location2" value="First Floor and above" />
-                        <label class="btn icon-" for="contents_location2">First Floor and above</label>
+                        <input data-bind="checked: data.contents_basement" type="checkbox" name="data[Claim][contents_basement]" id="contents_basement" value="1" />
+                        <label class="btn icon-" for="contents_basement">Basement</label>
+                        <input data-bind="checked: data.contents_first" type="checkbox" name="data[Claim][contents_first]" id="contents_first" value="1" />
+                        <label class="btn icon-" for="contents_first">First Floor</label>
+                        <input data-bind="checked: data.contents_first_plus" type="checkbox" name="data[Claim][contents_first_plus]" id="contents_first_plus" value="1" />
+                        <label class="btn icon-" for="contents_first_plus">First Floor and above</label>
                     </div>
                     <div class="btn-group">
-                        <input data-bind="checked: data.contents_location" type="radio" name="data[Claim][contents_location]" id="contents_location3" value="Second Floor and above" />
-                        <label class="btn icon-" for="contents_location3">Second Floor and above</label>
-                        <input data-bind="checked: data.contents_location" type="radio" name="data[Claim][contents_location]" id="contents_location4" value="Other" />
-                        <label class="btn icon-" for="contents_location4">Other</label>
+                        <input data-bind="checked: data.contents_second_plus" type="checkbox" name="data[Claim][contents_second_plus]" id="contents_second_plus" value="1" />
+                        <label class="btn icon-" for="contents_second_plus">Second Floor and above</label>
+                        <input data-bind="checked: data.contents_other_check" type="checkbox" name="data[Claim][contents_other_check]" id="contents_other_check" value="1" />
+                        <label class="btn icon-" for="contents_other_check">Other</label>
                     </div>
 					<input data-bind="value: data.contents_other" type="text" name="data[Claim][contents_other]" class="span12" placeholder="Other">
 				</div>
@@ -444,19 +444,36 @@
 			<div class="control-group">
 				<label class="control-label">Date/time water entered building</label>
 				<div class="controls">
-					<input data-bind="value: data.date_water_entered" type="text" name="data[Claim][date_water_entered]" class="span12" placeholder="">
+                    <div class="span6">
+				        <input data-bind="value: data.date_water_entered" type="date" name="data[Claim][date_water_entered]" class="span12" placeholder="">
+                    </div>
+                    <div class="span6">
+                        <input data-bind="value: data.time_water_entered" type="time" name="data[Claim][time_water_entered]" class="span12" placeholder="">
+                    </div>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label">Date/time water receded building</label>
 				<div class="controls">
-					<input data-bind="value: data.date_water_receded" type="text" name="data[Claim][date_water_receded]" class="span12" placeholder="">
+                    <div class="span6">
+				        <input data-bind="value: data.date_water_receded" type="date" name="data[Claim][date_water_receded]" class="span12" placeholder="">
+                    </div>
+                    <div class="span6">
+                        <input data-bind="value: data.time_water_receded" type="time" name="data[Claim][time_water_receded]" class="span12" placeholder="">
+                    </div>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label">Length of time water remained in building</label>
 				<div class="controls">
 					<input data-bind="value: data.time_water" type="text" name="data[Claim][time_water]" class="span12" placeholder="">
+				</div>
+			</div>
+            <div class="control-group">
+				<label class="control-label">Water Depth</label>
+				<div class="controls">
+					<div class="span4"><input data-bind="value: data.water_feet" type="text" name="data[Claim][water_feet]" class="span10" placeholder="">ft.</div>
+                    <div class="span4"><input data-bind="value: data.water_inches" type="text" name="data[Claim][water_inches]" class="span10" placeholder="">in.</div>
 				</div>
 			</div>
 		</div>
