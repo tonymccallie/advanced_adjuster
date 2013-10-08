@@ -15,32 +15,48 @@
 		</ul>
 	</div>
 	<div class="span7">
-		<div data-bind="with: selectedClaim" class="well">
-			<div class="row-fluid">
-				<div class="span12">
-					<h3 data-bind="text: data.last_name+', '+data.first_name">Name</h3>
-					<h4 data-bind="html: data.address1+'<br />'+data.city+', '+data.state+' '+data.zip">1234 Street Ave.<br />Amarillo, TX 79102</h4>
-					<h4 data-bind="text: data.phone">Phone Number</a>
-				</div>
-			</div>
-			<div class="row-fluid">
-				<div class="span12">
-					<a href="#" data-bind="fastClick: preliminary" class="btn btn-primary btn-block">Preliminary</a>
-				</div>
-			</div>
-			<div class="row-fluid">
-				<div class="span12">
-					<a href="#" data-bind="fastClick: pictures" class="btn btn-block">Pictures</a>
-				</div>
-			</div>
-			<div class="row-fluid">
-				<div class="span6">
-					<a href="#" data-bind="fastClick: advanced" class="btn btn-block">Advanced Payment</a>
-				</div>
-				<div class="span6">
-					<a href="#" data-bind="fastClick: engineer" class="btn btn-block">Engineer</a>
-				</div>
-			</div>
+		<div class="well">
+            <div data-bind="with: selectedClaim"> 
+                <div class="row-fluid">
+                    <div class="span12">
+                        <h3 data-bind="text: data.last_name+', '+data.first_name">Name</h3>
+                        <h4 data-bind="html: data.address1+'<br />'+data.city+', '+data.state+' '+data.zip">1234 Street Ave.<br />Amarillo, TX 79102</h4>
+                        <h4 data-bind="text: data.phone">Phone Number</a>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span12">
+                        <a href="#" data-bind="fastClick: preliminary" class="btn btn-primary btn-block">Preliminary</a>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span12">
+                        <a href="#" data-bind="fastClick: pictures" class="btn btn-block">Pictures</a>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span6">
+                        <a href="#" data-bind="fastClick: advanced" class="btn btn-block">Advanced Payment</a>
+                    </div>
+                    <div class="span6">
+                        <a href="#" data-bind="fastClick: engineer" class="btn btn-block">Engineer</a>
+                    </div>
+                </div>
+            </div>
+            <div data-bind="visible: typeof(selectedClaim()) == 'undefined'">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <p>Please choose a claim for the lists on the left to work on, or tap "Check for new Claims"</p>
+                    </div>
+                </div>
+            </div>
+            <div data-bind="visible: (claims.new_claims().length + claims.open_claims().length)  == 0">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <p>If you aren't seeing any Claims in the New or In Progress lists, then you may not have any claims assosiated to your user in the system.</p>
+                    </div>
+                </div>
+            </div>
 		</div>
 	</div>
 </div>

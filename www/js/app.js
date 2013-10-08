@@ -10,6 +10,10 @@ define(['knockout','router','models/user','models/claims'], function(ko, router,
             router.loadPage(url);
         }
         
+        self.loadReports = function() {
+            router.loadPage('reports');
+        }
+        
         self.initialize = function() {
             //check login
             if(localStorage.getItem('advadj_user') !== null) {

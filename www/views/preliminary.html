@@ -16,7 +16,69 @@
 	<form id="preliminary_form" class="form-horizontal">
 	<div class="row-fluid">
 		<div class="span12">
+            <h4>Dates</h4>
+            <div class="control-group">
+				<label class="control-label">Report date:</label>
+				<div class="controls">
+					<input data-bind="value: data.report_date" type="date" name="data[Claim][report_date]" class="span12" placeholder="Date">
+				</div>
+			</div>
+            <div class="control-group">
+				<label class="control-label">Date loss assigned:</label>
+				<div class="controls">
+					<input data-bind="value: data.date_loss_assigned" type="date" name="data[Claim][date_loss_assigned]" class="span12" placeholder="Date">
+				</div>
+			</div>
+            <div class="control-group">
+				<label class="control-label">Date insured contacted:</label>
+				<div class="controls">
+					<input data-bind="value: data.date_contacted" type="date" name="data[Claim][date_contacted]" class="span12" placeholder="Date">
+				</div>
+			</div>
+            <div class="control-group">
+				<label class="control-label">Date loss inspected:</label>
+				<div class="controls">
+					<input data-bind="value: data.date_inspected" type="date" name="data[Claim][date_inspected]" class="span12" placeholder="Date">
+				</div>
+			</div>
 			<h4>Insurance</h4>
+            <div class="control-group">
+				<label class="control-label">Coverage verified from?</label>
+				<div class="controls">
+                    <div class="btn-group">
+                        <input data-bind="checked: data.verify_source" type="radio" name="data[Claim][verify_source]" id="verify_source0" value="NFIP" />
+                        <label class="btn icon-" for="verify_source0">NFIP</label>
+                        <input data-bind="checked: data.verify_source" type="radio" name="data[Claim][verify_source]" id="verify_source1" value="Agent's Daily" />
+                        <label class="btn icon-" for="verify_source1">Agent's Daily</label>
+                        <input data-bind="checked: data.verify_source" type="radio" name="data[Claim][verify_source]" id="verify_source2" value="Insured's Policy" />
+                        <label class="btn icon-" for="verify_source2">Insured's Policy</label>
+                    </div>
+				</div>
+			</div>
+            <div class="control-group">
+				<label class="control-label">Insured's policy</label>
+				<div class="controls">
+                    <div class="btn-group">
+                        <input data-bind="checked: data.policy_type" type="radio" name="data[Claim][policy_type]" id="policy_type0" value="Emergency" />
+                        <label class="btn icon-" for="policy_type0">Emergency</label>
+                        <input data-bind="checked: data.policy_type" type="radio" name="data[Claim][policy_type]" id="policy_type1" value="Regular" />
+                        <label class="btn icon-" for="policy_type1">Regular</label>
+                    </div>
+				</div>
+			</div>
+            <div class="control-group">
+				<label class="control-label">Form</label>
+				<div class="controls">
+                    <div class="btn-group">
+                        <input data-bind="checked: data.form" type="radio" name="data[Claim][form]" id="form0" value="Dwelling" />
+                        <label class="btn icon-" for="form0">Dwelling</label>
+                        <input data-bind="checked: data.form" type="radio" name="data[Claim][form]" id="form1" value="General Property" />
+                        <label class="btn icon-" for="form1">General Property</label>
+                        <input data-bind="checked: data.form" type="radio" name="data[Claim][form]" id="form2" value="RCBAP" />
+                        <label class="btn icon-" for="form2">RCBAP</label>
+                    </div>
+				</div>
+			</div>
 			<div class="control-group">
 				<label class="control-label">Advance Payment requested?</label>
 				<div class="controls">
@@ -28,12 +90,24 @@
                     </div>
 				</div>
 			</div>
+            <div class="control-group">
+				<label class="control-label">Building reserve:</label>
+				<div class="controls">
+					<input data-bind="value: data.building_reserve" type="number" name="data[Claim][building_reserve]" class="span12" placeholder="">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Content reserve:</label>
+				<div class="controls">
+					<input data-bind="value: data.content_reserve" type="number" name="data[Claim][content_reserve]" class="span12" placeholder="">
+				</div>
+			</div>
 			<h4>Risk</h4>
 			<div class="control-group">
 				<label class="control-label">Type of building?</label>
 				<div class="controls">
 					<select data-bind="value: data.building_type" name="data[Claim][building_type]" class="span12">
-						<option>Single Family</option>
+						<option>Single Family</option>        m   
 						<option>2-4 Family</option>
 						<option>Condo Association</option>
 						<option>Condo unit</option>
@@ -469,11 +543,33 @@
 					<input data-bind="value: data.time_water" type="text" name="data[Claim][time_water]" class="span12" placeholder="">
 				</div>
 			</div>
+            <h4>Water Height or Wave Action</h4>
             <div class="control-group">
-				<label class="control-label">Water Depth</label>
+				<label class="control-label">Main Building Interior</label>
 				<div class="controls">
 					<div class="span4"><input data-bind="value: data.water_feet" type="text" name="data[Claim][water_feet]" class="span10" placeholder="">ft.</div>
                     <div class="span4"><input data-bind="value: data.water_inches" type="text" name="data[Claim][water_inches]" class="span10" placeholder="">in.</div>
+				</div>
+			</div>
+            <div class="control-group">
+				<label class="control-label">Main Building Exterior</label>
+				<div class="controls">
+					<div class="span4"><input data-bind="value: data.ext_water_ft" type="text" name="data[Claim][ext_water_ft]" class="span10" placeholder="">ft.</div>
+                    <div class="span4"><input data-bind="value: data.ext_water_in" type="text" name="data[Claim][ext_water_in]" class="span10" placeholder="">in.</div>
+				</div>
+			</div>
+            <div class="control-group">
+				<label class="control-label">Apt./ Condo Unit Building Interior</label>
+				<div class="controls">
+					<div class="span4"><input data-bind="value: data.apt_water_feet" type="text" name="data[Claim][apt_water_feet]" class="span10" placeholder="">ft.</div>
+                    <div class="span4"><input data-bind="value: data.apt_water_inches" type="text" name="data[Claim][apt_water_inches]" class="span10" placeholder="">in.</div>
+				</div>
+			</div>
+            <div class="control-group">
+				<label class="control-label">Apt./ Condo Unit Building Exterior</label>
+				<div class="controls">
+					<div class="span4"><input data-bind="value: data.ext_apt_water_ft" type="text" name="data[Claim][ext_apt_water_ft]" class="span10" placeholder="">ft.</div>
+                    <div class="span4"><input data-bind="value: data.ext_apt_water_in" type="text" name="data[Claim][ext_apt_water_in]" class="span10" placeholder="">in.</div>
 				</div>
 			</div>
 		</div>
