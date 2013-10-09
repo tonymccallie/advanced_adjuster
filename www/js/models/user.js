@@ -5,6 +5,7 @@ define(['knockout','router'],function(ko, router) {
         //check for existing login
         self.user_id = ko.observable();
         self.first_name = ko.observable();
+        self.fc_num = ko.observable();
         self.last_name = ko.observable();
         self.name = ko.computed(function() {
             return self.first_name() + ' ' + self.last_name()
@@ -16,6 +17,7 @@ define(['knockout','router'],function(ko, router) {
             self.user_id(user.id);
             self.first_name(user.first_name);
             self.last_name(user.last_name);
+            self.fc_num(user.fc_num);
             router.loadPage('reports');
             viewModel.claims.init();
         }
