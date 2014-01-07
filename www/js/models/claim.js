@@ -68,6 +68,11 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             //$('#photoinfo').html(data);
         }
         
+        self.savePicture = function() {
+            router.loadPage('reports');
+        }
+        
+        //Advanced
         self.advanced = function() {
             self.open_claim();
             router.loadPage('advanced',self.processAdvanced);

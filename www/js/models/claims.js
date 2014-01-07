@@ -17,6 +17,10 @@ define(['knockout','router','models/claim'],function(ko, router, Claim) {
                     self.open_claims.push(new Claim(item));
                     self.claim_ids.push(item.Claim.id);
                 });
+                
+                self.open_claims.sort(function(left,right) {
+                    return left.data.claimFileID == right.data.claimFileID ? 0 : (left.data.claimFileID > right.data.claimFileID) ? -1 : 1;
+                });
             }
             self.update();
         }
@@ -58,7 +62,6 @@ define(['knockout','router','models/claim'],function(ko, router, Claim) {
                         json: ko.toJSON(item)
                     };
                     router.post('app/claims/upload',tmpclaim,self.progress.total,function(data) {
-                        console.log(['sucess',data]);
                         item.upload_preliminary(false);
                     });
                 if(item.upload_preliminary()) {

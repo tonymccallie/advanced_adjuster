@@ -13,7 +13,7 @@
 			</div>
 		</div>
 	</div>
-	<form id="preliminary_form" class="form-horizontal">
+	<form data-bind="submit: preliminaryProcess" id="preliminary_form" class="form-horizontal">
 	<div class="row-fluid">
 		<div class="span12">
             <h4>Dates</h4>
@@ -576,7 +576,7 @@
 	</div>
 	<div class="row-fluid">
 		<div class="span12">
-			<a href="#" data-bind="fastClick: preliminaryProcess" class="btn btn-primary pull-right">Save</a>		
+			<input type="submit" value="Save" data-bind="fastClick: preliminaryProcess" class="btn btn-primary pull-right">
 		</div>
 	</div>
 	</form>

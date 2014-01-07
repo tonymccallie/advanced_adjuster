@@ -1147,3 +1147,4 @@ form input[type=text]{margin-top:5px}
 textarea{height:140px}
 .uploader{height:40px;padding:5px 10px}.uploader span{line-height:40px}
 .uploader .btn-group{margin-top:4px}
+@media (max-width:767px){body{padding-top:0} .navbar .pull-right{float:none} #logo_bar img{width:35%;margin-top:.5em} #header .btn-group{top:4px}}
