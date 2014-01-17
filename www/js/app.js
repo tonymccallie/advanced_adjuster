@@ -28,7 +28,7 @@ define(['knockout','router','models/user','models/claims'], function(ko, router,
         }
         
         self.processUpload = function() {
-            $('.progress_bar').hide();
+        
         }
         
         self.update = function() {

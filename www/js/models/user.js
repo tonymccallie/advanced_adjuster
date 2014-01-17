@@ -32,6 +32,25 @@ define(['knockout','router'],function(ko, router) {
             self.load();
         }
         
+        self.save = function(user) {
+            router.request('app/users/save',self.saveProcess,{
+                data: {
+                    User: {
+                        id:user.user_id(),
+                        first_name:user.first_name(),
+                        last_name:user.last_name(),
+                        fc_num:user.fc_num()
+                    }
+                }
+            });
+        }
+        
+        self.saveProcess = function(data) {
+            localStorage.setItem('advadj_user',ko.toJSON(data.User));
+            navigator.notification.alert('Your settings have been saved.',null,'Advanced Adjusting');
+            router.loadPage('reports');
+        }
+        
         //REGISTER
         self.registerSubmit = function(data) {
             router.request('app/users/register',self.registerProcess,$('#user_register').serialize());

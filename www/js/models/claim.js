@@ -8,6 +8,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             targetHeight:600,
             targetWidth:600
         };
+        self.closeClaim = null;
         
         self.signature = null;
         self.witness = null;
@@ -44,6 +45,22 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         
         self.preliminaryProcess = function(data) {
             self.open_claim();
+            router.loadPage('reports');
+        }
+        
+        self.close = function(claim) {
+            self.closeClaim = claim;
+            navigator.notification.confirm('Are you sure you want to close this claim? This can\'t be reopened',function(response) {
+               if(response === 1) {
+                   router.request('app/claims/close',self.closeProcess,{data:{Claim:{id:claim.data.id,status:'CLOSED'}}});
+               }
+            });
+        }
+        
+        self.closeProcess = function(data) {
+            viewModel.selectedClaim = ko.observable();
+            viewModel.claims.open_claims.remove(self.closeClaim);
+            viewModel.claims.store();
             router.loadPage('reports');
         }
         

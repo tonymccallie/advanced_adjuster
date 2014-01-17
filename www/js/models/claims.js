@@ -50,31 +50,37 @@ define(['knockout','router','models/claim'],function(ko, router, Claim) {
         }
         
         self.upload = function() {
-            $('.progress_bar').slideDown();
             var pictures = 0;
             var tmpclaim;
             
             //var file_options = new FileUploadOptions();
-            
-            $.each(self.open_claims(), function(index, item) {
-                    self.progress.title('Uploading Report: '+item.data.claimFileID+' '+item.data.last_name);
-                    tmpclaim = {
-                        json: ko.toJSON(item)
-                    };
-                    router.post('app/claims/upload',tmpclaim,self.progress.total,function(data) {
+            $('#loading').fadeIn();
+            try {
+                $.each(self.open_claims(), function(index, item) {
+                        self.progress.title('Uploading Report: '+item.data.claimFileID+' '+item.data.last_name);
+                        tmpclaim = {
+                            json: ko.toJSON(item)
+                        };
+                        router.post('app/claims/upload',tmpclaim,self.progress.total,function(data) {
+                            item.upload_preliminary(false);
+                        });
+                    if(item.upload_preliminary()) {
                         item.upload_preliminary(false);
-                    });
-                if(item.upload_preliminary()) {
-                    item.upload_preliminary(false);
-                }
-                if(item.upload_advanced()) {
-                    item.upload_advanced(false);
-                }
-                if(item.upload_engineer()) {
-                    item.upload_engineer(false);
-                }
-            });
-            $('.progress_bar').slideUp();
+                    }
+                    if(item.upload_advanced()) {
+                        item.upload_advanced(false);
+                    }
+                    if(item.upload_engineer()) {
+                        item.upload_engineer(false);
+                    }
+                });
+                router.loadPage('reports');
+            } catch(error) {
+                navigator.notification.alert('There was an error uploading the reports',null,'Advanced Adjusting');
+                $('#upload_error').html('Error: '+error);
+            }
+            $('#loading').fadeOut();
+           
         }
     }
 });
