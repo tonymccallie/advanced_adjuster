@@ -26,7 +26,11 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         }
         
         self.data = {
-            id:data.Claim.id
+            id:data.Claim.id,
+            complete_preliminary:false,
+            complete_pictures:false,
+            complete_advanced:false,
+            complete_engineer:false
         };
         
         $.each(data.Claim, function(index,item) {
@@ -43,7 +47,16 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             router.loadPage('preliminary');
         }
         
-        self.preliminaryProcess = function(data) {
+        self.preliminaryProcess = function() {
+            self.data.complete_preliminary = true;
+            viewModel.claims.store();
+            self.open_claim();
+            router.loadPage('reports');
+        }
+        
+         self.preliminarySave = function() {
+            self.data.complete_preliminary = true;
+            viewModel.claims.store();
             self.open_claim();
             router.loadPage('reports');
         }
@@ -86,13 +99,27 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         }
         
         self.savePicture = function() {
+            self.data.complete_pictures = true;
+            viewModel.claims.store();
             router.loadPage('reports');
         }
         
         //Advanced
         self.advanced = function() {
             self.open_claim();
-            router.loadPage('advanced',self.processAdvanced);
+            router.loadPage('advanced');
+        }
+        
+        self.loadAdvancedCopy = function() {
+            try {
+            router.loadPage('advanced_copy');
+            } catch(e) {
+                console.log(e);
+            }
+        }
+        
+        self.loadSignatures = function() {
+            router.loadPage('signatures',self.processAdvanced);
         }
         
         self.processAdvanced = function() {
@@ -119,6 +146,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             if(self.data.witness == "") {
                 self.data.witness = self.witness.toString();
             }
+            self.data.complete_advanced = true;
             viewModel.claims.store();
             router.loadPage('reports');
         }
@@ -126,6 +154,12 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         self.engineer = function() {
             self.open_claim();
             router.loadPage('engineer');
+        }
+        
+        self.saveEngineer = function() {
+            self.data.complete_engineer = true;
+            viewModel.claims.store();
+            router.loadPage('reports');
         }
     }
 });
