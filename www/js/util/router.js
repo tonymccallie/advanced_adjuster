@@ -58,6 +58,8 @@ define(['jquery','knockout'], function(jquery,ko) {
                 alert(e);
             }
         },
+
+        //Probably need to replace this with a better router (history, etc)
         loadPage: function(href, callback) {            
             var noTemplate = ['login','register','recover'];
         
@@ -80,36 +82,25 @@ define(['jquery','knockout'], function(jquery,ko) {
                 }
             });
         },
-        post: function(url,data,progress,callback) {
+
+        //Returns .ajax object for deferred action control
+        post: function(url,data,progress) {
             var options = {
                 url: DOMAIN+url+'.json',
                 xhr: function() {
                     var xhr = new window.XMLHttpRequest();
                     
                     xhr.upload.addEventListener("progress",function(evt) {
+
                         if(evt.lengthComputable) {
                             var percentageComplete = evt.loaded / evt.total;
-                            progress(percentageComplete);
+                            progress(percentageComplete * 100);
                         }
                     });
                     
                     return xhr;
                 },
                 crossDomain: true,
-                success: function (data) {
-                    if(data.status == 'SUCCESS') {
-                        callback(data.data);
-                    } else {
-                        console.log(['debug',data]);
-                        //navigator.notification.alert('There was an error: ' + data.message,null,'Advanced Adjusting');
-                    }
-                },
-                complete: function(jqXHR, textStatus, errorThrown) {
-                    if(textStatus != 'success') {
-                        //alert(errorThrown);
-                        //navigator.notification.alert('There was a problem communicating with the server.',null,'GroupPost');
-                    }
-                },
                 dataType: 'json',
                 async: true
             };
@@ -121,11 +112,7 @@ define(['jquery','knockout'], function(jquery,ko) {
                 options.data = data;
             }
             
-            try {
-                $.ajax(options);
-            } catch(e) {
-                alert(e);
-            }
+            return $.ajax(options);
         }
     }
 });

@@ -29,6 +29,10 @@
 		</div>
 	</div>
 	<div class="span6">
+        <label>Memory Used</label>
+        <div class="progress">
+            <div class="bar" data-bind="attr:{ style: 'width:'+$root.memory()+'%;' }" style="width: 60%;"></div>
+        </div>
 		<a href="#" data-bind="fastClick: $root.user().logout" class="btn btn-block">Log Out</a>
 	</div>
 </div>

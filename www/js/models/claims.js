@@ -1,4 +1,4 @@
-define(['knockout','router','models/claim'],function(ko, router, Claim) {
+define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim, SizeOf) {
     return function Claims() {
         var self = this;
         self.new_claims = ko.observableArray([]);
@@ -10,6 +10,18 @@ define(['knockout','router','models/claim'],function(ko, router, Claim) {
             title: ko.observable('test')
         };
         
+        self.overall_progress = ko.observable(0);
+        self.toUpload = ko.computed(function() {
+            var tmplist = [];
+            $.each(self.open_claims(), function(index, item) {
+                if((item.upload_preliminary()) || (item.upload_advanced()) || (item.upload_engineer())) {
+                    tmplist.push(item);
+                }
+            });
+            return tmplist;
+        },self);
+        self.overall_current = 0;
+
         self.init = function() {
             if(localStorage.getItem('advadj_claims') !== null) {
                 var claims = ko.utils.parseJson(localStorage.getItem('advadj_claims'));
@@ -31,6 +43,7 @@ define(['knockout','router','models/claim'],function(ko, router, Claim) {
                 data.push({ Claim: item.data});
             });
             localStorage.setItem('advadj_claims',ko.toJSON(data));
+            viewModel.check_memory();
         }
         
         self.update = function() {
@@ -54,32 +67,62 @@ define(['knockout','router','models/claim'],function(ko, router, Claim) {
             var tmpclaim;
             
             //var file_options = new FileUploadOptions();
-            $('#loading').fadeIn();
-            try {
-                $.each(self.open_claims(), function(index, item) {
-                        self.progress.title('Uploading Report: '+item.data.claimFileID+' '+item.data.last_name);
-                        tmpclaim = {
-                            json: ko.toJSON(item)
-                        };
-                        router.post('app/claims/upload',tmpclaim,self.progress.total,function(data) {
-                            item.upload_preliminary(false);
-                        });
-                    if(item.upload_preliminary()) {
-                        item.upload_preliminary(false);
-                    }
-                    if(item.upload_advanced()) {
-                        item.upload_advanced(false);
-                    }
-                    if(item.upload_engineer()) {
-                        item.upload_engineer(false);
-                    }
+            //TODO Get over here
+            var deferreds = [];
+
+            $.each(self.toUpload(), function(index, item) {
+                tmpclaim = {
+                    json: ko.toJSON(item)
+                };
+
+                var deferred = router.post('app/claims/upload',tmpclaim,item.progress);
+
+                deferred.progress(function(data) {
+                    console.log(['Progress',data]);
+                }).done(function(data) {
+                    console.log(['Done',data]);
+                }).fail(function(data) {
+                    console.log(['Fail',data]);
                 });
-                router.loadPage('reports');
-            } catch(error) {
-                navigator.notification.alert('There was an error uploading the reports',null,'Advanced Adjusting');
-                $('#upload_error').html('Error: '+error);
-            }
-            $('#loading').fadeOut();
+
+                deferreds.push(deferred);
+
+//                if((item.upload_preliminary()) || (item.upload_advanced()) || (item.upload_engineer())) {
+//                    $('#upload_error').html($('#upload_error').html()+'<br/>Uploading Report: '+item.data.claimFileID+' '+item.data.last_name);
+//                    $('#loading').fadeIn(400,function() {
+//
+//                    });
+//                    try {
+//
+//                    } catch(error) {
+//                        navigator.notification.alert('There was an error uploading the reports',null,'Advanced Adjusting');
+//                        $('#upload_error').html($('#upload_error').html()+'<br/>Error on claim '+item.data.claimFileID+': '+error);
+//                    }
+//                     $('#loading').fadeOut();
+//                }
+
+
+//                if(item.upload_preliminary()) {
+//                    item.upload_preliminary(false);
+//                }
+//                if(item.upload_advanced()) {
+//                    item.upload_advanced(false);
+//                }
+//                if(item.upload_engineer()) {
+//                    item.upload_engineer(false);
+//                }
+            });
+
+            $.when.apply($, deferreds).then(function(data){
+                //ALL items complete
+                console.log(['All Complete',data]);
+            }).fail(function(data){
+                // Probably want to catch failure
+                console.log(['All Fail',data]);
+            });
+
+            //router.loadPage('reports');
+
            
         }
     }

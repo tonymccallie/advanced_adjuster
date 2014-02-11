@@ -16,6 +16,15 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         self.upload_preliminary = ko.observable(false);
         self.upload_advanced = ko.observable(false);
         self.upload_engineer = ko.observable(false);
+        self.upload = ko.computed(function() {
+            if((self.upload_preliminary()) || (self.upload_advanced()) || (self.upload_engineer())) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+        self.progress = ko.observable(0);
         
         self.open_claim = function() {
             if(viewModel.claims.new_claims.indexOf(viewModel.selectedClaim()) >= 0) {

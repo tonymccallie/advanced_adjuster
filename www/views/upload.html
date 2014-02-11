@@ -4,14 +4,24 @@
             <ul class="nav nav-tabs nav-stacked">
                 <li class="nav-header">Claims to Upload</li>
                 <!-- ko foreach : claims.open_claims-->
-                <li class="uploader"><span  data-bind="text: data.claimFileID+' '+data.last_name">1217 Austin</span>
-                    <div class="btn-group pull-right">
-                        <input data-bind="checked: upload_preliminary, attr: { id: 'upload_preliminary'+$index() }" type="checkbox" value="1" />
-                        <label data-bind="attr: { for: 'upload_preliminary'+$index() }" class="btn icon-">Preliminary</label>
-                        <input data-bind="checked: upload_advanced, attr: { id: 'upload_advanced'+$index() }" type="checkbox" value="1" />
-                        <label data-bind="attr: { for: 'upload_advanced'+$index() }" class="btn icon-">Advanced</label>
-                        <input data-bind="checked: upload_engineer, attr: { id: 'upload_engineer'+$index() }" type="checkbox" value="1" />
-                        <label data-bind="attr: { for: 'upload_engineer'+$index() }" class="btn icon-">Engineer</label>
+                <li class="uploader">
+                    <div class="row-fluid">
+                        <div class="span3" data-bind="text: data.claimFileID+' '+data.last_name">FileID and Last Name</div>
+                        <div class="span3">
+                            <div data-bind="visible: upload" class="progress">
+                                <div class="bar" data-bind="attr:{ style: 'width:'+progress()+'%;' }"></div>
+                            </div>
+                        </div>
+                        <div class="span6">
+                            <div class="btn-group pull-right">
+                                <input data-bind="checked: upload_preliminary, attr: { id: 'upload_preliminary'+$index() }" type="checkbox" value="1" />
+                                <label data-bind="attr: { for: 'upload_preliminary'+$index() }" class="btn icon-">Preliminary</label>
+                                <input data-bind="checked: upload_advanced, attr: { id: 'upload_advanced'+$index() }" type="checkbox" value="1" />
+                                <label data-bind="attr: { for: 'upload_advanced'+$index() }" class="btn icon-">Advanced</label>
+                                <input data-bind="checked: upload_engineer, attr: { id: 'upload_engineer'+$index() }" type="checkbox" value="1" />
+                                <label data-bind="attr: { for: 'upload_engineer'+$index() }" class="btn icon-">Engineer</label>
+                            </div>
+                        </div>
                     </div>
                 </li>
                 <!-- /ko -->

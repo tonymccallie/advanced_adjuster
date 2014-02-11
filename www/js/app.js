@@ -1,6 +1,7 @@
 define(['knockout','router','models/user','models/claims'], function(ko, router, User, Claims) {
     return function AppViewModel() {
         var self = this;
+        self.memory = ko.observable(0);
         self.user = ko.observable(new User());
         self.claims = new Claims;
         self.saved_payment_requests = ko.observableArray([]);
@@ -23,6 +24,11 @@ define(['knockout','router','models/user','models/claims'], function(ko, router,
 			}
         }
         
+        self.check_memory = function() {
+            var currentSize = (((sizeof(localStorage.getItem('advadj_claims')))/1024/1024)/5)*100;
+            self.memory(currentSize)
+        }
+
         self.upload = function() {
             router.loadPage('upload',self.processUpload);
         }
