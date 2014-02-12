@@ -42,6 +42,13 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             complete_engineer:false
         };
         
+        var pics = ['pic_front_right','pic_front_left','pic_rear_left','pic_rear_right','pic_water_inside','pic_water_outside','pic_optional1','pic_optional2','pic_optional3','pic_optional4'];
+        $.each(pics, function(index,item) {
+            if(data.Claim[item].substr(0,4) !== 'data') {
+                data.Claim[item] = '';
+            }
+        });
+
         $.each(data.Claim, function(index,item) {
             self.data[index] = item;
         });
