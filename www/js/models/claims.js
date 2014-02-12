@@ -5,6 +5,7 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
         self.open_claims = ko.observableArray([]);
         self.claim_ids = [];
         self.selected = ko.observable();
+        self.uploading = ko.observable(false);
         self.progress = {
             total: ko.observable(0),
             title: ko.observable('test')
@@ -85,15 +86,19 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
                 };
 
                 self.log('Uploading '+item.data.claimFileID);
-                var deferred = router.post('app/claims/upload',tmpclaim,item.progress);
+                try {
+                    var deferred = router.post('app/claims/upload',tmpclaim,item.progress);
 
-                deferred.done(function(data) {
-                    self.log(data.data.Claim.claimFileID+' finished');
-                }).fail(function(data) {
-                    self.log(item.data.claimFileID+' had an error. The error returned was: "'+data.statusText+'"');
-                });
+                    deferred.done(function(data) {
+                        self.log(data.data.Claim.claimFileID+' finished');
+                    }).fail(function(data) {
+                        self.log(item.data.claimFileID+' had an error. The error returned was: "'+data.statusText+'"');
+                    });
 
-                deferreds.push(deferred);
+                    deferreds.push(deferred);
+                } catch(error) {
+                    self.log(error);
+                }
             });
 
             $.when.apply($, deferreds).then(function(data){
