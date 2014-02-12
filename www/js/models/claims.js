@@ -62,6 +62,10 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
             });
         }
         
+        self.log = function(info) {
+            $('#upload_error').html($('#upload_error').html()+'<br/>'+info);
+        }
+
         self.upload = function() {
             var pictures = 0;
             var tmpclaim;
@@ -69,22 +73,24 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
             //var file_options = new FileUploadOptions();
             //TODO Get over here
             var deferreds = [];
-
+            self.log('Starting');
             $.each(self.toUpload(), function(index, item) {
                 tmpclaim = {
                     json: ko.toJSON(item)
                 };
 
+                self.log('Create '+item.data.claimFileID+' deferred');
                 var deferred = router.post('app/claims/upload',tmpclaim,item.progress);
 
                 deferred.progress(function(data) {
-                    console.log(['Progress',data]);
+                    self.log(['Progress',data]);
                 }).done(function(data) {
-                    console.log(['Done',data]);
+                    self.log(['Done',data]);
                 }).fail(function(data) {
-                    console.log(['Fail',data]);
+                    self.log(['Fail',data]);
                 });
 
+                self.log('Push '+item.data.claimFileID+' deferred');
                 deferreds.push(deferred);
 
 //                if((item.upload_preliminary()) || (item.upload_advanced()) || (item.upload_engineer())) {
@@ -115,10 +121,11 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
 
             $.when.apply($, deferreds).then(function(data){
                 //ALL items complete
-                console.log(['All Complete',data]);
+                self.log(['All Complete',data]);
+
             }).fail(function(data){
                 // Probably want to catch failure
-                console.log(['All Fail',data]);
+                self.log(['All Fail',data]);
             });
 
             //router.loadPage('reports');
