@@ -63,7 +63,12 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
         }
         
         self.log = function(info) {
-            $('#upload_error').html($('#upload_error').html()+'<br/>'+info);
+            $('#upload_error').html($('#upload_error').html()+'<br/><i class="icon-check-sign"></i> '+info);
+        }
+
+        self.finish_upload = function() {
+            $('#upload_error').html('');
+            router.loadPage('reports');
         }
 
         self.upload = function() {
@@ -73,59 +78,41 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
             //var file_options = new FileUploadOptions();
             //TODO Get over here
             var deferreds = [];
-            self.log('Starting');
+            self.log('Starting uploads...');
             $.each(self.toUpload(), function(index, item) {
                 tmpclaim = {
                     json: ko.toJSON(item)
                 };
 
-                self.log('Create '+item.data.claimFileID+' deferred');
+                self.log('Uploading '+item.data.claimFileID);
                 var deferred = router.post('app/claims/upload',tmpclaim,item.progress);
 
-                deferred.progress(function(data) {
-                    self.log(['Progress',data]);
-                }).done(function(data) {
-                    self.log(['Done',data]);
+                deferred.done(function(data) {
+                    self.log(data.data.Claim.claimFileID+' finished');
                 }).fail(function(data) {
-                    self.log(['Fail',data]);
+                    self.log(item.data.claimFileID+' had an error. The error returned was: "'+data.statusText+'"');
                 });
 
-                self.log('Push '+item.data.claimFileID+' deferred');
                 deferreds.push(deferred);
-
-//                if((item.upload_preliminary()) || (item.upload_advanced()) || (item.upload_engineer())) {
-//                    $('#upload_error').html($('#upload_error').html()+'<br/>Uploading Report: '+item.data.claimFileID+' '+item.data.last_name);
-//                    $('#loading').fadeIn(400,function() {
-//
-//                    });
-//                    try {
-//
-//                    } catch(error) {
-//                        navigator.notification.alert('There was an error uploading the reports',null,'Advanced Adjusting');
-//                        $('#upload_error').html($('#upload_error').html()+'<br/>Error on claim '+item.data.claimFileID+': '+error);
-//                    }
-//                     $('#loading').fadeOut();
-//                }
-
-
-//                if(item.upload_preliminary()) {
-//                    item.upload_preliminary(false);
-//                }
-//                if(item.upload_advanced()) {
-//                    item.upload_advanced(false);
-//                }
-//                if(item.upload_engineer()) {
-//                    item.upload_engineer(false);
-//                }
             });
 
             $.when.apply($, deferreds).then(function(data){
                 //ALL items complete
-                self.log(['All Complete',data]);
-
+                self.log('All Uploads Complete');
+                $.each(self.toUpload(), function(index, item) {
+                    if(item.upload_preliminary()) {
+                       item.upload_preliminary(false);
+                    }
+                    if(item.upload_advanced()) {
+                        item.upload_advanced(false);
+                    }
+                    if(item.upload_engineer()) {
+                        item.upload_engineer(false);
+                    }
+                });
             }).fail(function(data){
                 // Probably want to catch failure
-                self.log(['All Fail',data]);
+                self.log('There were some errors uploading your reports. Please try again later. If the problem persists, please contact the administrator.');
             });
 
             //router.loadPage('reports');
