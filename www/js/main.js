@@ -5,6 +5,7 @@
 <script type="text/javascript" src="js/app.js"></script>
 */
 var viewModel;
+var Camera;
 var History = [];
 var DOMAIN = 'http://advadj.greyback.net/'
 var devtest = /localhost/.test(window.location.hostname);
