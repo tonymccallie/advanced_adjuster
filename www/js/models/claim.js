@@ -8,6 +8,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             targetHeight:600,
             targetWidth:600
         };
+        self.use_library = ko.observable(false);
         self.closeClaim = null;
         
         self.signature = null;
@@ -104,6 +105,11 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         
         self.getPhoto = function(field,data) {
             self.selectedPicture = field;
+            if(self.use_library()) {
+                quality.sourceType = Camera.PictureSourceType.PHOTOLIBRARY;
+            } else {
+                quality.sourceType = Camera.PictureSourceType.CAMERA;
+            }
             navigator.camera.getPicture(self.processPicture,null,quality);
         }
         

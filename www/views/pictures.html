@@ -1,10 +1,14 @@
 <div data-bind="with: selectedClaim">
+    <form data-bind="submit: savePicture">
     <div class="row-fluid">
-        <div class="span12">
+        <div class="span6">
             <h4>Pictures</h4>
         </div>
+        <div class="span6">
+            <input data-bind="checked: use_library"  id="use_library" type="checkbox" value="1" />
+            <label for="use_library" class="btn btn-block icon-">Use pictures from album</label>
+        </div>
     </div>
-    <form data-bind="submit: savePicture">
     <div class="row-fluid">
         <div class="span6">
             <h4>Left Front</h4>
