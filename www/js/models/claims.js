@@ -82,7 +82,7 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
                 options.params = {claim_id:item.data.id};
                 options.chunkedMode = false;
                 ft.upload(
-                    imagefile, 
+                    imageURI, 
                     DOMAIN+'app/claims/image_upload', 
                     function(respsonse) {
                         self.log(item+' finished uploading');
