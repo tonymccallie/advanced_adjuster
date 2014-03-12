@@ -73,55 +73,59 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
         }
         
         self.image_upload = function(imageURI, item, field) {
-            try {
-                var ft = new FileTransfer();
-                var options = new FileUploadOptions();
-                var key = item.data.claimFileID+'_'+field;
-                options.fileKey = key;
-                options.fileName = key+'.jpg';
-                options.mimeType = "image/jpeg";
-                options.params = {
-                        claim_id:item.data.id,
-                        field: field
-                };
-                options.chunkedMode = true;
-                ft.upload(
-                    imageURI, 
-                    DOMAIN+'app/claims/image_upload', 
-                    function(response) {
-                        self.log(key + ' finished uploading');
-                    }, 
-                    function(error) {
-                        switch(error.code) {
-                            case FileTransferError.FILE_NOT_FOUND_ERR:
-                                reason = 'File not found.';
-                                break;
-                            case FileTransferError.INVALID_URL_ERR:
-                                reason = 'Invalid URL.';
-                                break;
-                            case FileTransferError.CONNECTION_ERR:
-                                reason = 'Connection Problem.';
-                                break;
-                            case FileTransferError.ABORT_ERR:
-                                reason = 'Transfer Aborted.';
-                                break;
+            return $.Deferred(function() {
+                var defself = this;
+                try {
+                    var ft = new FileTransfer();
+                    var options = new FileUploadOptions();
+                    var key = item.data.claimFileID+'_'+field;
+                    options.fileKey = key;
+                    options.fileName = key+'.jpg';
+                    options.mimeType = "image/jpeg";
+                    options.params = {
+                            claim_id:item.data.id,
+                            field: field
+                    };
+                    options.chunkedMode = true;
+                    ft.upload(
+                        imageURI, 
+                        DOMAIN+'app/claims/image_upload', 
+                        function(response) {
+                            self.log(key + ' finished uploading');
+                            defself.resolve();
+                        }, 
+                        function(error) {
+                            switch(error.code) {
+                                case FileTransferError.FILE_NOT_FOUND_ERR:
+                                    reason = 'File not found.';
+                                    break;
+                                case FileTransferError.INVALID_URL_ERR:
+                                    reason = 'Invalid URL.';
+                                    break;
+                                case FileTransferError.CONNECTION_ERR:
+                                    reason = 'Connection Problem.';
+                                    break;
+                                case FileTransferError.ABORT_ERR:
+                                    reason = 'Transfer Aborted.';
+                                    break;
+                            }
+                            self.log('ERROR: '+item.data.claimFileID+' had an error uploading: ' + reason + '<br />' + error.source + ':' + error.target + ':' + error.http_status);
+                            defself.resolve();
+                        },
+                        options
+                    );
+
+                    ft.onprogress = function(progressEvent) {
+                        if (progressEvent.lengthComputable) {
+                            var percentageComplete = progressEvent.loaded / progressEvent.total;
+                            item.image_progress(percentageComplete * 100);
+                            self.log(percentComplete * 100);
                         }
-
-                        self.log('ERROR: '+item.data.claimFileID+' had an error uploading: ' + reason + '<br />' + error.source + ':' + error.target + ':' + error.http_status);
-                    },
-                    options
-                );
-
-                ft.onprogress = function(progressEvent) {
-                    if (progressEvent.lengthComputable) {
-                        var percentageComplete = progressEvent.loaded / progressEvent.total;
-                        item.image_progress(percentageComplete * 100);
-                        self.log(percentComplete * 100);
                     }
+                } catch(e) {
+                    self.log(e);
                 }
-            } catch(e) {
-                self.log(e);
-            }
+            });
         }
 
         self.upload = function() {
@@ -140,7 +144,7 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
 
                 $.each(PICS,function(index,pic) {
                     if(item.data[pic] !== '') {
-                        deferreds.push($.Deferred(self.image_upload(item.data[pic],item,pic)));
+                        deferreds.push(self.image_upload(item.data[pic],item,pic));
                     }
                 });
                 
