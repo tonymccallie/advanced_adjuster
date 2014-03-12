@@ -72,20 +72,24 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
             router.loadPage('reports');
         }
         
-        self.image_upload = function(imageURI, item, key) {
+        self.image_upload = function(imageURI, item, field) {
             try {
                 var ft = new FileTransfer();
                 var options = new FileUploadOptions();
-                options.fileKey = item.data.claimFileID+'_'+key;
-                options.fileName = item.data.claimFileID+'_'+key+'.jpg';
+                var key = item.data.claimFileID+'_'+field;
+                options.fileKey = key;
+                options.fileName = key+'.jpg';
                 options.mimeType = "image/jpeg";
-                options.params = {claim_id:item.data.id};
+                options.params = {
+                        claim_id:item.data.id,
+                        field: field
+                };
                 options.chunkedMode = true;
                 ft.upload(
                     imageURI, 
                     DOMAIN+'app/claims/image_upload', 
-                    function(respsonse) {
-                        self.log(item+' finished uploading');
+                    function(response) {
+                        self.log(key + ' finished uploading');
                     }, 
                     function(error) {
                         switch(error.code) {
@@ -110,7 +114,7 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
 
                 ft.onprogress = function(progressEvent) {
                     if (progressEvent.lengthComputable) {
-                        var percentageComplete = evt.loaded / evt.total;
+                        var percentageComplete = progressEvent.loaded / progressEvent.total;
                         item.image_progress(percentageComplete * 100);
                         self.log(percentComplete * 100);
                     }
@@ -136,7 +140,7 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
 
                 $.each(PICS,function(index,pic) {
                     if(item.data[pic] !== '') {
-                        self.image_upload(item.data[pic],item,pic);
+                        deferreds.push($.Deferred(self.image_upload(item.data[pic],item,pic)));
                     }
                 });
                 

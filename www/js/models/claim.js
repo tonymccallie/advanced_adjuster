@@ -114,8 +114,10 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             self.selectedPicture = field;
             if(self.use_library()) {
                 quality.sourceType = Camera.PictureSourceType.PHOTOLIBRARY;
+                quality.saveToPhotoAlbum = false;
             } else {
                 quality.sourceType = Camera.PictureSourceType.CAMERA;
+                quality.saveToPhotoAlbum = true;
             }
             navigator.camera.getPicture(self.processPicture,null,quality);
         }
