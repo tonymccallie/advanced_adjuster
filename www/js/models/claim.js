@@ -27,6 +27,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         });
 
         self.progress = ko.observable(0);
+        self.image_progress = ko.observable(0);
         
         self.open_claim = function() {
             if(viewModel.claims.new_claims.indexOf(viewModel.selectedClaim()) >= 0) {
@@ -45,10 +46,14 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             complete_inspection:false
         };
         
-        var pics = ['pic_front_right','pic_front_left','pic_rear_left','pic_rear_right','pic_water_inside','pic_water_outside','pic_optional1','pic_optional2','pic_optional3','pic_optional4'];
-        $.each(pics, function(index,item) {
-            if(data.Claim[item].substr(0,4) !== 'data') {
+        self.images = {};
+        
+        $.each(PICS, function(index,item) {
+            self.images[item] = ko.observable('');
+            if((data.Claim[item].substr(0,1) !== '/')&&(data.Claim[item].substr(0,4) !== 'file')) {
                 data.Claim[item] = '';
+            } else {
+                 self.images[item](data.Claim[item]);
             }
         });
 
@@ -118,7 +123,8 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         self.processPicture = function(data) {
             self.open_claim();
             self.data[self.selectedPicture] = data;//'data:image/jpeg;base64,'+data;
-            router.loadPage('pictures');
+            self.images[self.selectedPicture](data);
+            //router.loadPage('pictures');
             //$('#photoinfo').html(data);
         }
         

@@ -415,23 +415,20 @@
 				</div>
 			</div>
 			<div class="control-group">
-				<label class="control-label">Contents located in?</label>
+				<label class="control-label">Contents located in?<br /><i>(Check all that apply)</i></label>
 				<div class="controls">
                     <div class="btn-group">
                         <input data-bind="checked: data.contents_basement" type="checkbox" name="data[Claim][contents_basement]" id="contents_basement" value="1" />
                         <label class="btn icon-" for="contents_basement">Basement</label>
                         <input data-bind="checked: data.contents_first" type="checkbox" name="data[Claim][contents_first]" id="contents_first" value="1" />
                         <label class="btn icon-" for="contents_first">First Floor</label>
-                        <input data-bind="checked: data.contents_first_plus" type="checkbox" name="data[Claim][contents_first_plus]" id="contents_first_plus" value="1" />
-                        <label class="btn icon-" for="contents_first_plus">First Floor and above</label>
                     </div>
                     <div class="btn-group">
+                        <input data-bind="checked: data.contents_first_plus" type="checkbox" name="data[Claim][contents_first_plus]" id="contents_first_plus" value="1" />
+                        <label class="btn icon-" for="contents_first_plus">First Floor and above</label>
                         <input data-bind="checked: data.contents_second_plus" type="checkbox" name="data[Claim][contents_second_plus]" id="contents_second_plus" value="1" />
                         <label class="btn icon-" for="contents_second_plus">Second Floor and above</label>
-                        <input data-bind="checked: data.contents_other_check" type="checkbox" name="data[Claim][contents_other_check]" id="contents_other_check" value="1" />
-                        <label class="btn icon-" for="contents_other_check">Other</label>
                     </div>
-					<input data-bind="value: data.contents_other" type="text" name="data[Claim][contents_other]" class="span12" placeholder="Other">
 				</div>
 			</div>
 			<div class="control-group">

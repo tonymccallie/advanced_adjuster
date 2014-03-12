@@ -71,6 +71,35 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
             $('#upload_error').html('');
             router.loadPage('reports');
         }
+        
+        self.image_upload = function(imageURI, item, key) {
+            var ft = new FileTransfer();
+            var options = new FileUploadOptions();
+            options.fileKey = item.data.claimFileID+'_'+key;
+            options.fileName = item.data.claimFileID+'_'+key+'.jpg';
+            options.mimeType = "image/jpeg";
+            options.params = {claim_id:item.data.id};
+            options.chunkedMode = false;
+            ft.upload(
+                imagefile, 
+                DOMAIN+'app/claims/image_upload', 
+                function(respsonse) {
+                    self.log(item+' finished uploading');
+                }, 
+                function(error) {
+                    self.log(item+' had an error uploading: '+error.code);
+                },
+                options
+            );
+            
+            ft.onprogress = function(progressEvent) {
+                if (progressEvent.lengthComputable) {
+                    var percentageComplete = evt.loaded / evt.total;
+                    item.image_progress(percentageComplete * 100);
+                    self.log(percentComplete * 100);
+                }
+            }
+        }
 
         self.upload = function() {
             var pictures = 0;
@@ -81,16 +110,24 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
             var deferreds = [];
             self.log('Starting uploads...');
             $.each(self.toUpload(), function(index, item) {
+                //UPLOAD IMAGES?
                 tmpclaim = {
                     json: ko.toJSON(item)
                 };
 
+                $.each(PICS,function(index,pic) {
+                    if(item.data[pic] !== '') {
+                        self.image_upload(item.data[pic],item,pic);
+                    }
+                });
+                
                 self.log('Uploading '+item.data.claimFileID);
+                return false;
                 try {
                     var deferred = router.post('app/claims/upload',tmpclaim,item.progress);
 
                     deferred.done(function(data) {
-                        self.log(data.data.Claim.claimFileID+' finished');
+                        self.log(data.data.claimFileID+' finished');
                     }).fail(function(data) {
                         self.log(item.data.claimFileID+' had an error. The error returned was: "'+data.statusText+'"');
                     });

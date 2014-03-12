@@ -12,89 +12,89 @@
     <div class="row-fluid">
         <div class="span6">
             <h4>Left Front</h4>
-            <a class="picthumbnail" href="#" data-bind="fastClick: getPhoto.bind($data,'pic_front_left')">
-                    <img data-bind="visible: data.pic_front_left === ''" src="img/camera.png" />
-                    <img data-bind="attr: { src:data.pic_front_left }" />
+            <a class="picthumbnail"  data-bind="fastClick: getPhoto.bind($data,'pic_front_left')">
+                    <img data-bind="visible: images.pic_front_left() === ''" src="img/camera.png" />
+                    <img id="pic_front_left" data-bind="attr: { src:images.pic_front_left }" />
             </a>
         </div>
         <div class="span6">
             <h4>Right Front</h4>
-            <a class="picthumbnail" href="#" data-bind="fastClick: getPhoto.bind($data,'pic_front_right')">
-                    <img data-bind="visible: data.pic_front_right === ''" src="img/camera.png" />
-                    <img data-bind="attr: { src:data.pic_front_right }" />
+            <a class="picthumbnail"  data-bind="fastClick: getPhoto.bind($data,'pic_front_right')">
+                    <img data-bind="visible: images.pic_front_right() === ''" src="img/camera.png" />
+                    <img data-bind="attr: { src:images.pic_front_right }" />
             </a>
         </div>
     </div>
     <div class="row-fluid">
         <div class="span6">
             <h4>Left Rear</h4>
-            <a class="picthumbnail" href="#" data-bind="fastClick: getPhoto.bind($data,'pic_rear_left')">
-                    <img data-bind="visible: data.pic_rear_left === ''" src="img/camera.png" />
-                    <img data-bind="attr: { src:data.pic_rear_left }" />
+            <a class="picthumbnail"  data-bind="fastClick: getPhoto.bind($data,'pic_rear_left')">
+                    <img data-bind="visible: images.pic_rear_left() === ''" src="img/camera.png" />
+                    <img data-bind="attr: { src:images.pic_rear_left }" />
             </a>
         </div>
         <div class="span6">
             <h4>Right Rear</h4>
-            <a class="picthumbnail" href="#" data-bind="fastClick: getPhoto.bind($data,'pic_rear_right')">
-                    <img data-bind="visible: data.pic_rear_right === ''" src="img/camera.png" />
-                    <img data-bind="attr: { src:data.pic_rear_right }" />
+            <a class="picthumbnail"  data-bind="fastClick: getPhoto.bind($data,'pic_rear_right')">
+                    <img data-bind="visible: images.pic_rear_right() === ''" src="img/camera.png" />
+                    <img data-bind="attr: { src:images.pic_rear_right }" />
             </a>
         </div>
     </div>
     <div class="row-fluid">
         <div class="span6">
             <h4>Water Depth Inside</h4>
-            <a class="picthumbnail" href="#" data-bind="fastClick: getPhoto.bind($data,'pic_water_inside')">
-                    <img data-bind="visible: data.pic_water_inside === ''" src="img/camera.png" />
-                    <img data-bind="attr: { src:data.pic_water_inside }" />
+            <a class="picthumbnail"  data-bind="fastClick: getPhoto.bind($data,'pic_water_inside')">
+                    <img data-bind="visible: images.pic_water_inside() === ''" src="img/camera.png" />
+                    <img data-bind="attr: { src:images.pic_water_inside }" />
             </a>
         </div>
         <div class="span6">
             <h4>Water Depth Outside</h4>
-            <a class="picthumbnail" href="#" data-bind="fastClick: getPhoto.bind($data,'pic_water_outside')">
-                    <img data-bind="visible: data.pic_water_outside === ''" src="img/camera.png" />
-                    <img data-bind="attr: { src:data.pic_water_outside }" />
+            <a class="picthumbnail"  data-bind="fastClick: getPhoto.bind($data,'pic_water_outside')">
+                    <img data-bind="visible: images.pic_water_outside() === ''" src="img/camera.png" />
+                    <img data-bind="attr: { src:images.pic_water_outside }" />
             </a>
         </div>
     </div>
     <div class="row-fluid">
         <div class="span6">
             <h4>Optional 1</h4>
-            <a class="picthumbnail" href="#" data-bind="fastClick: getPhoto.bind($data,'pic_optional1')">
-                    <img data-bind="visible: data.pic_optional1 === ''" src="img/camera.png" />
-                    <img data-bind="attr: { src:data.pic_optional1 }" />
+            <a class="picthumbnail"  data-bind="fastClick: getPhoto.bind($data,'pic_optional1')">
+                    <img data-bind="visible: images.pic_optional1() === ''" src="img/camera.png" />
+                    <img data-bind="attr: { src:images.pic_optional1 }" />
             </a>
             <label>Optional 1 Title</label>
-            <input data-bind="value: data.pic_optional1_notes" type="text" class="span12" placeholder="">
+            <input data-bind="value: images.pic_optional1_notes" type="text" class="span12" placeholder="">
         </div>
         <div class="span6">
             <h4>Optional 2</h4>
-            <a class="picthumbnail" href="#" data-bind="fastClick: getPhoto.bind($data,'pic_optional2')">
-                    <img data-bind="visible: data.pic_optional2 === ''" src="img/camera.png" />
-                    <img data-bind="attr: { src:data.pic_optional2 }" />
+            <a class="picthumbnail"  data-bind="fastClick: getPhoto.bind($data,'pic_optional2')">
+                    <img data-bind="visible: images.pic_optional2() === ''" src="img/camera.png" />
+                    <img data-bind="attr: { src:images.pic_optional2 }" />
             </a>
             <label>Optional 2 Title</label>
-            <input data-bind="value: data.pic_optional2_notes" type="text" class="span12" placeholder="">
+            <input data-bind="value: images.pic_optional2_notes" type="text" class="span12" placeholder="">
         </div>
     </div>
     <div class="row-fluid">
         <div class="span6">
             <h4>Optional 3</h4>
-            <a class="picthumbnail" href="#" data-bind="fastClick: getPhoto.bind($data,'pic_optional3')">
-                    <img data-bind="visible: data.pic_optional3 === ''" src="img/camera.png" />
-                    <img data-bind="attr: { src:data.pic_optional3 }" />
+            <a class="picthumbnail"  data-bind="fastClick: getPhoto.bind($data,'pic_optional3')">
+                    <img data-bind="visible: images.pic_optional3() === ''" src="img/camera.png" />
+                    <img data-bind="attr: { src:images.pic_optional3 }" />
             </a>
             <label>Optional 3 Title</label>
-            <input data-bind="value: data.pic_optional3_notes" type="text" class="span12" placeholder="">
+            <input data-bind="value: images.pic_optional3_notes" type="text" class="span12" placeholder="">
         </div>
         <div class="span6">
             <h4>Optional 4</h4>
-            <a class="picthumbnail" href="#" data-bind="fastClick: getPhoto.bind($data,'pic_optional4')">
-                    <img data-bind="visible: data.pic_optional4 === ''" src="img/camera.png" />
-                    <img data-bind="attr: { src:data.pic_optional4 }" />
+            <a class="picthumbnail"  data-bind="fastClick: getPhoto.bind($data,'pic_optional4')">
+                    <img data-bind="visible: images.pic_optional4() === ''" src="img/camera.png" />
+                    <img data-bind="attr: { src:images.pic_optional4 }" />
             </a>
             <label>Optional 4 Title</label>
-            <input data-bind="value: data.pic_optional4_notes" type="text" class="span12" placeholder="">
+            <input data-bind="value: images.pic_optional4_notes" type="text" class="span12" placeholder="">
         </div>
     </div>
     <div class="row-fluid">
