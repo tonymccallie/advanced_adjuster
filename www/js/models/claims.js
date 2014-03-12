@@ -80,7 +80,7 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
                 options.fileName = item.data.claimFileID+'_'+key+'.jpg';
                 options.mimeType = "image/jpeg";
                 options.params = {claim_id:item.data.id};
-                options.chunkedMode = false;
+                options.chunkedMode = true;
                 ft.upload(
                     imageURI, 
                     DOMAIN+'app/claims/image_upload', 
@@ -88,8 +88,22 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
                         self.log(item+' finished uploading');
                     }, 
                     function(error) {
-                        self.log(FileTransferError.FILE_NOT_FOUND_ERR+' '+FileTransferError.INVALID_URL_ERR+' '+FileTransferError.CONNECTION_ERR +' '+FileTransferError.ABORT_ERR);
-                        self.log('ERROR: '+item.data.claimFileID+' had an error uploading: '+ error.code + ':' + error.source + ':' + error.target + ':' + error.http_status);
+                        switch(error.code) {
+                            case FileTransferError.FILE_NOT_FOUND_ERR:
+                                reason = 'File not found.';
+                                break;
+                            case FileTransferError.INVALID_URL_ERR:
+                                reason = 'Invalid URL.';
+                                break;
+                            case FileTransferError.CONNECTION_ERR:
+                                reason = 'Connection Problem.';
+                                break;
+                            case FileTransferError.ABORT_ERR:
+                                reason = 'Transfer Aborted.';
+                                break;
+                        }
+
+                        self.log('ERROR: '+item.data.claimFileID+' had an error uploading: ' + reason + '<br />' + error.source + ':' + error.target + ':' + error.http_status);
                     },
                     options
                 );
