@@ -73,31 +73,35 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
         }
         
         self.image_upload = function(imageURI, item, key) {
-            var ft = new FileTransfer();
-            var options = new FileUploadOptions();
-            options.fileKey = item.data.claimFileID+'_'+key;
-            options.fileName = item.data.claimFileID+'_'+key+'.jpg';
-            options.mimeType = "image/jpeg";
-            options.params = {claim_id:item.data.id};
-            options.chunkedMode = false;
-            ft.upload(
-                imagefile, 
-                DOMAIN+'app/claims/image_upload', 
-                function(respsonse) {
-                    self.log(item+' finished uploading');
-                }, 
-                function(error) {
-                    self.log(item+' had an error uploading: '+error.code);
-                },
-                options
-            );
-            
-            ft.onprogress = function(progressEvent) {
-                if (progressEvent.lengthComputable) {
-                    var percentageComplete = evt.loaded / evt.total;
-                    item.image_progress(percentageComplete * 100);
-                    self.log(percentComplete * 100);
+            try {
+                var ft = new FileTransfer();
+                var options = new FileUploadOptions();
+                options.fileKey = item.data.claimFileID+'_'+key;
+                options.fileName = item.data.claimFileID+'_'+key+'.jpg';
+                options.mimeType = "image/jpeg";
+                options.params = {claim_id:item.data.id};
+                options.chunkedMode = false;
+                ft.upload(
+                    imagefile, 
+                    DOMAIN+'app/claims/image_upload', 
+                    function(respsonse) {
+                        self.log(item+' finished uploading');
+                    }, 
+                    function(error) {
+                        self.log(item+' had an error uploading: '+error.code);
+                    },
+                    options
+                );
+
+                ft.onprogress = function(progressEvent) {
+                    if (progressEvent.lengthComputable) {
+                        var percentageComplete = evt.loaded / evt.total;
+                        item.image_progress(percentageComplete * 100);
+                        self.log(percentComplete * 100);
+                    }
                 }
+            } catch(e) {
+                self.log(e);
             }
         }
 
