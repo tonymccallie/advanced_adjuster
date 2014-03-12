@@ -12,6 +12,10 @@ var devtest = /localhost/.test(window.location.hostname);
 if(devtest) {
 	DOMAIN = 'http://localhost/adjuster_bridge/';
 }
+devtest = /threeleaf/.test(window.location.hostname);
+if(devtest) {
+	DOMAIN = 'http://office.threeleaf.net/adjuster_bridge/';
+}
 
 require.config({
     urlArgs: "bust=" + (new Date()).getTime(),

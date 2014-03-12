@@ -4,9 +4,10 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         var observableArray = ['title_verified'];
         var quality = {
             quality:75,
-            destinationType : 0,
+            destinationType : 1,
             targetHeight:600,
-            targetWidth:600
+            targetWidth:600,
+            saveToPhotoAlbum: true
         };
         self.use_library = ko.observable(false);
         self.closeClaim = null;
@@ -40,7 +41,8 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             complete_preliminary:false,
             complete_pictures:false,
             complete_advanced:false,
-            complete_engineer:false
+            complete_engineer:false,
+            complete_inspection:false
         };
         
         var pics = ['pic_front_right','pic_front_left','pic_rear_left','pic_rear_right','pic_water_inside','pic_water_outside','pic_optional1','pic_optional2','pic_optional3','pic_optional4'];
@@ -80,7 +82,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         
         self.close = function(claim) {
             self.closeClaim = claim;
-            navigator.notification.confirm('Are you sure you want to close this claim? This can\'t be reopened',function(response) {
+            navigator.notification.confirm('Are you sure you want to delete this claim? This can\'t be undone',function(response) {
                if(response === 1) {
                    router.request('app/claims/close',self.closeProcess,{data:{Claim:{id:claim.data.id,status:'CLOSED'}}});
                }
@@ -182,6 +184,22 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             self.data.complete_engineer = true;
             viewModel.claims.store();
             router.loadPage('reports');
+        }
+        
+        self.inspection = function() {
+            self.open_claim();
+            router.loadPage('inspection');
+        }
+        
+        self.saveInspection = function() {
+            self.data.complete_inspection = true;
+            viewModel.claims.store();
+            router.loadPage('reports');
+        }
+        
+        self.debug = function() {
+            self.open_claim();
+            router.loadPage('debug');
         }
     }
 });
