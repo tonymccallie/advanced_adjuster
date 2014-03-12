@@ -88,8 +88,8 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
                         self.log(item+' finished uploading');
                     }, 
                     function(error) {
-                        self.log(FileTransferError.FILE_NOT_FOUND_ERR+' '+FileTransferError.INVALID_URL_ERR+' '+FileTransferError.CONNECTION_ERR +' '+FileTransferError.ABORT_ERR );
-                        self.log('ERROR: 'item.data.claimFileID+' had an error uploading: '+ error.code + ':' + error.source + ':' + error.target + ':' + error.http_status);
+                        self.log(FileTransferError.FILE_NOT_FOUND_ERR+' '+FileTransferError.INVALID_URL_ERR+' '+FileTransferError.CONNECTION_ERR +' '+FileTransferError.ABORT_ERR);
+                        self.log('ERROR: '+item.data.claimFileID+' had an error uploading: '+ error.code + ':' + error.source + ':' + error.target + ':' + error.http_status);
                     },
                     options
                 );
