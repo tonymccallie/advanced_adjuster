@@ -117,7 +117,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         
         self.processPicture = function(data) {
             self.open_claim();
-            self.data[self.selectedPicture] = 'data:image/jpeg;base64,'+data;
+            self.data[self.selectedPicture] = data;//'data:image/jpeg;base64,'+data;
             router.loadPage('pictures');
             //$('#photoinfo').html(data);
         }
