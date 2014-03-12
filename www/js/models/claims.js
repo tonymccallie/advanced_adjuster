@@ -78,7 +78,7 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
                 try {
                     var ft = new FileTransfer();
                     var options = new FileUploadOptions();
-                    var key = item.data.claimFileID+'_'+field;
+                    var key = item.data.id+'_'+field;
                     options.fileKey = 'image';
                     options.fileName = key+'.jpg';
                     options.mimeType = "image/jpeg";
