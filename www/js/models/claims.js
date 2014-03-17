@@ -15,7 +15,7 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
         self.toUpload = ko.computed(function() {
             var tmplist = [];
             $.each(self.open_claims(), function(index, item) {
-                if((item.upload_preliminary()) || (item.upload_advanced()) || (item.upload_engineer())) {
+                if((item.upload_preliminary()) || (item.upload_advanced()) || (item.upload_engineer()) || (item.upload_engineer())) {
                     tmplist.push(item);
                 }
             });
