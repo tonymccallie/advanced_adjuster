@@ -12,7 +12,10 @@
                         <div class="span4" data-bind="text: data.claimFileID+' '+data.last_name">
                                 FileID and Last Name
                         </div>
-                        <div class="span2"></div>
+                        <div class="span2">
+                            <input data-bind="checked: upload_inspection, attr: { id: 'upload_inspection'+$index() }" type="checkbox" value="1" />
+                            <label data-bind="attr: { for: 'upload_inspection'+$index() }" class="btn btn-block icon-">Inspection</label>
+                        </div>
                         <div class="span2">
                             <input data-bind="checked: upload_preliminary, attr: { id: 'upload_preliminary'+$index() }" type="checkbox" value="1" />
                             <label data-bind="attr: { for: 'upload_preliminary'+$index() }" class="btn btn-block icon-">Preliminary</label>

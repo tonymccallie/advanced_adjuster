@@ -1137,7 +1137,7 @@ body{padding:0;background:#e6e6e6;-webkit-overflow-scrolling:touch}
 .nav-tabs.nav-stacked>li:last-child{-webkit-border-bottom-right-radius:4px;-webkit-border-bottom-left-radius:4px}
 .nav-tabs.nav-stacked>li>a{background:none;border:none;color:#fff}
 .nav-tabs.nav-stacked>li>a:hover{background-color:rgba(140,140,140,0.8);border-color:#333}
-form .btn-group .btn.active{background:#b70005;color:#fff}
+form .btn-group{display:block}form .btn-group .btn.active{background:#b70005;color:#fff}
 form input[type=radio],form input[type=checkbox]{display:none}
 form input[type=radio]+label:before,form input[type=checkbox]+label:before{content:"\f096\0000a0"}
 form input[type=radio]:checked+label:before,form input[type=checkbox]:checked+label:before{content:"\f046\0000a0"}

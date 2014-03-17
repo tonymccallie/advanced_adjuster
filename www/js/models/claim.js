@@ -18,6 +18,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         self.upload_preliminary = ko.observable(false);
         self.upload_advanced = ko.observable(false);
         self.upload_engineer = ko.observable(false);
+        self.upload_inspection = ko.observable(false);
         self.upload = ko.computed(function() {
             if((self.upload_preliminary()) || (self.upload_advanced()) || (self.upload_engineer())) {
                 return true;
@@ -196,7 +197,15 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         
         self.inspection = function() {
             self.open_claim();
+            console.log(viewModel.selectedClaim().data);
             router.loadPage('inspection');
+        }
+        
+        self.inspectionProcess = function() {
+            self.data.complete_inspection = true;
+            viewModel.claims.store();
+            self.open_claim();
+            router.loadPage('reports');
         }
         
         self.saveInspection = function() {

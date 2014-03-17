@@ -178,6 +178,9 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
                     if(item.upload_engineer()) {
                         item.upload_engineer(false);
                     }
+                    if(item.upload_inspection()) {
+                        item.upload_inspection(false);
+                    }
                 });
             }).fail(function(data){
                 // Probably want to catch failure

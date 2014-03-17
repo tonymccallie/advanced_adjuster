@@ -27,7 +27,6 @@ define(['jquery','knockout'], function(jquery,ko) {
                                 validation(data.data);
                                 break;
                             default:
-                                console.log(data);
                                 navigator.notification.alert('There was an error: ' + data.message,null,'Advanced Adjusting');
                                 break;
                         }

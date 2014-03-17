@@ -16,7 +16,7 @@ devtest = /threeleaf/.test(window.location.hostname);
 if(devtest) {
 	DOMAIN = 'http://office.threeleaf.net/adjuster_bridge/';
 }
-var PICS = ['pic_front_right','pic_front_left','pic_rear_left','pic_rear_right','pic_water_inside','pic_water_outside','pic_optional1','pic_optional2','pic_optional3','pic_optional4'];
+var PICS = ['pic_front_right','pic_front_left','pic_rear_left','pic_rear_right','pic_water_inside','pic_water_outside','pic_roof_front','pic_roof_rear','pic_optional1','pic_optional2','pic_optional3','pic_optional4','pic_optional5','pic_optional6'];
 
 require.config({
     urlArgs: "bust=" + (new Date()).getTime(),
