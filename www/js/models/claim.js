@@ -20,7 +20,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         self.upload_engineer = ko.observable(false);
         self.upload_inspection = ko.observable(false);
         self.upload = ko.computed(function() {
-            if((self.upload_preliminary()) || (self.upload_advanced()) || (self.upload_engineer())) {
+            if((self.upload_preliminary()) || (self.upload_advanced()) || (self.upload_engineer()) || (self.upload_inspection())) {
                 return true;
             } else {
                 return false;
