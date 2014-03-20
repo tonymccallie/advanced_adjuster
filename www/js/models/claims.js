@@ -149,7 +149,7 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
                 });
                 
                 self.log('Uploading '+item.data.claimFileID);
-                return false;
+
                 try {
                     var deferred = router.post('app/claims/upload',tmpclaim,item.progress);
 
