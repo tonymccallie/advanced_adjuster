@@ -33,12 +33,19 @@ define(function() {
                         CAMERA:1
                     }
                 };
+                LocalFileSystem = {
+                    PERSISTENT:0
+                }
             }
         },
         deviceready: function() {
             // This is an event handler function, which means the scope is the event.
             // So, we must explicitly called `app.report()` instead of `this.report()`.
+            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, this.onFSSuccess, viewModel.log);
             app.report('deviceready');
+        },
+        onFSSucess: function(fs) {
+            fileSystem = fs;
         },
         report: function(id) {
             // Report the event in the console

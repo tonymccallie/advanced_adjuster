@@ -1,0 +1,12 @@
+<div data-bind="with: logs">
+	<div class="row-fluid">
+		<div class="span12">
+			<h4>Logs</h4>
+		</div>
+	</div>
+    <div class="row-fluid">
+        <div class="span12">
+            <pre data-bind="text: ko.toJSON($data, null, 2)"></pre>
+        </div>
+    </div>
+</div>

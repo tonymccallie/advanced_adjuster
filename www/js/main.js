@@ -6,6 +6,8 @@
 */
 var viewModel;
 var Camera;
+var fileSystem;
+var LocalFileSystem;
 var History = [];
 var DOMAIN = 'http://advadj.greyback.net/'
 var devtest = /localhost/.test(window.location.hostname);

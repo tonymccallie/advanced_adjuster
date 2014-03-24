@@ -124,6 +124,9 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         }
         
         self.processPicture = function(data) {
+            //Move picture to local filesystem
+            viewModel.log(fileSystem.name);
+            viewModel.log(fileSystem.root.name);
             self.open_claim();
             self.data[self.selectedPicture] = data;//'data:image/jpeg;base64,'+data;
             self.images[self.selectedPicture](data);

@@ -6,6 +6,7 @@ define(['knockout','router','models/user','models/claims'], function(ko, router,
         self.claims = new Claims;
         self.saved_payment_requests = ko.observableArray([]);
         self.selectedClaim = ko.observable();
+        self.logs = ko.observableArray([]);
         
         self.loadPage = function(url) {
             router.loadPage(url);
@@ -39,6 +40,11 @@ define(['knockout','router','models/user','models/claims'], function(ko, router,
         
         self.update = function() {
            
+        }
+        
+        self.log = function(log) {
+            self.logs.push(log);
+            router.loadPage('logs');
         }
     }
 });
