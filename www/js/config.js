@@ -1,8 +1,8 @@
 define(function() {
     return app = {
         initialize: function() {
-            this.bind();
             viewModel.log('initialize');
+            this.bind();
         },
         bind: function() {
             document.addEventListener('deviceready', this.deviceready, false);
@@ -40,11 +40,14 @@ define(function() {
             }
         },
         deviceready: function() {
-            viewModel.log('device ready');
+            viewModel.log('deviceready');
             // This is an event handler function, which means the scope is the event.
             // So, we must explicitly called `app.report()` instead of `this.report()`.
-            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, this.onFSSuccess, viewModel.log);
-            app.report('deviceready');
+            try {
+                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, this.onFSSuccess, viewModel.log);
+            } catch(err) {
+                viewModel.log('deviceready: '+err);   
+            }
         },
         onFSSuccess: function(fs) {
             fileSystem = fs;
