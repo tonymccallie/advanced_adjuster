@@ -35,24 +35,12 @@ define(function() {
                     }
                 };
                 LocalFileSystem = {
-                    PERSISTENT:0
+                    PERSISTENT:1
                 }
             }
         },
         deviceready: function() {
-            viewModel.log('deviceready');
-            viewModel.log(LocalFileSystem.PERSISTENT);
-            // This is an event handler function, which means the scope is the event.
-            // So, we must explicitly called `app.report()` instead of `this.report()`.
-            try {
-                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, this.onFSSuccess, viewModel.log);
-            } catch(err) {
-                viewModel.log('deviceready: '+err);   
-            }
-        },
-        onFSSuccess: function(fs) {
-            fileSystem = fs;
-            viewModel.log('fileSystem created.');
+            
         },
         report: function(id) {
             // Report the event in the console

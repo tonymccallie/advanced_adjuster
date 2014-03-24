@@ -123,18 +123,32 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             navigator.camera.getPicture(self.processPicture,null,quality);
         }
         
-        self.processPicture = function(data) {
+        self.processPicture = function(imageURI) {
             //Move picture to local filesystem
+            
+            try {
+                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, this.onFSSuccess, viewModel.log);
+            } catch(err) {
+                viewModel.log('deviceready: '+err);   
+            }
+            
             viewModel.log('processPicture');
             try {
-                viewModel.log(fileSystem.name);
-                viewModel.log(fileSystem.root.name);
+                var gotFileEntry = function(fileEntry) {
+                    var gotFileSystem = function(fileSystem) {
+                        viewModel.log(fileSystem.name);
+                        viewModel.log(fileSystem.root.name);
+                    }
+                    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFileSystem, viewModel.log);
+                }
+                window.resolveLocalFileSystemURI(imageURI, gotFileEntry, viewModel.log);
             } catch(err) {
                  viewModel.log('catch: '+err);
             }
+            
             self.open_claim();
-            self.data[self.selectedPicture] = data;//'data:image/jpeg;base64,'+data;
-            self.images[self.selectedPicture](data);
+            self.data[self.selectedPicture] = imageURI;//'data:image/jpeg;base64,'+data;
+            self.images[self.selectedPicture](imageURI);
             //router.loadPage('pictures');
             //$('#photoinfo').html(data);
         }
