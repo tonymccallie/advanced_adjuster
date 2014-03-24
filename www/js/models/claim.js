@@ -221,5 +221,9 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             self.open_claim();
             router.loadPage('debug');
         }
+        
+        self.log = function() {
+            router.loadPage('logs');
+        }
     }
 });

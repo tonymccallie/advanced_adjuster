@@ -46,6 +46,7 @@ define(function() {
         },
         onFSSucess: function(fs) {
             fileSystem = fs;
+            viewModel.log('fileSystem created.');
         },
         report: function(id) {
             // Report the event in the console
