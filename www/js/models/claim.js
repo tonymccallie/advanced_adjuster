@@ -151,7 +151,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             } catch(err) {
                  viewModel.log('catch: '+err);
             }
-            
+            viewModel.log(imageURI);
             self.open_claim();
             self.data[self.selectedPicture] = imageURI;//'data:image/jpeg;base64,'+data;
             self.images[self.selectedPicture](imageURI);
