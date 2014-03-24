@@ -46,7 +46,7 @@ define(function() {
             window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, this.onFSSuccess, viewModel.log);
             app.report('deviceready');
         },
-        onFSSucess: function(fs) {
+        onFSSuccess: function(fs) {
             fileSystem = fs;
             viewModel.log('fileSystem created.');
         },
