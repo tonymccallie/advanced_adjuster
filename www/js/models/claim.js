@@ -138,6 +138,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
                     var gotFileSystem = function(fileSystem) {
                         var gotDirectory = function(dataDir) {
                             var gotNewFileEntry = function(newFileEntry) {
+                                viewModel.log(newFileEntry.fullPath);
                                 imageURI = newFileEntry.fullPath;
                             }
                             fileEntry.moveTo(dataDir, self.data.claimFileID+'_'+self.selectedPicture+'.jpg', gotNewFileEntry, viewModel.log);

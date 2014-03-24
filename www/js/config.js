@@ -1,7 +1,6 @@
 define(function() {
     return app = {
         initialize: function() {
-            viewModel.log('initialize');
             this.bind();
         },
         bind: function() {
