@@ -136,8 +136,13 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             try {
                 var gotFileEntry = function(fileEntry) {
                     var gotFileSystem = function(fileSystem) {
-                        viewModel.log(fileSystem.name);
-                        viewModel.log(fileSystem.root.name);
+                        var gotDirectory = function(dataDir) {
+                            var gotNewFileEntry = function(newFileEntry) {
+                                imageURI = newFileEntry.fullPath;
+                            }
+                            fileEntry.moveTo(dataDir, self.data.claimFileID+'_'+self.selectedPicture+'.jpg', gotNewFileEntry, viewModel.log);
+                        }
+                        fileSystem.root.getDirectory('Images', {create:true}, gotDirectory, viewModel.log);
                     }
                     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFileSystem, viewModel.log);
                 }
