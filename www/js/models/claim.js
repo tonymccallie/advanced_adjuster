@@ -137,7 +137,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
                             }
                             fileEntry.moveTo(dataDir, self.data.claimFileID+'_'+self.selectedPicture+'.jpg', gotNewFileEntry, viewModel.log);
                         }
-                        fileSystem.root.getDirectory('Images', {create:true}, gotDirectory, viewModel.log);
+                        fileSystem.root.getDirectory(self.data.claimFileID+'_images', {create:true}, gotDirectory, viewModel.log);
                     }
                     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFileSystem, viewModel.log);
                 }
