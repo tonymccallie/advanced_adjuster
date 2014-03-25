@@ -88,17 +88,38 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         
         self.close = function(claim) {
             self.closeClaim = claim;
+
+
+
             navigator.notification.confirm('Are you sure you want to delete this claim? This can\'t be undone',function(response) {
-               if(response === 1) {
-                   router.request('app/claims/close',self.closeProcess,{data:{Claim:{id:claim.data.id,status:'CLOSED'}}});
-               }
+                if(response === 1) {
+                    var dir = viewModel.selectedClaim().data.claimFileID+'_images';
+                    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+                        window.root.getDirectory(dir, {create:false}, function(dirEntry) {
+                            dirEntry.removeRecusrsively(function() {
+                                router.request('app/claims/close',self.closeProcess,{data:{Claim:{id:claim.data.id,status:'CLOSED'}}});
+                            },function() {
+                                viewModel.log('removeRecusrsively failed')
+                            });
+                        }, function() {
+                            viewModel.log('getDirectory failed')
+                        });
+                    }, function() {
+                        viewModel.log('requestFileSystem failed')
+                    });
+                }
             });
         }
         
         self.closeProcess = function(data) {
+            //delete photos
+            var dir = viewModel.selectedClaim().data.claimFileID;
+
             viewModel.selectedClaim = ko.observable();
             viewModel.claims.open_claims.remove(self.closeClaim);
             viewModel.claims.store();
+
+
             router.loadPage('reports');
         }
         
@@ -135,7 +156,11 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
                                 self.data[self.selectedPicture] = imageURI;//'data:image/jpeg;base64,'+data;
                                 self.images[self.selectedPicture](imageURI);
                             }
-                            fileEntry.moveTo(dataDir, self.data.claimFileID+'_'+self.selectedPicture+'.jpg', gotNewFileEntry, viewModel.log);
+                            //timestamp name
+                            var d = new Date();
+                            var n = d.getTime();
+                            var newFileName = n + ".jpg";
+                            fileEntry.moveTo(dataDir, newFileName, gotNewFileEntry, viewModel.log);
                         }
                         fileSystem.root.getDirectory(self.data.claimFileID+'_images', {create:true}, gotDirectory, viewModel.log);
                     }
