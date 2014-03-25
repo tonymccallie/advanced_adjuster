@@ -125,21 +125,15 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         
         self.processPicture = function(imageURI) {
             //Move picture to local filesystem
-            
-            try {
-                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, this.onFSSuccess, viewModel.log);
-            } catch(err) {
-                viewModel.log('deviceready: '+err);   
-            }
-            
-            viewModel.log('processPicture');
             try {
                 var gotFileEntry = function(fileEntry) {
                     var gotFileSystem = function(fileSystem) {
                         var gotDirectory = function(dataDir) {
                             var gotNewFileEntry = function(newFileEntry) {
-                                viewModel.log(newFileEntry.fullPath);
                                 imageURI = newFileEntry.fullPath;
+                                self.open_claim();
+                                self.data[self.selectedPicture] = imageURI;//'data:image/jpeg;base64,'+data;
+                                self.images[self.selectedPicture](imageURI);
                             }
                             fileEntry.moveTo(dataDir, self.data.claimFileID+'_'+self.selectedPicture+'.jpg', gotNewFileEntry, viewModel.log);
                         }
@@ -151,10 +145,6 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             } catch(err) {
                  viewModel.log('catch: '+err);
             }
-            viewModel.log(imageURI);
-            self.open_claim();
-            self.data[self.selectedPicture] = imageURI;//'data:image/jpeg;base64,'+data;
-            self.images[self.selectedPicture](imageURI);
             //router.loadPage('pictures');
             //$('#photoinfo').html(data);
         }
