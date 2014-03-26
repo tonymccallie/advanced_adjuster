@@ -149,6 +149,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             try {
                 var gotFileEntry = function(fileEntry) {
                     var gotFileSystem = function(fileSystem) {
+                        viewModel.log('fs.root.fullPath: '+fileSystem.root.fullPath);
                         var claimDir = self.data.claimFileID+'_images';
                         var gotDirectory = function(dataDir) {
                             //timestamp name
