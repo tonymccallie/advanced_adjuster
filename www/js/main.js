@@ -100,5 +100,4 @@ require(['config','util/fastbutton','util/bootstrap','jquery','knockout','app'],
 	ko.applyBindings(viewModel);
     app.initialize();
     viewModel.initialize();
-
 });
