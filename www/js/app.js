@@ -23,6 +23,9 @@ define(['knockout','router','models/user','models/claims'], function(ko, router,
 			} else {
 				self.loadPage('login');
 			}
+            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+                fileSystemPath = fileSystem.root.fullPath;
+            }, viewModel.log);
         }
         
         self.check_memory = function() {

@@ -5,19 +5,23 @@
 <script type="text/javascript" src="js/app.js"></script>
 */
 var viewModel;
+var isMobile = true;
 var Camera;
-var fileSystem;
+var fileSystemPath;
 var LocalFileSystem;
 var History = [];
 var DOMAIN = 'http://advadj.greyback.net/'
-var devtest = /localhost/.test(window.location.hostname);
-if(devtest) {
-	DOMAIN = 'http://localhost/adjuster_bridge/';
-}
-devtest = /threeleaf/.test(window.location.hostname);
-if(devtest) {
-	DOMAIN = 'http://office.threeleaf.net/adjuster_bridge/';
-}
+    //DEVELOPMENT
+    var devtest = /localhost/.test(window.location.hostname);
+    if(devtest) {
+        DOMAIN = 'http://localhost/adjuster_bridge/';
+        isMobile = false;
+    }
+    devtest = /threeleaf/.test(window.location.hostname);
+    if(devtest) {
+        DOMAIN = 'http://office.threeleaf.net/adjuster_bridge/';
+        isMobile = false;
+    }
 var PICS = ['pic_front_right','pic_front_left','pic_rear_left','pic_rear_right','pic_water_inside','pic_water_outside','pic_roof_front','pic_roof_rear','pic_optional1','pic_optional2','pic_optional3','pic_optional4','pic_optional5','pic_optional6'];
 
 require.config({
@@ -94,6 +98,7 @@ require(['config','util/fastbutton','util/bootstrap','jquery','knockout','app'],
         }
     }
 	ko.applyBindings(viewModel);
-    viewModel.initialize();
     app.initialize();
+    viewModel.initialize();
+
 });

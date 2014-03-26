@@ -54,7 +54,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             if((data.Claim[item].substr(0,1) !== '/')&&(data.Claim[item].substr(0,4) !== 'file')) {
                 data.Claim[item] = '';
             } else {
-                 self.images[item](data.Claim[item]);
+                 self.images[item](fileSystemPath+data.Claim[item]);
             }
         });
 
@@ -88,8 +88,6 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         
         self.close = function(claim) {
             self.closeClaim = claim;
-
-
 
             navigator.notification.confirm('Are you sure you want to delete this claim? This can\'t be undone',function(response) {
                 if(response === 1) {
@@ -146,33 +144,37 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         
         self.processPicture = function(imageURI) {
             //Move picture to local filesystem
-            try {
-                var gotFileEntry = function(fileEntry) {
-                    var gotFileSystem = function(fileSystem) {
-                        viewModel.log('fs.root.fullPath: '+fileSystem.root.fullPath);
-                        var claimDir = self.data.claimFileID+'_images';
-                        var gotDirectory = function(dataDir) {
-                            //timestamp name
-                            var d = new Date();
-                            var n = d.getTime();
-                            var newFileName = n + ".jpg";
+            var claimDir = self.data.claimFileID+'_images';
+            var d = new Date();
+            var n = d.getTime();
+            var newFileName = n + ".jpg";
 
-                            var gotNewFileEntry = function(newFileEntry) {
-                                imageURI = 'file:///'+claimDir+'/'+newFileName;//newFileEntry.fullPath;
-                                viewModel.log(imageURI);
-                                self.open_claim();
-                                self.data[self.selectedPicture] = imageURI;//'data:image/jpeg;base64,'+data;
-                                self.images[self.selectedPicture](imageURI);
+            if(isMobile) {
+                try {
+                    var gotFileEntry = function(fileEntry) {
+                        var gotFileSystem = function(fileSystem) {
+                            var claimDir = self.data.claimFileID+'_images';
+                            var gotDirectory = function(dataDir) {
+                                var gotNewFileEntry = function(newFileEntry) {
+                                    imageURI = newFileEntry.fullPath;
+                                    self.open_claim();
+                                    self.data[self.selectedPicture] = '/'+claimDir+'/'+newFileName;
+                                    self.images[self.selectedPicture](imageURI);
+                                }
+                                fileEntry.moveTo(dataDir, newFileName, gotNewFileEntry, viewModel.log);
                             }
-                            fileEntry.moveTo(dataDir, newFileName, gotNewFileEntry, viewModel.log);
+                            fileSystem.root.getDirectory(claimDir, {create:true}, gotDirectory, viewModel.log);
                         }
-                        fileSystem.root.getDirectory(claimDir, {create:true}, gotDirectory, viewModel.log);
+                        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFileSystem, viewModel.log);
                     }
-                    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFileSystem, viewModel.log);
+                    window.resolveLocalFileSystemURI(imageURI, gotFileEntry, viewModel.log);
+                } catch(err) {
+                     viewModel.log('catch: '+err);
                 }
-                window.resolveLocalFileSystemURI(imageURI, gotFileEntry, viewModel.log);
-            } catch(err) {
-                 viewModel.log('catch: '+err);
+            } else {
+                self.open_claim();
+                self.data[self.selectedPicture] = '/'+claimDir+'/'+newFileName;
+                self.images[self.selectedPicture](imageURI);
             }
             //router.loadPage('pictures');
             //$('#photoinfo').html(data);

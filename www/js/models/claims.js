@@ -144,7 +144,7 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
 
                 $.each(PICS,function(index,pic) {
                     if(item.data[pic] !== '') {
-                        deferreds.push(self.image_upload(item.data[pic],item,pic));
+                        deferreds.push(self.image_upload(item.images[pic](),item,pic));
                     }
                 });
                 

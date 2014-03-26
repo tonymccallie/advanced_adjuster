@@ -36,6 +36,13 @@ define(function() {
                 LocalFileSystem = {
                     PERSISTENT:1
                 }
+                window.requestFileSystem = function(ignore, unknown, success, error) {
+                    success({
+                        root:{
+                            fullPath:'/Users/tonymccallie/Sites/advadj/www'
+                        }
+                    });
+                }
             }
         },
         deviceready: function() {
