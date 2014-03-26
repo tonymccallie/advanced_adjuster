@@ -93,10 +93,15 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
                 if(response === 1) {
                     navigator.notification.alert('???',null,'Advanced Adjusting');
                     try {
+                        viewModel.log('step1');
                         var dir = viewModel.selectedClaim().data.claimFileID+'_images';
+                        viewModel.log('step2: '+dir);
                         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+                            viewModel.log('step3');
                             window.root.getDirectory(dir, {create:false}, function(dirEntry) {
+                                viewModel.log('step4');
                                 dirEntry.removeRecusrsively(function() {
+                                    viewModel.log('step5');
                                     router.request('app/claims/close',self.closeProcess,{data:{Claim:{id:claim.data.id,status:'CLOSED'}}});
                                 }, function() {
                                     viewModel.log('removeRecusrsively failed');
