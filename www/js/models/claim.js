@@ -149,23 +149,23 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             try {
                 var gotFileEntry = function(fileEntry) {
                     var gotFileSystem = function(fileSystem) {
-                        viewModel.log('fs.name: '+fileSystem.name);
-                        viewModel.log('fs.root.name: '+fileSystem.root.name);
+                        var claimDir = self.data.claimFileID+'_images';
                         var gotDirectory = function(dataDir) {
-                            var gotNewFileEntry = function(newFileEntry) {
-                                viewModel.log(newFileEntry.toURL());
-                                imageURI = newFileEntry.fullPath;
-                                self.open_claim();
-                                self.data[self.selectedPicture] = imageURI;//'data:image/jpeg;base64,'+data;
-                                self.images[self.selectedPicture](imageURI);
-                            }
                             //timestamp name
                             var d = new Date();
                             var n = d.getTime();
                             var newFileName = n + ".jpg";
+
+                            var gotNewFileEntry = function(newFileEntry) {
+                                imageURI = 'file:///'+claimDir+'/'+newFileName;//newFileEntry.fullPath;
+                                viewModel.log(imageURI);
+                                self.open_claim();
+                                self.data[self.selectedPicture] = imageURI;//'data:image/jpeg;base64,'+data;
+                                self.images[self.selectedPicture](imageURI);
+                            }
                             fileEntry.moveTo(dataDir, newFileName, gotNewFileEntry, viewModel.log);
                         }
-                        fileSystem.root.getDirectory(self.data.claimFileID+'_images', {create:true}, gotDirectory, viewModel.log);
+                        fileSystem.root.getDirectory(claimDir, {create:true}, gotDirectory, viewModel.log);
                     }
                     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFileSystem, viewModel.log);
                 }
