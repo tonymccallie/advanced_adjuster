@@ -100,7 +100,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
                             viewModel.log('step3');
                             fileSystem.root.getDirectory(dir, {create:false}, function(dirEntry) {
                                 viewModel.log('step4');
-                                dirEntry.removeRecusrsively(function() {
+                                dirEntry.removeRecursively(function() {
                                     viewModel.log('step5');
                                     router.request('app/claims/close',self.closeProcess,{data:{Claim:{id:claim.data.id,status:'CLOSED'}}});
                                 }, function() {
