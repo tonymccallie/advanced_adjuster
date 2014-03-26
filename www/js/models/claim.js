@@ -92,20 +92,24 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
 
             navigator.notification.confirm('Are you sure you want to delete this claim? This can\'t be undone',function(response) {
                 if(response === 1) {
-                    var dir = viewModel.selectedClaim().data.claimFileID+'_images';
-                    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
-                        window.root.getDirectory(dir, {create:false}, function(dirEntry) {
-                            dirEntry.removeRecusrsively(function() {
-                                router.request('app/claims/close',self.closeProcess,{data:{Claim:{id:claim.data.id,status:'CLOSED'}}});
+                    try {
+                        var dir = viewModel.selectedClaim().data.claimFileID+'_images';
+                        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+                            window.root.getDirectory(dir, {create:false}, function(dirEntry) {
+                                dirEntry.removeRecusrsively(function() {
+                                    router.request('app/claims/close',self.closeProcess,{data:{Claim:{id:claim.data.id,status:'CLOSED'}}});
+                                }, function() {
+                                    viewModel.log('removeRecusrsively failed');
+                                });
                             }, function() {
-                                viewModel.log('removeRecusrsively failed')
+                                viewModel.log('getDirectory failed');
                             });
                         }, function() {
-                            viewModel.log('getDirectory failed')
+                            viewModel.log('requestFileSystem failed');
                         });
-                    }, function() {
-                        viewModel.log('requestFileSystem failed')
-                    });
+                    } catch(e) {
+                        viewModel.log('catch delete: '+e);
+                    }
                 }
             });
         }
