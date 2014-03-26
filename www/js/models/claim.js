@@ -98,7 +98,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
                         window.root.getDirectory(dir, {create:false}, function(dirEntry) {
                             dirEntry.removeRecusrsively(function() {
                                 router.request('app/claims/close',self.closeProcess,{data:{Claim:{id:claim.data.id,status:'CLOSED'}}});
-                            },function() {
+                            }, function() {
                                 viewModel.log('removeRecusrsively failed')
                             });
                         }, function() {
@@ -151,6 +151,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
                     var gotFileSystem = function(fileSystem) {
                         var gotDirectory = function(dataDir) {
                             var gotNewFileEntry = function(newFileEntry) {
+                                viewModel.log(newFileEntry.toURL);
                                 imageURI = newFileEntry.fullPath;
                                 self.open_claim();
                                 self.data[self.selectedPicture] = imageURI;//'data:image/jpeg;base64,'+data;
