@@ -54,7 +54,6 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             if((data.Claim[item].substr(0,1) !== '/')&&(data.Claim[item].substr(0,4) !== 'file')) {
                 data.Claim[item] = '';
             } else {
-                viewModel.log(fileSystemPath+data.Claim[item]);
                 self.images[item](fileSystemPath+data.Claim[item]);
             }
         });
@@ -92,6 +91,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
 
             navigator.notification.confirm('Are you sure you want to delete this claim? This can\'t be undone',function(response) {
                 if(response === 1) {
+                    navigator.notification.alert('???',null,'Advanced Adjusting');
                     try {
                         var dir = viewModel.selectedClaim().data.claimFileID+'_images';
                         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
@@ -115,6 +115,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         }
         
         self.closeProcess = function(data) {
+            viewModel.log('closed');
             //delete photos
             var dir = viewModel.selectedClaim().data.claimFileID;
 
