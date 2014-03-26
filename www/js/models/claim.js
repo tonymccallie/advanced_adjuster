@@ -149,6 +149,8 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             try {
                 var gotFileEntry = function(fileEntry) {
                     var gotFileSystem = function(fileSystem) {
+                        viewModel.log('fs.name: '+fileSystem.name);
+                        viewModel.log('fs.root.name: '+fileSystem.root.name);
                         var gotDirectory = function(dataDir) {
                             var gotNewFileEntry = function(newFileEntry) {
                                 viewModel.log(newFileEntry.toURL());
