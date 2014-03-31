@@ -13,7 +13,7 @@
 			<input name="data[User][username]" class="span12 input" type="text" placeholder="User ID"/>
 			<input name="data[User][passwd]" class="span12" type="password" placeholder="Password"/>
 			<input type="submit"  value="Login" data-bind="fastClick: loginSubmit" href="#" class="noajax btn btn-block btn-large btn-primary">
-			<a data-bind="fastClick: $root.loadPage.bind($data,'register')" href="#" class="noajax btn btn-block btn-large">Register</a>
+			<a data-bind="fastClick: register" href="#" class="noajax btn btn-block btn-large">Register</a>
 			<p class="text-center"><br /><br /><a data-bind="fastClick: $root.loadPage.bind($data,'recover')" href="#" class="noajax">Having Trouble Logging In?</a></p>
 		</form>
 	</div>

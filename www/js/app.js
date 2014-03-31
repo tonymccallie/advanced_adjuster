@@ -28,6 +28,16 @@ define(['knockout','router','models/user','models/claims'], function(ko, router,
 			}
         }
         
+        self.settings = function() {
+            router.loadPage('settings', self.processSettings);
+        }
+
+        self.processSettings = function() {
+            if(viewModel.user().signature == "") {
+                viewModel.user().signature_obj = new SignatureCapture( "signature" );
+            }
+        }
+        
         self.check_memory = function() {
             var currentSize = (((sizeof(localStorage.getItem('advadj_claims')))/1024/1024)/5)*100;
             self.memory(currentSize)
