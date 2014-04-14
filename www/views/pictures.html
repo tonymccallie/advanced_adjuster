@@ -81,7 +81,7 @@
                     <img data-bind="attr: { src:images.pic_optional1 }" />
             </a>
             <label>Optional 1 Title</label>
-            <input data-bind="value: images.pic_optional1_notes" type="text" class="span12" placeholder="">
+            <input data-bind="value: data.pic_optional1_notes" type="text" class="span12" placeholder="">
         </div>
         <div class="span6">
             <h4>Optional 2</h4>
@@ -90,7 +90,7 @@
                     <img data-bind="attr: { src:images.pic_optional2 }" />
             </a>
             <label>Optional 2 Title</label>
-            <input data-bind="value: images.pic_optional2_notes" type="text" class="span12" placeholder="">
+            <input data-bind="value: data.pic_optional2_notes" type="text" class="span12" placeholder="">
         </div>
     </div>
     <div class="row-fluid">
@@ -101,7 +101,7 @@
                     <img data-bind="attr: { src:images.pic_optional3 }" />
             </a>
             <label>Optional 3 Title</label>
-            <input data-bind="value: images.pic_optional3_notes" type="text" class="span12" placeholder="">
+            <input data-bind="value: data.pic_optional3_notes" type="text" class="span12" placeholder="">
         </div>
         <div class="span6">
             <h4>Optional 4</h4>
@@ -110,7 +110,7 @@
                     <img data-bind="attr: { src:images.pic_optional4 }" />
             </a>
             <label>Optional 4 Title</label>
-            <input data-bind="value: images.pic_optional4_notes" type="text" class="span12" placeholder="">
+            <input data-bind="value: data.pic_optional4_notes" type="text" class="span12" placeholder="">
         </div>
     </div>
     <div class="row-fluid">
@@ -121,7 +121,7 @@
                     <img data-bind="attr: { src:images.pic_optional5 }" />
             </a>
             <label>Optional 5 Title</label>
-            <input data-bind="value: images.pic_optional5_notes" type="text" class="span12" placeholder="">
+            <input data-bind="value: data.pic_optional5_notes" type="text" class="span12" placeholder="">
         </div>
         <div class="span6">
             <h4>Optional 6</h4>
@@ -130,9 +130,70 @@
                     <img data-bind="attr: { src:images.pic_optional6 }" />
             </a>
             <label>Optional 6 Title</label>
-            <input data-bind="value: images.pic_optional6_notes" type="text" class="span12" placeholder="">
+            <input data-bind="value: data.pic_optional6_notes" type="text" class="span12" placeholder="">
         </div>
     </div>
+    <div class="row-fluid">
+        <div class="span6">
+            <h4>Optional 7</h4>
+            <a class="picthumbnail"  data-bind="fastClick: getPhoto.bind($data,'pic_optional7')">
+                    <img data-bind="visible: images.pic_optional7() === ''" src="img/camera.png" />
+                    <img data-bind="attr: { src:images.pic_optional7 }" />
+            </a>
+            <label>Optional 7 Title</label>
+            <input data-bind="value: data.pic_optional7_notes" type="text" class="span12" placeholder="">
+        </div>
+        <div class="span6">
+            <h4>Optional 8</h4>
+            <a class="picthumbnail"  data-bind="fastClick: getPhoto.bind($data,'pic_optional68')">
+                    <img data-bind="visible: images.pic_optional8() === ''" src="img/camera.png" />
+                    <img data-bind="attr: { src:images.pic_optional8 }" />
+            </a>
+            <label>Optional 6 Title</label>
+            <input data-bind="value: data.pic_optional8_notes" type="text" class="span12" placeholder="">
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span6">
+            <h4>Optional 9</h4>
+            <a class="picthumbnail"  data-bind="fastClick: getPhoto.bind($data,'pic_optional9')">
+                    <img data-bind="visible: images.pic_optional9() === ''" src="img/camera.png" />
+                    <img data-bind="attr: { src:images.pic_optional9 }" />
+            </a>
+            <label>Optional 5 Title</label>
+            <input data-bind="value: data.pic_optional9_notes" type="text" class="span12" placeholder="">
+        </div>
+        <div class="span6">
+            <h4>Optional 10</h4>
+            <a class="picthumbnail"  data-bind="fastClick: getPhoto.bind($data,'pic_optional10')">
+                    <img data-bind="visible: images.pic_optional10() === ''" src="img/camera.png" />
+                    <img data-bind="attr: { src:images.pic_optional10 }" />
+            </a>
+            <label>Optional 10 Title</label>
+            <input data-bind="value: data.pic_optional10_notes" type="text" class="span12" placeholder="">
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span6">
+            <h4>Optional 11</h4>
+            <a class="picthumbnail"  data-bind="fastClick: getPhoto.bind($data,'pic_optional11')">
+                    <img data-bind="visible: images.pic_optional11() === ''" src="img/camera.png" />
+                    <img data-bind="attr: { src:images.pic_optional11 }" />
+            </a>
+            <label>Optional 11 Title</label>
+            <input data-bind="value: data.pic_optional11_notes" type="text" class="span12" placeholder="">
+        </div>
+        <div class="span6">
+            <h4>Optional 12</h4>
+            <a class="picthumbnail"  data-bind="fastClick: getPhoto.bind($data,'pic_optional12')">
+                    <img data-bind="visible: images.pic_optional12() === ''" src="img/camera.png" />
+                    <img data-bind="attr: { src:images.pic_optional12 }" />
+            </a>
+            <label>Optional 12 Title</label>
+            <input data-bind="value: data.pic_optional12_notes" type="text" class="span12" placeholder="">
+        </div>
+    </div>
+    
     <div class="row-fluid">
         <div class="span12">
             <input type="submit" value="Save" class="btn btn-primary pull-right">		
