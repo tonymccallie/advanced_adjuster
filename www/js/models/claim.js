@@ -64,6 +64,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         
         self.select = function(claim) {
             viewModel.selectedClaim(claim);
+            router.loadPage('reports');
         }
         
         //PRELIMINARY REPORT
@@ -91,7 +92,6 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
 
             navigator.notification.confirm('Are you sure you want to delete this claim? This can\'t be undone',function(response) {
                 if(response === 1) {
-                    navigator.notification.alert('???',null,'Advanced Adjusting');
                     try {
                         var dir = viewModel.selectedClaim().data.claimFileID+'_images';
                         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
