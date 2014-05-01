@@ -23,7 +23,7 @@ define(['knockout','router'],function(ko, router) {
             if(user.signature.substr(0,4) === 'file') {
                 self.signature = user.signature;
             }
-            router.loadPage('reports');
+            router.loadPage('list');
             viewModel.claims.init();
         }
         

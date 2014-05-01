@@ -9,10 +9,10 @@
 	<div class="span6">
 		<ul class="nav nav-tabs nav-stacked">
 			<li class="nav-header">New Claims</li>
+            <li><a href="#" data-bind="fastClick: claims.update"><i>Check for new Claims</i></a></li>
             <!-- ko foreach : claims.new_claims-->
 			<li><a href="#" data-bind="text: data.claimFileID+' '+data.last_name, fastClick: select">1217 Austin</a></li>
             <!-- /ko -->
-            <li><a href="#" data-bind="fastClick: claims.update">Check for new Claims</a></li>
 		</ul>
     </div>
     <div class="span6">

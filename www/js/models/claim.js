@@ -268,14 +268,6 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             viewModel.claims.store();
             router.loadPage('reports');
         }
-        
-        self.debug = function() {
-            self.open_claim();
-            router.loadPage('debug');
-        }
-        
-        self.log = function() {
-            router.loadPage('logs');
-        }
+
     }
 });

@@ -57,6 +57,9 @@ define(['knockout','router','models/user','models/claims'], function(ko, router,
         
         self.log = function(log) {
             self.logs.push(log);
+        }
+        
+        self.viewlog = function() {
             router.loadPage('logs');
         }
     }
