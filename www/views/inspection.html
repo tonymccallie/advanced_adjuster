@@ -29,7 +29,7 @@
             <div class="control-group">
 				<label class="control-label">Interview:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.interview" type="radio" name="data[Claim][interview]" id="interview0" value="Insured" />
                         <label class="btn icon-" for="interview0">Insured</label>
                         <input data-bind="checked: data.interview" type="radio" name="data[Claim][interview]" id="interview1" value="Tenant" />
@@ -41,7 +41,7 @@
             <div class="control-group">
 				<label class="control-label">Property Inspected:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.property_inspected" type="radio" name="data[Claim][property_inspected]" id="property_inspected0" value="Occupied" />
                         <label class="btn icon-" for="property_inspected0">Occupied</label>
                         <input data-bind="checked: data.property_inspected" type="radio" name="data[Claim][property_inspected]" id="property_inspected1" value="Vacant" />
@@ -53,7 +53,7 @@
             <div class="control-group">
 				<label class="control-label">Limited Site Access:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.limited_site_access" type="radio" name="data[Claim][limited_site_access]" id="limited_site_access0" value="Yes" />
                         <label class="btn icon-" for="limited_site_access0">Yes</label>
                         <input data-bind="checked: data.limited_site_access" type="radio" name="data[Claim][limited_site_access]" id="limited_site_access1" value="No" />
@@ -65,7 +65,7 @@
             <div class="control-group">
 				<label class="control-label">Occupant:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.occupant" type="radio" name="data[Claim][occupant]" id="occupant0" value="Owner" />
                         <label class="btn icon-" for="occupant0">Owner</label>
                         <input data-bind="checked: data.occupant" type="radio" name="data[Claim][occupant]" id="occupant1" value="Tenant" />
@@ -77,7 +77,7 @@
             <div class="control-group">
 				<label class="control-label">Is building for sale:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.building_for_sale" type="radio" name="data[Claim][building_for_sale]" id="building_for_sale0" value="Yes" />
                         <label class="btn icon-" for="building_for_sale0">Yes</label>
                         <input data-bind="checked: data.building_for_sale" type="radio" name="data[Claim][building_for_sale]" id="building_for_sale1" value="No" />
@@ -89,19 +89,15 @@
             <div class="control-group">
 				<label class="control-label">Is building under construction of renovations:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.construction_or_renovations" type="radio" name="data[Claim][construction_or_renovations]" id="construction_or_renovations0" value="None - 100% Complete" />
                         <label class="btn icon-" for="construction_or_renovations0">None - 100% Complete</label>
                         <input data-bind="checked: data.construction_or_renovations" type="radio" name="data[Claim][construction_or_renovations]" id="construction_or_renovations1" value="Yes - 75% complete" />
                         <label class="btn icon-" for="construction_or_renovations1">Yes - 75% complete</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.construction_or_renovations" type="radio" name="data[Claim][construction_or_renovations]" id="construction_or_renovations2" value="Yes - 50% complete" />
                         <label class="btn icon-" for="construction_or_renovations2">Yes - 50% complete</label>
                         <input data-bind="checked: data.construction_or_renovations" type="radio" name="data[Claim][construction_or_renovations]" id="construction_or_renovations3" value="Yes - 25% complete" />
-                        <label class="btn icon-" for="construction_or_renovations3">Yes - 25% complete</label>
-                    </div>
-                    <div class="btn-group">    
+                        <label class="btn icon-" for="construction_or_renovations3">Yes - 25% complete</label>  
                         <input data-bind="checked: data.construction_or_renovations" type="radio" name="data[Claim][construction_or_renovations]" id="construction_or_renovations4" value="Yes - starting renovations/construction" />
                         <label class="btn icon-" for="construction_or_renovations4">Yes - starting renovations/construction</label>
                         
@@ -111,7 +107,7 @@
             <div class="control-group">
 				<label class="control-label">Summary of condition:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.summary_of_condition" type="radio" name="data[Claim][summary_of_condition]" id="summary_of_condition0" value="Very Good" />
                         <label class="btn icon-" for="summary_of_condition0">Very Good</label>
                         <input data-bind="checked: data.summary_of_condition" type="radio" name="data[Claim][summary_of_condition]" id="summary_of_condition1" value="Good" />
@@ -127,7 +123,7 @@
             <div class="control-group">
 				<label class="control-label">Color of building:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.color_of_building" type="radio" name="data[Claim][color_of_building]" id="color_of_building0" value="Red" />
                         <label class="btn icon-" for="color_of_building0">Red</label>
                         <input data-bind="checked: data.color_of_building" type="radio" name="data[Claim][color_of_building]" id="color_of_building1" value="Black" />
@@ -136,16 +132,12 @@
                         <label class="btn icon-" for="color_of_building2">White</label>
                         <input data-bind="checked: data.color_of_building" type="radio" name="data[Claim][color_of_building]" id="color_of_building3" value="Brown" />
                         <label class="btn icon-" for="color_of_building3">Brown</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.color_of_building" type="radio" name="data[Claim][color_of_building]" id="color_of_building4" value="Grey" />
                         <label class="btn icon-" for="color_of_building4">Grey</label>
                         <input data-bind="checked: data.color_of_building" type="radio" name="data[Claim][color_of_building]" id="color_of_building5" value="Blue" />
                         <label class="btn icon-" for="color_of_building5">Blue</label>
                         <input data-bind="checked: data.color_of_building" type="radio" name="data[Claim][color_of_building]" id="color_of_building6" value="Yellow" />
                         <label class="btn icon-" for="color_of_building6">Yellow</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.color_of_building" type="radio" name="data[Claim][color_of_building]" id="color_of_building7" value="Green" />
                         <label class="btn icon-" for="color_of_building7">Green</label>
                         <input data-bind="checked: data.color_of_building" type="radio" name="data[Claim][color_of_building]" id="color_of_building8" value="Beige" />
@@ -159,7 +151,7 @@
             <div class="control-group">
 				<label class="control-label">Units:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.units" type="radio" name="data[Claim][units]" id="units0" value="1" />
                         <label class="btn icon-" for="units0">1</label>
                         <input data-bind="checked: data.units" type="radio" name="data[Claim][units]" id="units1" value="2" />
@@ -175,15 +167,13 @@
             <div class="control-group">
 				<label class="control-label">Location:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.location" type="radio" name="data[Claim][location]" id="location0" value="Residential" />
                         <label class="btn icon-" for="location0">Residential</label>
                         <input data-bind="checked: data.location" type="radio" name="data[Claim][location]" id="location1" value="Suburban" />
                         <label class="btn icon-" for="location1">Suburban</label>
                         <input data-bind="checked: data.location" type="radio" name="data[Claim][location]" id="location2" value="Rural" />
                         <label class="btn icon-" for="location2">Rural</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.location" type="radio" name="data[Claim][location]" id="location3" value="Light Industrial" />
                         <label class="btn icon-" for="location3">Light Industrial</label>
                         <input data-bind="checked: data.location" type="radio" name="data[Claim][location]" id="location4" value="Heavy Industrial" />
@@ -195,7 +185,7 @@
             <div class="control-group">
 				<label class="control-label">Type of Neighborhood:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.neighborhood" type="radio" name="data[Claim][neighborhood]" id="neighborhood0" value="Below" />
                         <label class="btn icon-" for="neighborhood0">Below</label>
                         <input data-bind="checked: data.neighborhood" type="radio" name="data[Claim][neighborhood]" id="neighborhood1" value="Average / Safe" />
@@ -209,7 +199,7 @@
             <div class="control-group">
 				<label class="control-label">Home comparison:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.home_comparison" type="radio" name="data[Claim][home_comparison]" id="home_comparison0" value="Below" />
                         <label class="btn icon-" for="home_comparison0">Below</label>
                         <input data-bind="checked: data.home_comparison" type="radio" name="data[Claim][home_comparison]" id="home_comparison1" value="Average" />
@@ -223,7 +213,7 @@
             <div class="control-group">
 				<label class="control-label"># of levels above grade:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.levels_above_grade" type="radio" name="data[Claim][levels_above_grade]" id="levels_above_grade0" value="1" />
                         <label class="btn icon-" for="levels_above_grade0">1</label>
                         <input data-bind="checked: data.levels_above_grade" type="radio" name="data[Claim][levels_above_grade]" id="levels_above_grade1" value="2" />
@@ -239,15 +229,13 @@
             <div class="control-group">
 				<label class="control-label">Exterior damages:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.ext_damages" type="radio" name="data[Claim][ext_damages]" id="ext_damages0" value="None" />
                         <label class="btn icon-" for="ext_damages0">None</label>
                         <input data-bind="checked: data.ext_damages" type="radio" name="data[Claim][ext_damages]" id="ext_damages1" value="Fire" />
                         <label class="btn icon-" for="ext_damages1">Fire</label>
                         <input data-bind="checked: data.ext_damages" type="radio" name="data[Claim][ext_damages]" id="ext_damages2" value="Flood" />
                         <label class="btn icon-" for="ext_damages2">Flood</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.ext_damages" type="radio" name="data[Claim][ext_damages]" id="ext_damages3" value="Neglect" />
                         <label class="btn icon-" for="ext_damages3">Neglect</label>
                         <input data-bind="checked: data.ext_damages" type="radio" name="data[Claim][ext_damages]" id="ext_damages4" value="Vandalism" />
@@ -261,7 +249,7 @@
             <div class="control-group">
 				<label class="control-label">Firewall:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.firewall" type="radio" name="data[Claim][firewall]" id="firewall0" value="Yes" />
                         <label class="btn icon-" for="firewall0">Yes</label>
                         <input data-bind="checked: data.firewall" type="radio" name="data[Claim][firewall]" id="firewall1" value="No" />
@@ -273,19 +261,15 @@
             <div class="control-group">
 				<label class="control-label">Contruction Type:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.construction_type" type="radio" name="data[Claim][construction_type]" id="construction_type0" value="Frame" />
                         <label class="btn icon-" for="construction_type0">Frame</label>
                         <input data-bind="checked: data.construction_type" type="radio" name="data[Claim][construction_type]" id="construction_type1" value="Brick/Stone/Block" />
                         <label class="btn icon-" for="construction_type1">Brick/Stone/Block</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.construction_type" type="radio" name="data[Claim][construction_type]" id="construction_type2" value="Stucco" />
                         <label class="btn icon-" for="construction_type2">Stucco</label>
                         <input data-bind="checked: data.construction_type" type="radio" name="data[Claim][construction_type]" id="construction_type3" value="Frame & Brick" />
                         <label class="btn icon-" for="construction_type3">Frame & Brick</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.construction_type" type="radio" name="data[Claim][construction_type]" id="construction_type4" value="Aluminum" />
                         <label class="btn icon-" for="construction_type4">Aluminum</label>
                         <input data-bind="checked: data.construction_type" type="radio" name="data[Claim][construction_type]" id="construction_type5" value="Other" />
@@ -297,7 +281,7 @@
             <div class="control-group">
 				<label class="control-label">Frame (%):</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.frame" type="radio" name="data[Claim][frame]" id="frame0" value="0%" />
                         <label class="btn icon-" for="frame0">0%</label>
                         <input data-bind="checked: data.frame" type="radio" name="data[Claim][frame]" id="frame1" value="10%" />
@@ -306,8 +290,6 @@
                         <label class="btn icon-" for="frame2">20%</label>
                         <input data-bind="checked: data.frame" type="radio" name="data[Claim][frame]" id="frame3" value="30%" />
                         <label class="btn icon-" for="frame3">30%</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.frame" type="radio" name="data[Claim][frame]" id="frame4" value="40%" />
                         <label class="btn icon-" for="frame4">40%</label>
                         <input data-bind="checked: data.frame" type="radio" name="data[Claim][frame]" id="frame5" value="50%" />
@@ -316,8 +298,6 @@
                         <label class="btn icon-" for="frame6">60%</label>
                         <input data-bind="checked: data.frame" type="radio" name="data[Claim][frame]" id="frame7" value="70%" />
                         <label class="btn icon-" for="frame7">70%</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.frame" type="radio" name="data[Claim][frame]" id="frame8" value="80%" />
                         <label class="btn icon-" for="frame8">80%</label>
                         <input data-bind="checked: data.frame" type="radio" name="data[Claim][frame]" id="frame9" value="90%" />
@@ -331,7 +311,7 @@
             <div class="control-group">
 				<label class="control-label">Brick Veneer (%):</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.veneer" type="radio" name="data[Claim][veneer]" id="veneer0" value="0%" />
                         <label class="btn icon-" for="veneer0">0%</label>
                         <input data-bind="checked: data.veneer" type="radio" name="data[Claim][veneer]" id="veneer1" value="10%" />
@@ -340,8 +320,6 @@
                         <label class="btn icon-" for="veneer2">20%</label>
                         <input data-bind="checked: data.veneer" type="radio" name="data[Claim][veneer]" id="veneer3" value="30%" />
                         <label class="btn icon-" for="veneer3">30%</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.veneer" type="radio" name="data[Claim][veneer]" id="veneer4" value="40%" />
                         <label class="btn icon-" for="veneer4">40%</label>
                         <input data-bind="checked: data.veneer" type="radio" name="data[Claim][veneer]" id="veneer5" value="50%" />
@@ -350,8 +328,6 @@
                         <label class="btn icon-" for="veneer6">60%</label>
                         <input data-bind="checked: data.veneer" type="radio" name="data[Claim][veneer]" id="veneer7" value="70%" />
                         <label class="btn icon-" for="veneer7">70%</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.veneer" type="radio" name="data[Claim][veneer]" id="veneer8" value="80%" />
                         <label class="btn icon-" for="veneer8">80%</label>
                         <input data-bind="checked: data.veneer" type="radio" name="data[Claim][veneer]" id="veneer9" value="90%" />
@@ -365,7 +341,7 @@
             <div class="control-group">
 				<label class="control-label">Solid Brick/Block (%):</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.solid_brick" type="radio" name="data[Claim][solid_brick]" id="solid_brick0" value="0%" />
                         <label class="btn icon-" for="solid_brick0">0%</label>
                         <input data-bind="checked: data.solid_brick" type="radio" name="data[Claim][solid_brick]" id="solid_brick1" value="10%" />
@@ -374,8 +350,6 @@
                         <label class="btn icon-" for="solid_brick2">20%</label>
                         <input data-bind="checked: data.solid_brick" type="radio" name="data[Claim][solid_brick]" id="solid_brick3" value="30%" />
                         <label class="btn icon-" for="solid_brick3">30%</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.solid_brick" type="radio" name="data[Claim][solid_brick]" id="solid_brick4" value="40%" />
                         <label class="btn icon-" for="solid_brick4">40%</label>
                         <input data-bind="checked: data.solid_brick" type="radio" name="data[Claim][solid_brick]" id="solid_brick5" value="50%" />
@@ -384,22 +358,19 @@
                         <label class="btn icon-" for="solid_brick6">60%</label>
                         <input data-bind="checked: data.solid_brick" type="radio" name="data[Claim][solid_brick]" id="solid_brick7" value="70%" />
                         <label class="btn icon-" for="solid_brick7">70%</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.solid_brick" type="radio" name="data[Claim][solid_brick]" id="solid_brick8" value="80%" />
                         <label class="btn icon-" for="solid_brick8">80%</label>
                         <input data-bind="checked: data.solid_brick" type="radio" name="data[Claim][solid_brick]" id="solid_brick9" value="90%" />
                         <label class="btn icon-" for="solid_brick9">90%</label>
                         <input data-bind="checked: data.solid_brick" type="radio" name="data[Claim][solid_brick]" id="solid_brick10" value="100%" />
                         <label class="btn icon-" for="solid_brick10">100%</label>
-                        
                     </div>
 				</div>
 			</div>
             <div class="control-group">
 				<label class="control-label">Asbestos/Stucco (%):</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.stucco" type="radio" name="data[Claim][stucco]" id="stucco0" value="0%" />
                         <label class="btn icon-" for="stucco0">0%</label>
                         <input data-bind="checked: data.stucco" type="radio" name="data[Claim][stucco]" id="stucco1" value="10%" />
@@ -408,8 +379,6 @@
                         <label class="btn icon-" for="stucco2">20%</label>
                         <input data-bind="checked: data.stucco" type="radio" name="data[Claim][stucco]" id="stucco3" value="30%" />
                         <label class="btn icon-" for="stucco3">30%</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.stucco" type="radio" name="data[Claim][stucco]" id="stucco4" value="40%" />
                         <label class="btn icon-" for="stucco4">40%</label>
                         <input data-bind="checked: data.stucco" type="radio" name="data[Claim][stucco]" id="stucco5" value="50%" />
@@ -418,8 +387,6 @@
                         <label class="btn icon-" for="stucco6">60%</label>
                         <input data-bind="checked: data.stucco" type="radio" name="data[Claim][stucco]" id="stucco7" value="70%" />
                         <label class="btn icon-" for="stucco7">70%</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.stucco" type="radio" name="data[Claim][stucco]" id="stucco8" value="80%" />
                         <label class="btn icon-" for="stucco8">80%</label>
                         <input data-bind="checked: data.stucco" type="radio" name="data[Claim][stucco]" id="stucco9" value="90%" />
@@ -434,7 +401,7 @@
             <div class="control-group">
 				<label class="control-label">Stories:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.stories" type="radio" name="data[Claim][stories]" id="stories0" value="1" />
                         <label class="btn icon-" for="stories0">1</label>
                         <input data-bind="checked: data.stories" type="radio" name="data[Claim][stories]" id="stories1" value="2" />
@@ -452,7 +419,7 @@
             <div class="control-group">
 				<label class="control-label">Foundation:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.foundation" type="radio" name="data[Claim][foundation]" id="foundation0" value="Slab" />
                         <label class="btn icon-" for="foundation0">Slab</label>
                         <input data-bind="checked: data.foundation" type="radio" name="data[Claim][foundation]" id="foundation1" value="Elevated" />
@@ -464,7 +431,7 @@
             <div class="control-group">
 				<label class="control-label">Condition:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.condition" type="radio" name="data[Claim][condition]" id="condition0" value="Good" />
                         <label class="btn icon-" for="condition0">Good</label>
                         <input data-bind="checked: data.condition" type="radio" name="data[Claim][condition]" id="condition1" value="Fair" />
@@ -478,15 +445,13 @@
             <div class="control-group">
 				<label class="control-label">Age:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.age" type="radio" name="data[Claim][age]" id="age0" value="1-5 years" />
                         <label class="btn icon-" for="age0">1-5 years</label>
                         <input data-bind="checked: data.age" type="radio" name="data[Claim][age]" id="age1" value="6-10 years" />
                         <label class="btn icon-" for="age1">6-10 years</label>
                         <input data-bind="checked: data.age" type="radio" name="data[Claim][age]" id="age2" value="11-15 years" />
                         <label class="btn icon-" for="age2">11-15 years</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.age" type="radio" name="data[Claim][age]" id="age3" value="16-20 years" />
                         <label class="btn icon-" for="age3">16-20 years</label>
                         <input data-bind="checked: data.age" type="radio" name="data[Claim][age]" id="age4" value="20+ years" />
@@ -498,7 +463,7 @@
             <div class="control-group">
 				<label class="control-label">Roof Type:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.roof_type" type="radio" name="data[Claim][roof_type]" id="roof_type0" value="Tile" />
                         <label class="btn icon-" for="roof_type0">Tile</label>
                         <input data-bind="checked: data.roof_type" type="radio" name="data[Claim][roof_type]" id="roof_type1" value="Comp" />
@@ -518,7 +483,7 @@
             <div class="control-group">
 				<label class="control-label">Roof Condition:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.roof_condition" type="radio" name="data[Claim][roof_condition]" id="roof_condition0" value="Good" />
                         <label class="btn icon-" for="roof_condition0">Good</label>
                         <input data-bind="checked: data.roof_condition" type="radio" name="data[Claim][roof_condition]" id="roof_condition1" value="Fair" />
@@ -532,7 +497,7 @@
             <div class="control-group">
 				<label class="control-label">Hipp Roof:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.hipp" type="radio" name="data[Claim][hipp]" id="hipp0" value="Yes" />
                         <label class="btn icon-" for="hipp0">Yes</label>
                         <input data-bind="checked: data.hipp" type="radio" name="data[Claim][hipp]" id="hipp1" value="No" />
@@ -544,7 +509,7 @@
             <div class="control-group">
 				<label class="control-label">Percentage Hipp:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.hipp_percentage" type="radio" name="data[Claim][hipp_percentage]" id="hipp_percentage0" value="0%" />
                         <label class="btn icon-" for="hipp_percentage0">0%</label>
                         <input data-bind="checked: data.hipp_percentage" type="radio" name="data[Claim][hipp_percentage]" id="hipp_percentage1" value="10%" />
@@ -553,8 +518,6 @@
                         <label class="btn icon-" for="hipp_percentage2">20%</label>
                         <input data-bind="checked: data.hipp_percentage" type="radio" name="data[Claim][hipp_percentage]" id="hipp_percentage3" value="30%" />
                         <label class="btn icon-" for="hipp_percentage3">30%</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.hipp_percentage" type="radio" name="data[Claim][hipp_percentage]" id="hipp_percentage4" value="40%" />
                         <label class="btn icon-" for="hipp_percentage4">40%</label>
                         <input data-bind="checked: data.hipp_percentage" type="radio" name="data[Claim][hipp_percentage]" id="hipp_percentage5" value="50%" />
@@ -563,8 +526,6 @@
                         <label class="btn icon-" for="hipp_percentage6">60%</label>
                         <input data-bind="checked: data.hipp_percentage" type="radio" name="data[Claim][hipp_percentage]" id="hipp_percentage7" value="70%" />
                         <label class="btn icon-" for="hipp_percentage7">70%</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.hipp_percentage" type="radio" name="data[Claim][hipp_percentage]" id="hipp_percentage8" value="80%" />
                         <label class="btn icon-" for="hipp_percentage8">80%</label>
                         <input data-bind="checked: data.hipp_percentage" type="radio" name="data[Claim][hipp_percentage]" id="hipp_percentage9" value="90%" />
@@ -578,7 +539,7 @@
             <div class="control-group">
 				<label class="control-label">Outbuildings:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.outbuildings" type="radio" name="data[Claim][outbuildings]" id="outbuildings0" value="0" />
                         <label class="btn icon-" for="outbuildings0">0</label>
                         <input data-bind="checked: data.outbuildings" type="radio" name="data[Claim][outbuildings]" id="outbuildings1" value="1" />
@@ -596,7 +557,7 @@
             <div class="control-group">
 				<label class="control-label">Unattached Structure:<br /><i>(Check all that apply)</i></label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.unattached_shed" type="checkbox" name="data[Claim][unattached_shed]" id="unattached_shed" value="1" />
                         <label class="btn icon-" for="unattached_shed">Shed</label>
                         <input data-bind="checked: data.unattached_poolhouse" type="checkbox" name="data[Claim][unattached_poolhouse]" id="unattached_poolhouse" value="1" />
@@ -611,7 +572,7 @@
             <div class="control-group">
 				<label class="control-label">Fireplace:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.fireplace" type="radio" name="data[Claim][fireplace]" id="fireplace0" value="Yes" />
                         <label class="btn icon-" for="fireplace0">Yes</label>
                         <input data-bind="checked: data.fireplace" type="radio" name="data[Claim][fireplace]" id="fireplace1" value="No" />
@@ -623,7 +584,7 @@
             <div class="control-group">
 				<label class="control-label">Air Conditioning:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.ac" type="radio" name="data[Claim][ac]" id="ac0" value="Window" />
                         <label class="btn icon-" for="ac0">Window</label>
                         <input data-bind="checked: data.ac" type="radio" name="data[Claim][ac]" id="ac1" value="Central" />
@@ -639,7 +600,7 @@
             <div class="control-group">
 				<label class="control-label">Patio:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.patio" type="radio" name="data[Claim][patio]" id="patio0" value="Yes" />
                         <label class="btn icon-" for="patio0">Yes</label>
                         <input data-bind="checked: data.patio" type="radio" name="data[Claim][patio]" id="patio1" value="No" />
@@ -651,7 +612,7 @@
             <div class="control-group">
 				<label class="control-label">Porch:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.porch" type="radio" name="data[Claim][porch]" id="porch0" value="Yes" />
                         <label class="btn icon-" for="porch0">Yes</label>
                         <input data-bind="checked: data.porch" type="radio" name="data[Claim][porch]" id="porch1" value="No" />
@@ -663,13 +624,11 @@
             <div class="control-group">
 				<label class="control-label">Porch Enclosure:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.porch_enclosure" type="radio" name="data[Claim][porch_enclosure]" id="porch_enclosure0" value="Closed" />
                         <label class="btn icon-" for="porch_enclosure0">Closed</label>
                         <input data-bind="checked: data.porch_enclosure" type="radio" name="data[Claim][porch_enclosure]" id="porch_enclosure1" value="Open" />
                         <label class="btn icon-" for="porch_enclosure1">Open</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.porch_enclosure" type="radio" name="data[Claim][porch_enclosure]" id="porch_enclosure2" value="Closed - Glassed" />
                         <label class="btn icon-" for="porch_enclosure2">Closed - Glassed</label>
                         <input data-bind="checked: data.porch_enclosure" type="radio" name="data[Claim][porch_enclosure]" id="porch_enclosure3" value="Closed - Glassed/Walled" />
@@ -681,7 +640,7 @@
             <div class="control-group">
 				<label class="control-label">Deck / Balcony:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.deck" type="radio" name="data[Claim][deck]" id="deck0" value="Yes" />
                         <label class="btn icon-" for="deck0">Yes</label>
                         <input data-bind="checked: data.deck" type="radio" name="data[Claim][deck]" id="deck1" value="No" />
@@ -693,7 +652,7 @@
             <div class="control-group">
 				<label class="control-label">Fenced Area:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.fenced" type="radio" name="data[Claim][fenced]" id="fenced0" value="Partially Fenced" />
                         <label class="btn icon-" for="fenced0">Partially Fenced</label>
                         <input data-bind="checked: data.fenced" type="radio" name="data[Claim][fenced]" id="fenced1" value="Surrounded Fully" />
@@ -707,7 +666,7 @@
             <div class="control-group">
 				<label class="control-label">Fencing Type:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.fencing_type" type="radio" name="data[Claim][fencing_type]" id="fencing_type0" value="Wood" />
                         <label class="btn icon-" for="fencing_type0">Wood</label>
                         <input data-bind="checked: data.fencing_type" type="radio" name="data[Claim][fencing_type]" id="fencing_type1" value="Chain-link" />
@@ -721,7 +680,7 @@
             <div class="control-group">
 				<label class="control-label">Fencing Height:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.fencing_height" type="radio" name="data[Claim][fencing_height]" id="fencing_height0" value="4'" />
                         <label class="btn icon-" for="fencing_height0">4'</label>
                         <input data-bind="checked: data.fencing_height" type="radio" name="data[Claim][fencing_height]" id="fencing_height1" value="5'" />
@@ -739,7 +698,7 @@
             <div class="control-group">
 				<label class="control-label">Pool Type:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.pool_type" type="radio" name="data[Claim][pool_type]" id="pool_type0" value="Above Ground" />
                         <label class="btn icon-" for="pool_type0">Above Ground</label>
                         <input data-bind="checked: data.pool_type" type="radio" name="data[Claim][pool_type]" id="pool_type1" value="In Ground" />
@@ -753,7 +712,7 @@
             <div class="control-group">
 				<label class="control-label">Pool Fenced and Warning:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.pool_fenced" type="radio" name="data[Claim][pool_fenced]" id="pool_fenced0" value="Yes" />
                         <label class="btn icon-" for="pool_fenced0">Yes</label>
                         <input data-bind="checked: data.pool_fenced" type="radio" name="data[Claim][pool_fenced]" id="pool_fenced1" value="No" />
@@ -767,7 +726,7 @@
             <div class="control-group">
 				<label class="control-label">Pool Slide Present:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.pool_slide" type="radio" name="data[Claim][pool_slide]" id="pool_slide0" value="Yes" />
                         <label class="btn icon-" for="pool_slide0">Yes</label>
                         <input data-bind="checked: data.pool_slide" type="radio" name="data[Claim][pool_slide]" id="pool_slide1" value="No" />
@@ -781,7 +740,7 @@
             <div class="control-group">
 				<label class="control-label">Pool Gates Closed:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.pool_gates" type="radio" name="data[Claim][pool_gates]" id="pool_gates0" value="Yes" />
                         <label class="btn icon-" for="pool_gates0">Yes</label>
                         <input data-bind="checked: data.pool_gates" type="radio" name="data[Claim][pool_gates]" id="pool_gates1" value="No" />
@@ -794,7 +753,7 @@
             <div class="control-group">
 				<label class="control-label">Pool Secured and Covered:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.pool_secured" type="radio" name="data[Claim][pool_secured]" id="pool_secured0" value="Yes" />
                         <label class="btn icon-" for="pool_secured0">Yes</label>
                         <input data-bind="checked: data.pool_secured" type="radio" name="data[Claim][pool_secured]" id="pool_secured1" value="No" />
@@ -808,7 +767,7 @@
             <div class="control-group">
 				<label class="control-label">Hot Tub:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.hot_tub" type="radio" name="data[Claim][hot_tub]" id="hot_tub0" value="Yes" />
                         <label class="btn icon-" for="hot_tub0">Yes</label>
                         <input data-bind="checked: data.hot_tub" type="radio" name="data[Claim][hot_tub]" id="hot_tub1" value="No" />
@@ -820,7 +779,7 @@
             <div class="control-group">
 				<label class="control-label">Security:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.security" type="radio" name="data[Claim][security]" id="security0" value="Yes" />
                         <label class="btn icon-" for="security0">Yes</label>
                         <input data-bind="checked: data.security" type="radio" name="data[Claim][security]" id="security1" value="No" />
@@ -832,7 +791,7 @@
             <div class="control-group">
 				<label class="control-label">Dogs:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.dogs" type="radio" name="data[Claim][dogs]" id="dogs0" value="Yes" />
                         <label class="btn icon-" for="dogs0">Yes</label>
                         <input data-bind="checked: data.dogs" type="radio" name="data[Claim][dogs]" id="dogs1" value="No" />
@@ -844,7 +803,7 @@
             <div class="control-group">
 				<label class="control-label">Beware of Dogs Sign Present:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.beware_of_dog" type="radio" name="data[Claim][beware_of_dog]" id="beware_of_dog0" value="Yes" />
                         <label class="btn icon-" for="beware_of_dog0">Yes</label>
                         <input data-bind="checked: data.beware_of_dog" type="radio" name="data[Claim][beware_of_dog]" id="beware_of_dog1" value="No" />
@@ -858,7 +817,7 @@
             <div class="control-group">
 				<label class="control-label">Other Animals:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.animals" type="radio" name="data[Claim][animals]" id="animals0" value="Yes" />
                         <label class="btn icon-" for="animals0">Yes</label>
                         <input data-bind="checked: data.animals" type="radio" name="data[Claim][animals]" id="animals1" value="No" />
@@ -870,7 +829,7 @@
             <div class="control-group">
 				<label class="control-label">Trampoline Present:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.trampoline" type="radio" name="data[Claim][trampoline]" id="trampoline0" value="Yes" />
                         <label class="btn icon-" for="trampoline0">Yes</label>
                         <input data-bind="checked: data.trampoline" type="radio" name="data[Claim][trampoline]" id="trampoline1" value="No" />
@@ -882,7 +841,7 @@
             <div class="control-group">
 				<label class="control-label">BMX Ramps:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.bmx" type="radio" name="data[Claim][bmx]" id="bmx0" value="Yes" />
                         <label class="btn icon-" for="bmx0">Yes</label>
                         <input data-bind="checked: data.bmx" type="radio" name="data[Claim][bmx]" id="bmx1" value="No" />
@@ -894,7 +853,7 @@
             <div class="control-group">
 				<label class="control-label">Skateboard Ramp:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.skateboard" type="radio" name="data[Claim][skateboard]" id="skateboard0" value="Yes" />
                         <label class="btn icon-" for="skateboard0">Yes</label>
                         <input data-bind="checked: data.skateboard" type="radio" name="data[Claim][skateboard]" id="skateboard1" value="No" />
@@ -906,7 +865,7 @@
             <div class="control-group">
 				<label class="control-label">Wheelchair Ramps:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.wheelchair" type="radio" name="data[Claim][wheelchair]" id="wheelchair0" value="Yes" />
                         <label class="btn icon-" for="wheelchair0">Yes</label>
                         <input data-bind="checked: data.wheelchair" type="radio" name="data[Claim][wheelchair]" id="wheelchair1" value="No" />
@@ -918,7 +877,7 @@
             <div class="control-group">
 				<label class="control-label">Swing Set:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.swing_set" type="radio" name="data[Claim][swing_set]" id="swing_set0" value="Yes" />
                         <label class="btn icon-" for="swing_set0">Yes</label>
                         <input data-bind="checked: data.swing_set" type="radio" name="data[Claim][swing_set]" id="swing_set1" value="No" />
@@ -930,7 +889,7 @@
             <div class="control-group">
 				<label class="control-label">Boats or RV’s on Site:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.boat" type="radio" name="data[Claim][boat]" id="boat0" value="Yes" />
                         <label class="btn icon-" for="boat0">Yes</label>
                         <input data-bind="checked: data.boat" type="radio" name="data[Claim][boat]" id="boat1" value="No" />
@@ -942,7 +901,7 @@
             <div class="control-group">
 				<label class="control-label">Business on Premises:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.business" type="radio" name="data[Claim][business]" id="business0" value="Yes" />
                         <label class="btn icon-" for="business0">Yes</label>
                         <input data-bind="checked: data.business" type="radio" name="data[Claim][business]" id="business1" value="No" />
@@ -954,7 +913,7 @@
             <div class="control-group">
 				<label class="control-label">Abandoned Vehicles, Debris, etc.:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.abandoned_vehicles" type="radio" name="data[Claim][abandoned_vehicles]" id="abandoned_vehicles0" value="Yes" />
                         <label class="btn icon-" for="abandoned_vehicles0">Yes</label>
                         <input data-bind="checked: data.abandoned_vehicles" type="radio" name="data[Claim][abandoned_vehicles]" id="abandoned_vehicles1" value="No" />
@@ -966,7 +925,7 @@
             <div class="control-group">
 				<label class="control-label">Exposure Left:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.exposure_left" type="radio" name="data[Claim][exposure_left]" id="exposure_left0" value="Open" />
                         <label class="btn icon-" for="exposure_left0">Open</label>
                         <input data-bind="checked: data.exposure_left" type="radio" name="data[Claim][exposure_left]" id="exposure_left1" value="Dwelling" />
@@ -982,7 +941,7 @@
             <div class="control-group">
 				<label class="control-label">Exposure Right:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.exposure_right" type="radio" name="data[Claim][exposure_right]" id="exposure_right0" value="Open" />
                         <label class="btn icon-" for="exposure_right0">Open</label>
                         <input data-bind="checked: data.exposure_right" type="radio" name="data[Claim][exposure_right]" id="exposure_right1" value="Dwelling" />
@@ -998,7 +957,7 @@
             <div class="control-group">
 				<label class="control-label">Exposure Rear:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.exposure_rear" type="radio" name="data[Claim][exposure_rear]" id="exposure_rear0" value="Open" />
                         <label class="btn icon-" for="exposure_rear0">Open</label>
                         <input data-bind="checked: data.exposure_rear" type="radio" name="data[Claim][exposure_rear]" id="exposure_rear1" value="Dwelling" />
@@ -1014,7 +973,7 @@
             <div class="control-group">
 				<label class="control-label">Close to Water:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.close_to_water" type="radio" name="data[Claim][close_to_water]" id="close_to_water0" value="Yes" />
                         <label class="btn icon-" for="close_to_water0">Yes</label>
                         <input data-bind="checked: data.close_to_water" type="radio" name="data[Claim][close_to_water]" id="close_to_water1" value="No" />
@@ -1026,15 +985,13 @@
             <div class="control-group">
 				<label class="control-label">Fire Department:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.fire_department" type="radio" name="data[Claim][fire_department]" id="fire_department0" value="1-5 Miles" />
                         <label class="btn icon-" for="fire_department0">1-5 Miles</label>
                         <input data-bind="checked: data.fire_department" type="radio" name="data[Claim][fire_department]" id="fire_department1" value="6-10 Miles" />
                         <label class="btn icon-" for="fire_department1">6-10 Miles</label>
                         <input data-bind="checked: data.fire_department" type="radio" name="data[Claim][fire_department]" id="fire_department2" value="11-15 Miles" />
                         <label class="btn icon-" for="fire_department2">11-15 Miles</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.fire_department" type="radio" name="data[Claim][fire_department]" id="fire_department3" value="16-20 Miles" />
                         <label class="btn icon-" for="fire_department3">16-20 Miles</label>
                         <input data-bind="checked: data.fire_department" type="radio" name="data[Claim][fire_department]" id="fire_department4" value="21-25 Miles" />
@@ -1048,7 +1005,7 @@
             <div class="control-group">
 				<label class="control-label">Hydrant Access:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.hydrant_access" type="radio" name="data[Claim][hydrant_access]" id="hydrant_access0" value="Open" />
                         <label class="btn icon-" for="hydrant_access0">Open</label>
                         <input data-bind="checked: data.hydrant_access" type="radio" name="data[Claim][hydrant_access]" id="hydrant_access1" value="In Yard" />
@@ -1064,23 +1021,19 @@
             <div class="control-group">
 				<label class="control-label">Hydrant Proximity:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.hydrant_proximity" type="radio" name="data[Claim][hydrant_proximity]" id="hydrant_proximity0" value="Less than 500'" />
                         <label class="btn icon-" for="hydrant_proximity0">Less than 500'</label>
                         <input data-bind="checked: data.hydrant_proximity" type="radio" name="data[Claim][hydrant_proximity]" id="hydrant_proximity1" value="501'-1000'" />
                         <label class="btn icon-" for="hydrant_proximity1">501'-1000'</label>
                         <input data-bind="checked: data.hydrant_proximity" type="radio" name="data[Claim][hydrant_proximity]" id="hydrant_proximity2" value="1001'-1500'" />
                         <label class="btn icon-" for="hydrant_proximity2">1001'-1500'</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.hydrant_proximity" type="radio" name="data[Claim][hydrant_proximity]" id="hydrant_proximity3" value="1501'-2000'" />
                         <label class="btn icon-" for="hydrant_proximity3">1501'-2000'</label>
                         <input data-bind="checked: data.hydrant_proximity" type="radio" name="data[Claim][hydrant_proximity]" id="hydrant_proximity4" value="1/2 Mile" />
                         <label class="btn icon-" for="hydrant_proximity4">1/2 Mile</label>
                         <input data-bind="checked: data.hydrant_proximity" type="radio" name="data[Claim][hydrant_proximity]" id="hydrant_proximity5" value="1-5 Miles" />
                         <label class="btn icon-" for="hydrant_proximity5">1-5 Miles</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.hydrant_proximity" type="radio" name="data[Claim][hydrant_proximity]" id="hydrant_proximity6" value="More than 5 Miles" />
                         <label class="btn icon-" for="hydrant_proximity6">More than 5 Miles</label>
                         
@@ -1090,7 +1043,7 @@
             <div class="control-group">
 				<label class="control-label">Subdivision Security:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.subdivision_security" type="radio" name="data[Claim][subdivision_security]" id="subdivision_security0" value="None" />
                         <label class="btn icon-" for="subdivision_security0">None</label>
                         <input data-bind="checked: data.subdivision_security" type="radio" name="data[Claim][subdivision_security]" id="subdivision_security1" value="Yes - Patrolled" />
@@ -1102,7 +1055,7 @@
             <div class="control-group">
 				<label class="control-label">Within City Limits:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.city_limits" type="radio" name="data[Claim][city_limits]" id="city_limits0" value="Yes" />
                         <label class="btn icon-" for="city_limits0">Yes</label>
                         <input data-bind="checked: data.city_limits" type="radio" name="data[Claim][city_limits]" id="city_limits1" value="No" />
@@ -1115,7 +1068,7 @@
             <div class="control-group">
 				<label class="control-label">Vandalism:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.vandalism" type="radio" name="data[Claim][vandalism]" id="vandalism0" value="Yes" />
                         <label class="btn icon-" for="vandalism0">Yes</label>
                         <input data-bind="checked: data.vandalism" type="radio" name="data[Claim][vandalism]" id="vandalism1" value="No" />
@@ -1127,7 +1080,7 @@
             <div class="control-group">
 				<label class="control-label">Brush within 200ft:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.brush" type="radio" name="data[Claim][brush]" id="brush0" value="Yes" />
                         <label class="btn icon-" for="brush0">Yes</label>
                         <input data-bind="checked: data.brush" type="radio" name="data[Claim][brush]" id="brush1" value="No" />
@@ -1139,7 +1092,7 @@
             <div class="control-group">
 				<label class="control-label">Trees Touching Dwelling:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.trees" type="radio" name="data[Claim][trees]" id="trees0" value="Yes" />
                         <label class="btn icon-" for="trees0">Yes</label>
                         <input data-bind="checked: data.trees" type="radio" name="data[Claim][trees]" id="trees1" value="No" />
@@ -1151,7 +1104,7 @@
             <div class="control-group">
 				<label class="control-label">Seasonal Use:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.seasonal" type="radio" name="data[Claim][seasonal]" id="seasonal0" value="Yes" />
                         <label class="btn icon-" for="seasonal0">Yes</label>
                         <input data-bind="checked: data.seasonal" type="radio" name="data[Claim][seasonal]" id="seasonal1" value="No" />
@@ -1163,7 +1116,7 @@
             <div class="control-group">
 				<label class="control-label">Forest Fire Hazard:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.forest_fire" type="radio" name="data[Claim][forest_fire]" id="forest_fire0" value="Yes" />
                         <label class="btn icon-" for="forest_fire0">Yes</label>
                         <input data-bind="checked: data.forest_fire" type="radio" name="data[Claim][forest_fire]" id="forest_fire1" value="No" />
@@ -1175,7 +1128,7 @@
             <div class="control-group">
 				<label class="control-label">Trees / Limbs Overhang Dwelling:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.limbs" type="radio" name="data[Claim][limbs]" id="limbs0" value="Yes" />
                         <label class="btn icon-" for="limbs0">Yes</label>
                         <input data-bind="checked: data.limbs" type="radio" name="data[Claim][limbs]" id="limbs1" value="No" />
@@ -1187,7 +1140,7 @@
             <div class="control-group">
 				<label class="control-label">Ocean / Tidal Exposure:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.ocean" type="radio" name="data[Claim][ocean]" id="ocean0" value="Yes" />
                         <label class="btn icon-" for="ocean0">Yes</label>
                         <input data-bind="checked: data.ocean" type="radio" name="data[Claim][ocean]" id="ocean1" value="No" />
@@ -1199,7 +1152,7 @@
             <div class="control-group">
 				<label class="control-label">Solid Fuel Stoves:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.stoves" type="radio" name="data[Claim][stoves]" id="stoves0" value="Yes" />
                         <label class="btn icon-" for="stoves0">Yes</label>
                         <input data-bind="checked: data.stoves" type="radio" name="data[Claim][stoves]" id="stoves1" value="No" />
@@ -1211,23 +1164,19 @@
             <div class="control-group">
 				<label class="control-label">Feet to Ocean:</label>
 				<div class="controls">
-                    <div class="btn-group">
+                    <div class="btn-groupx">
                         <input data-bind="checked: data.feet_to_ocean" type="radio" name="data[Claim][feet_to_ocean]" id="feet_to_ocean6" value="N/A" />
                         <label class="btn icon-" for="feet_to_ocean6">N/A</label>
                         <input data-bind="checked: data.feet_to_ocean" type="radio" name="data[Claim][feet_to_ocean]" id="feet_to_ocean0" value="0' - 100'" />
                         <label class="btn icon-" for="feet_to_ocean0">0' - 100'</label>
                         <input data-bind="checked: data.feet_to_ocean" type="radio" name="data[Claim][feet_to_ocean]" id="feet_to_ocean1" value="101'-500'" />
                         <label class="btn icon-" for="feet_to_ocean1">101'-500'</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.feet_to_ocean" type="radio" name="data[Claim][feet_to_ocean]" id="feet_to_ocean2" value="501'-1000'" />
                         <label class="btn icon-" for="feet_to_ocean2">501'-1000'</label>
                         <input data-bind="checked: data.feet_to_ocean" type="radio" name="data[Claim][feet_to_ocean]" id="feet_to_ocean3" value="1001'-2000'" />
                         <label class="btn icon-" for="feet_to_ocean3">1001'-2000'</label>
                         <input data-bind="checked: data.feet_to_ocean" type="radio" name="data[Claim][feet_to_ocean]" id="feet_to_ocean4" value="1/2 - 1 Mile" />
                         <label class="btn icon-" for="feet_to_ocean4">1/2 - 1 Mile</label>
-                    </div>
-                    <div class="btn-group">
                         <input data-bind="checked: data.feet_to_ocean" type="radio" name="data[Claim][feet_to_ocean]" id="feet_to_ocean5" value="More than 1 Mile" />
                         <label class="btn icon-" for="feet_to_ocean5">More than 1 Mile</label>
                         
@@ -1245,7 +1194,7 @@
 	</div>
 	<div class="row-fluid">
 		<div class="span12">
-            <div class="btn-group pull-right">
+            <div class="btn-groupx pull-right">
                 <input type="submit" value="Save" class="btn btn-primary">
             </div>
 		</div>
