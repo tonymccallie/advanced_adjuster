@@ -135,7 +135,13 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
             //var file_options = new FileUploadOptions();
             //TODO Get over here
             var deferreds = [];
+
+            var notify = function() {
+
+            }
             self.log('Starting uploads...');
+            $('#updload_spin').show();
+            $('#upload_btn').attr('disabled','disabled');
             $.each(self.toUpload(), function(index, item) {
                 //UPLOAD IMAGES?
                 tmpclaim = {
@@ -154,6 +160,8 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
 
                     deferred.done(function(data) {
                         self.log(item.data.claimFileID+' finished');
+                        $('#updload_spin').hide();
+                        $('#upload_btn').attr('disabled',null);
                     }).fail(function(data) {
                         self.log(item.data.claimFileID+' had an error. The error returned was: "'+data.statusText+'"');
                     });
@@ -168,6 +176,7 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
                 //ALL items complete
                 self.log('All Uploads Complete');
                 $.each(self.toUpload(), function(index, item) {
+                    item.progress(0);
                     if(item.upload_preliminary()) {
                        item.upload_preliminary(false);
                     }
