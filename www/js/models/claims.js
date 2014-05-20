@@ -141,7 +141,6 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
                 tmpclaim = {
                     json: ko.toJSON(item)
                 };
-
                 $.each(PICS,function(index,pic) {
                     if(item.data[pic] !== '') {
                         deferreds.push(self.image_upload(item.images[pic](),item,pic));
@@ -154,7 +153,7 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
                     var deferred = router.post('app/claims/upload',tmpclaim,item.progress);
 
                     deferred.done(function(data) {
-                        self.log(data.data.claimFileID+' finished');
+                        self.log(item.data.claimFileID+' finished');
                     }).fail(function(data) {
                         self.log(item.data.claimFileID+' had an error. The error returned was: "'+data.statusText+'"');
                     });

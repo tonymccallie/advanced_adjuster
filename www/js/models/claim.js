@@ -230,9 +230,11 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         self.saveSignatures = function() {
             if(self.data.signature == "") {
                 self.data.signature = self.signature.toString();
+                self.signature = null;
             }
             if(self.data.witness == "") {
                 self.data.witness = self.witness.toString();
+                self.witness = null;
             }
             self.data.complete_advanced = true;
             viewModel.claims.store();
