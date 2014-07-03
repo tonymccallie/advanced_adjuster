@@ -16,6 +16,13 @@
 	<form data-bind="submit: preliminaryProcess" id="preliminary_form" class="form-horizontal">
 	<div class="row-fluid">
 		<div class="span12">
+            <h4>FICO</h4>
+            <div class="control-group">
+				<label class="control-label">Catastrophe / FICO Number</label>
+				<div class="controls">
+					<input data-bind="value: data.fico" type="text" name="data[Claim][fico]" class="span12" placeholder="">
+				</div>
+			</div>
             <h4>Dates</h4>
             <div class="control-group">
 				<label class="control-label">Report date:</label>
