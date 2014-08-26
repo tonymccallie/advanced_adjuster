@@ -27,13 +27,13 @@ var PICS = ['pic_front_right','pic_front_left','pic_rear_left','pic_rear_right',
 require.config({
     urlArgs: "bust=" + (new Date()).getTime(),
 	baseUrl: 'js',
-	map: {
-		'*': {
-			'jquery':'util/jquery-2.0.2.min',
-			'knockout':'util/knockout-2.3.0',
-            'router':'util/router',
-            'sizeof':'util/sizeof.compressed'
-		}
+	paths: {
+		'jquery':'util/jquery-2.0.2.min',
+		'knockout':'util/knockout-2.3.0',
+		'router':'util/router',
+		'sizeof':'util/sizeof.compressed',
+		'picker':'util/picker',
+		'pickadate':'util/picker.date'
 	},
 	shim: {
         'util/signature': {
@@ -48,10 +48,15 @@ require.config({
 			deps: ['jquery'],
             exports: 'BoostrapJS'
 		},
+		'picker': ['jquery'],
+		'pickadate': {
+			deps:['jquery','picker'],
+			exports:'DatePicker'
+		}
 	}
 });
 
-require(['config','util/fastbutton','util/bootstrap','jquery','knockout','app'], function(app, FastButton, BootstrapJS, jquery, ko, AppViewModel) {
+require(['config','util/fastbutton','util/bootstrap','jquery','knockout','app','pickadate'], function(app, FastButton, BootstrapJS, jquery, ko, AppViewModel, DatePicker) {
     viewModel = new AppViewModel();
     ko.bindingHandlers.dateString = {
         update: function(element, valueAccessor, allBindingsAccessor, viewModel) {

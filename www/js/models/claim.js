@@ -70,7 +70,11 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         //PRELIMINARY REPORT
         self.preliminary = function() {
             self.open_claim();
-            router.loadPage('preliminary');
+            router.loadPage('preliminary',function() {
+				$('input[type=date]').pickadate({
+					format:'yyyy-mm-dd'
+				});
+			});
         }
         
         self.preliminaryProcess = function() {
