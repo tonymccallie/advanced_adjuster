@@ -258,7 +258,6 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         
         self.inspection = function() {
             self.open_claim();
-            console.log(viewModel.selectedClaim().data);
             router.loadPage('inspection');
         }
         

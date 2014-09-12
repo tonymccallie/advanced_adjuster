@@ -22,7 +22,9 @@ var DOMAIN = 'http://advadj.greyback.net/'
         DOMAIN = 'http://office.threeleaf.net/adjuster_bridge/';
         isMobile = false;
     }
-var PICS = ['pic_front_right','pic_front_left','pic_rear_left','pic_rear_right','pic_water_inside','pic_water_outside','pic_roof_front','pic_roof_rear','pic_optional1','pic_optional2','pic_optional3','pic_optional4','pic_optional5','pic_optional6','pic_optional7','pic_optional8','pic_optional9','pic_optional10','pic_optional11','pic_optional12'];
+var PICS = ['pic_front_right','pic_front_left','pic_rear_left','pic_rear_right','pic_water_inside','pic_water_outside','pic_roof_front','pic_roof_rear',
+			'pic_optional1','pic_optional2','pic_optional3','pic_optional4','pic_optional5','pic_optional6','pic_optional7','pic_optional8','pic_optional9','pic_optional10',
+			'pic_optional11','pic_optional12','pic_optional13','pic_optional14','pic_optional15','pic_optional16','pic_optional17','pic_optional18','pic_optional19','pic_optional20'];
 
 require.config({
     urlArgs: "bust=" + (new Date()).getTime(),

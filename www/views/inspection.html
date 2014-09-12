@@ -1184,12 +1184,78 @@
 				</div>
 			</div>
             <div class="control-group">
-				<label class="control-label">Dwelling Liability Observations:</label>
+				<label class="control-label">Dwelling Exterior Liability Observations:</label>
 				<div class="controls">
                     <textarea data-bind="value: data.observations" class="span12"></textarea>
 				</div>
 			</div>
-            
+            <h4>Internal Inspection</h4>
+            <div class="control-group">
+				<label class="control-label">Evidence of Knob &amp; Tube wiring?</label>
+				<div class="controls">
+                    <div class="btn-groupx">
+                        <input data-bind="checked: data.knob" type="radio" name="data[Claim][knob]" id="knob0" value="Yes" />
+                        <label class="btn icon-" for="knob0">Yes</label>
+                        <input data-bind="checked: data.vandalism" type="radio" name="data[Claim][knob]" id="knob1" value="No" />
+                        <label class="btn icon-" for="knob1">No</label>
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Is the Knob &amp; Tube wiring active?</label>
+				<div class="controls">
+                    <div class="btn-groupx">
+                        <input data-bind="checked: data.knob_active" type="radio" name="data[Claim][knob_active]" id="knob_active0" value="Yes" />
+                        <label class="btn icon-" for="knob_active0">Yes</label>
+                        <input data-bind="checked: data.knob_active" type="radio" name="data[Claim][knob_active]" id="knob_active1" value="No" />
+                        <label class="btn icon-" for="knob_active0">No</label>
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Copper or aluminum wiring?</label>
+				<div class="controls">
+                    <div class="btn-groupx">
+                        <input data-bind="checked: data.wiring" type="radio" name="data[Claim][wiring]" id="wiring0" value="Copper" />
+                        <label class="btn icon-" for="wiring0">Copper</label>
+                        <input data-bind="checked: data.wiring" type="radio" name="data[Claim][wiring]" id="wiring1" value="Aluminum" />
+                        <label class="btn icon-" for="wiring1">Aluminum</label>
+						<input data-bind="checked: data.wiring" type="radio" name="data[Claim][wiring]" id="wiring2" value="Unknown" />
+                        <label class="btn icon-" for="wiring2">Unknown</label>
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">100 Amp or larger electrical source?</label>
+				<div class="controls">
+                    <div class="btn-groupx">
+                        <input data-bind="checked: data.electrical_source" type="radio" name="data[Claim][electrical_source]" id="electrical_source0" value="Yes" />
+                        <label class="btn icon-" for="electrical_source0">Yes</label>
+                        <input data-bind="checked: data.electrical_source" type="radio" name="data[Claim][electrical_source]" id="electrical_source1" value="No" />
+                        <label class="btn icon-" for="electrical_source1">No</label>
+                    </div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Supplemental heat source</label>
+				<div class="controls">
+                    <div class="btn-groupx">
+                        <input data-bind="checked: data.supplemental_heat" type="radio" name="data[Claim][supplemental_heat]" id="supplemental_heat0" value="No" />
+                        <label class="btn icon-" for="supplemental_heat0">No</label>
+						<input data-bind="checked: data.supplemental_heat" type="radio" name="data[Claim][supplemental_heat]" id="supplemental_heat1" value="Solid" />
+                        <label class="btn icon-" for="supplemental_heat1">Solid</label>
+						<input data-bind="checked: data.supplemental_heat" type="radio" name="data[Claim][supplemental_heat]" id="supplemental_heat2" value="Other" />
+                        <label class="btn icon-" for="supplemental_heat2">Other</label>
+                    </div>
+					<input data-bind="value: data.supplemental_heat_other" type="text" name="data[Claim][supplemental_heat_other]" class="span12" placeholder="Other">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Dwelling Interior Liability Observations:</label>
+				<div class="controls">
+                    <textarea data-bind="value: data.interior_observations" class="span12"></textarea>
+				</div>
+			</div>
         </div>
 	</div>
 	<div class="row-fluid">
