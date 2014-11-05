@@ -47,13 +47,13 @@
     <gap:splash gap:platform="ios" height="1024" src="res/screen/ios/screen-ipad-portrait.png" width="768" />
     <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="ios" height="1136" src="res/screen/ios/screen-iphone5.png" width="640" />
-	<gap:plugin name="org.apache.cordova.camera" version="0.2.9" />
-    <gap:plugin name="org.apache.cordova.media" version="0.2.8" />
-    <gap:plugin name="org.apache.cordova.media-capture" version="0.2.8" />
-    <gap:plugin name="org.apache.cordova.file" version="1.0.1" />
-    <gap:plugin name="org.apache.cordova.file-transfer" version="0.4.2" />
-	<gap:plugin name="org.apache.cordova.network-information" version="0.2.7" />
-	<gap:plugin name="org.apache.cordova.dialogs" version="0.2.6" />
+	<gap:plugin name="org.apache.cordova.camera" />
+    <gap:plugin name="org.apache.cordova.media" />
+    <gap:plugin name="org.apache.cordova.media-capture" />
+    <gap:plugin name="org.apache.cordova.file"  />
+    <gap:plugin name="org.apache.cordova.file-transfer" />
+	<gap:plugin name="org.apache.cordova.network-information" />
+	<gap:plugin name="org.apache.cordova.dialogs"  />
     <gap:platform name="ios" />
     <gap:platform name="android" />
     <access origin="*" />
