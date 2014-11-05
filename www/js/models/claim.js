@@ -186,7 +186,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
 			var d = new Date();
             var n = d.getTime();
             self.newFileName = n + ".jpg";
-			fileEntry.moveTo(dataDir, self.newFileName, self.gotNewFileEntry, viewModel.log);
+			self.fileEntry.moveTo(dataDir, self.newFileName, self.gotNewFileEntry, viewModel.log);
 		}
 		
 		self.gotNewFileEntry = function(newFileEntry) {
