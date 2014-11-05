@@ -161,7 +161,9 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
 
             if(isMobile) {
                 try {
+					viewModel.log(fileEntry);
                     var gotFileEntry = function(fileEntry) {
+						viewModel.log(fileSystem);
                         var gotFileSystem = function(fileSystem) {
                             var claimDir = self.data.claimFileID+'_images';
                             var gotDirectory = function(dataDir) {
