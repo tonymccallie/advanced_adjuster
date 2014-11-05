@@ -60,8 +60,6 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
                 self.images[item](data.Claim[item]);
             }
         });
-		
-		viewModel.log(self.images);
 
         $.each(data.Claim, function(index,item) {
             self.data[index] = item;
@@ -158,7 +156,6 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         }
         
         self.processPicture = function(imageURI) {
-			viewModel.log(['processPicture',imageURI]);
             //Move picture to local filesystem
 			gImageURI = imageURI;
             if(isMobile) {
@@ -177,14 +174,12 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         }
 		
 		self.gotFileEntry = function(fileEntry) {
-			viewModel.log(['gotFileEntry',fileEntry]);
 			self.fileEntry = fileEntry;
 			self.claimDir = self.data.claimFileID+'_images';
 			gFileSystem.root.getDirectory(self.claimDir, {create:true}, self.gotDirectory, viewModel.log);
 		}
 		
 		self.gotDirectory = function(dataDir) {
-			viewModel.log(['gotDirectory',dataDir]);
 			var d = new Date();
             var n = d.getTime();
             self.newFileName = n + ".jpg";
@@ -192,7 +187,6 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
 		}
 		
 		self.gotNewFileEntry = function(newFileEntry) {
-			viewModel.log(['gotNewFileEntry',newFileEntry,gFileSystem.root.fullPath]);
 			self.open_claim();
 			self.data[self.selectedPicture] = newFileEntry.nativeURL;
 			self.images[self.selectedPicture](newFileEntry.nativeURL);
