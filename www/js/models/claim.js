@@ -194,7 +194,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
 		self.gotNewFileEntry = function(newFileEntry) {
 			viewModel.log(['gotNewFileEntry',newFileEntry,gFileSystem.root.fullPath]);
 			self.open_claim();
-			self.data[self.selectedPicture] = '/'+self.claimDir+'/'+self.newFileName;
+			self.data[self.selectedPicture] = newFileEntry.nativeURL;
 			self.images[self.selectedPicture](newFileEntry.nativeURL);
 		}
 			
