@@ -60,6 +60,8 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
                 self.images[item](data.Claim[item]);
             }
         });
+		
+		viewModel.log(self.images);
 
         $.each(data.Claim, function(index,item) {
             self.data[index] = item;
