@@ -57,7 +57,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             if((data.Claim[item].substr(0,1) !== '/')&&(data.Claim[item].substr(0,4) !== 'file')) {
                 data.Claim[item] = '';
             } else {
-                self.images[item](fileSystemPath+data.Claim[item]);
+                self.images[item](data.Claim[item]);
             }
         });
 
