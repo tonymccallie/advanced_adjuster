@@ -153,6 +153,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         }
         
         self.processPicture = function(imageURI) {
+			viewModel.log(imageURI);
             //Move picture to local filesystem
             var claimDir = self.data.claimFileID+'_images';
             var d = new Date();
