@@ -1,5 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="net.greyback.advadj" version="1.4.7" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="net.greyback.advadj" version="1.4.8" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+	<gap:config-file platform="ios" parent="CFBundleShortVersionString"> 
+		<string>1481</string> 
+	</gap:config-file>
     <name>AdvAdj</name>
     <description>
         Advanced Adjusting Report Application
@@ -8,7 +11,7 @@
         GreyBack Labs, LLP.
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
-    <preference name="phonegap-version" value="2.9.0" />
+    <preference name="phonegap-version" value="3.6.3" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="true" />
@@ -26,9 +29,6 @@
     <preference name="android-installLocation" value="auto" />
     <preference name="android-minSdkVersion" value="12" />
     <preference name="android-targetSdkVersion" value="14" />
-	<gap:config-file platform="ios" parent="CFBundleShortVersionString"> 
-		<string>148</string> 
-	</gap:config-file>
     <icon src="icon.png" />
     <icon gap:density="ldpi" gap:platform="android" src="res/icon/android/icon-36-ldpi.png" />
     <icon gap:density="mdpi" gap:platform="android" src="res/icon/android/icon-48-mdpi.png" />
@@ -47,11 +47,13 @@
     <gap:splash gap:platform="ios" height="1024" src="res/screen/ios/screen-ipad-portrait.png" width="768" />
     <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="ios" height="1136" src="res/screen/ios/screen-iphone5.png" width="640" />
-    <feature name="http://api.phonegap.com/1.0/camera"/>
-    <feature name="http://api.phonegap.com/1.0/media"/>
-    <feature name="http://api.phonegap.com/1.0/file"/>
-	<feature name="http://api.phonegap.com/1.0/network"/>
-	<feature name="http://api.phonegap.com/1.0/notification"/>
+	<gap:plugin name="org.apache.cordova.camera" version="0.2.9" />
+    <gap:plugin name="org.apache.cordova.media" version="0.2.8" />
+    <gap:plugin name="org.apache.cordova.media-capture" version="0.2.8" />
+    <gap:plugin name="org.apache.cordova.file" version="1.0.1" />
+    <gap:plugin name="org.apache.cordova.file-transfer" version="0.4.2" />
+	<gap:plugin name="org.apache.cordova.network-information" version="0.2.7" />
+	<gap:plugin name="org.apache.cordova.dialogs" version="0.2.6" />
     <gap:platform name="ios" />
     <gap:platform name="android" />
     <access origin="*" />
