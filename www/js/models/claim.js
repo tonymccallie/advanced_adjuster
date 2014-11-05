@@ -9,6 +9,7 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             targetWidth:600,
             saveToPhotoAlbum: true
         };
+		self.fileEntry;
         self.use_library = ko.observable(false);
         self.closeClaim = null;
         
@@ -153,34 +154,11 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         }
         
         self.processPicture = function(imageURI) {
-			viewModel.log(imageURI);
             //Move picture to local filesystem
-            var claimDir = self.data.claimFileID+'_images';
-            var d = new Date();
-            var n = d.getTime();
-            var newFileName = n + ".jpg";
-
+			gImageURI = imageURI;
             if(isMobile) {
                 try {
-					viewModel.log(fileEntry);
-                    var gotFileEntry = function(fileEntry) {
-						viewModel.log(fileSystem);
-                        var gotFileSystem = function(fileSystem) {
-                            var claimDir = self.data.claimFileID+'_images';
-                            var gotDirectory = function(dataDir) {
-                                var gotNewFileEntry = function(newFileEntry) {
-                                    imageURI = newFileEntry.fullPath;
-                                    self.open_claim();
-                                    self.data[self.selectedPicture] = '/'+claimDir+'/'+newFileName;
-                                    self.images[self.selectedPicture](imageURI);
-                                }
-                                fileEntry.moveTo(dataDir, newFileName, gotNewFileEntry, viewModel.log);
-                            }
-                            fileSystem.root.getDirectory(claimDir, {create:true}, gotDirectory, viewModel.log);
-                        }
-                        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFileSystem, viewModel.log);
-                    }
-                    window.resolveLocalFileSystemURI(imageURI, gotFileEntry, viewModel.log);
+					window.resolveLocalFileSystemURI(imageURI, self.gotFileEntry, viewModel.log);
                 } catch(err) {
                      viewModel.log('catch: '+err);
                 }
@@ -192,6 +170,27 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             //router.loadPage('pictures');
             //$('#photoinfo').html(data);
         }
+		
+		self.gotFileEntry = function(fileEntry) {
+			self.fileEntry = fileEntry;
+			var claimDir = self.data.claimFileID+'_images';
+			gFileSystem.root.getDirectory(claimDir, {create:true}, self.gotDirectory, viewModel.log);
+		}
+		
+		self.gotDirectory = function(dataDir) {
+			var d = new Date();
+            var n = d.getTime();
+            var newFileName = n + ".jpg";
+			fileEntry.moveTo(dataDir, newFileName, self.gotNewFileEntry, viewModel.log);
+		}
+		
+		self.gotNewFileEntry = function(newFileEntry) {
+			imageURI = newFileEntry.fullPath;
+			self.open_claim();
+			self.data[self.selectedPicture] = '/'+claimDir+'/'+newFileName;
+			self.images[self.selectedPicture](imageURI);
+		}
+			
         
         self.savePicture = function() {
             self.data.complete_pictures = true;

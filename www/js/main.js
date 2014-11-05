@@ -7,9 +7,11 @@
 var viewModel;
 var isMobile = true;
 var Camera;
+var gFileSystem;
 var fileSystemPath;
 var LocalFileSystem;
 var History = [];
+var gImageURI;
 var DOMAIN = 'http://advadj.greyback.net/';
     //DEVELOPMENT
     var devtest = /localhost/.test(window.location.hostname);

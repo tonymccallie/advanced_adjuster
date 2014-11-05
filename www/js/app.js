@@ -19,6 +19,7 @@ define(['knockout','router','models/user','models/claims'], function(ko, router,
         self.initialize = function() {
 			if(isMobile) {
 				window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+					gFileSystem = fileSystem;
 					fileSystemPath = fileSystem.root.fullPath;
 				}, viewModel.log);
 			}
