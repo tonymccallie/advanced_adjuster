@@ -6,10 +6,15 @@
     </div>
 </div>
 <div class="row-fluid">
+	<div class="span12">
+		<input data-bind="value: claims.filter" type="text" placeholder="Search" class="span12"/>
+	</div>
+</div>
+<div class="row-fluid">
     <div class="span12">
         <ul class="nav nav-tabs nav-stacked">
 			<li class="nav-header">Currently Open</li>
-			<li data-bind="with: selectedClaim"><a href="#" data-bind="text: data.claimFileID+' '+data.last_name, fastClick: select">1217 Austin</a></li>
+			<li data-bind="with: selectedClaim"><a href="#" data-bind="text: data.claimFileID+' '+displayTitle(), fastClick: select">1217 Austin</a></li>
 		</ul>
     </div>
 </div>
@@ -18,16 +23,16 @@
 		<ul class="nav nav-tabs nav-stacked">
 			<li class="nav-header">New Claims</li>
             <li><a href="#" data-bind="fastClick: claims.update"><i>Check for new Claims</i></a></li>
-            <!-- ko foreach : claims.new_claims-->
-			<li><a href="#" data-bind="text: data.claimFileID+' '+data.last_name, fastClick: select">1217 Austin</a></li>
+            <!-- ko foreach : claims.filteredNewClaims()-->
+			<li><a href="#" data-bind="text: data.claimFileID+' '+displayTitle(), fastClick: select">1217 Austin</a></li>
             <!-- /ko -->
 		</ul>
     </div>
     <div class="span6">
 		<ul class="nav nav-tabs nav-stacked">
 			<li class="nav-header">In Progress</li>
-			<!-- ko foreach : claims.open_claims-->
-			<li><a href="#" data-bind="text: data.claimFileID+' '+data.last_name, fastClick: select">1217 Austin</a></li>
+			<!-- ko foreach : claims.filteredOpenClaims-->
+			<li><a href="#" data-bind="text: data.claimFileID+' '+displayTitle(), fastClick: select">1217 Austin</a></li>
             <!-- /ko -->
 		</ul>
 	</div>

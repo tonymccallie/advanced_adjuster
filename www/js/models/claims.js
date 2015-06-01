@@ -10,6 +10,42 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
             total: ko.observable(0),
             title: ko.observable('test')
         };
+		
+		self.filter = ko.observable();
+		
+		self.filteredNewClaims = ko.computed(function() {
+			if(!self.filter()) {
+				return self.new_claims();
+			} else {
+				return ko.utils.arrayFilter(self.new_claims(), function(claim) {
+					if(
+						(claim.data.claimFileID.toLowerCase().indexOf(self.filter().toLowerCase()) > -1)||
+						(claim.data.last_name.toLowerCase().indexOf(self.filter().toLowerCase()) > -1)||
+						(claim.data.company.toLowerCase().indexOf(self.filter().toLowerCase()) > -1)) {
+						return true;
+					} else {
+						return false;
+					}
+				});
+			}
+		});
+		
+		self.filteredOpenClaims = ko.computed(function() {
+			if(!self.filter()) {
+				return self.open_claims();
+			} else {
+				return ko.utils.arrayFilter(self.open_claims(), function(claim) {
+					if(
+						(claim.data.claimFileID.toLowerCase().indexOf(self.filter().toLowerCase()) > -1)||
+						(claim.data.last_name.toLowerCase().indexOf(self.filter().toLowerCase()) > -1)||
+						(claim.data.company.toLowerCase().indexOf(self.filter().toLowerCase()) > -1)) {
+						return true;
+					} else {
+						return false;
+					}
+				});
+			}
+		});
         
         self.overall_progress = ko.observable(0);
         self.toUpload = ko.computed(function() {

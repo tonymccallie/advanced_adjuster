@@ -64,6 +64,18 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
         $.each(data.Claim, function(index,item) {
             self.data[index] = item;
         });
+		
+		self.displayTitle = ko.computed(function() {
+			if(self.data.last_name === "") {
+				if(typeof self.data.company == 'undefined') {
+					return 'Company';
+				} else {
+					return self.data.company;
+				}
+			} else {
+				return self.data.last_name;
+			}
+		});
         
         self.select = function(claim) {
             viewModel.selectedClaim(claim);
