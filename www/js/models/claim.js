@@ -87,7 +87,9 @@ define(['knockout','router','jquery','util/signature'], function(ko, router, jqu
             self.open_claim();
             router.loadPage('preliminary',function() {
 				$('input[type=date]').pickadate({
-					format:'yyyy-mm-dd'
+					format:'yyyy-mm-dd',
+					selectMonths: true,
+  					selectYears: true
 				});
 			});
         }
