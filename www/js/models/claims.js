@@ -46,6 +46,16 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
 				});
 			}
 		});
+		
+		self.marked = ko.computed(function() {
+			var markedClaims = [];
+			ko.utils.arrayFilter(self.open_claims(), function(claim) {
+				if(claim.marked() == true) {
+					markedClaims.push(claim);
+				}
+			});
+			return markedClaims;
+		});
         
         self.overall_progress = ko.observable(0);
         self.toUpload = ko.computed(function() {

@@ -1,0 +1,9 @@
+Photos:
+	got to 24
+Inspection:
+	Evidence of Knob & Tube wiring? yes/no
+	Active or not? yes/no
+	Copper of Aluminum wiring? copper/aluminum/unknown
+	100amp or larger electrical service? yes/no
+	Supplemental heat source: no/ solid/ other (variable)
+	Interior AND exterior dwelling liability observations

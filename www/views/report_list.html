@@ -1,0 +1,25 @@
+<form>
+<div class="row-fluid">
+	<div class="span6">
+		<ul class="nav nav-tabs nav-stacked delete_claims">
+			<li class="nav-header">Select Claims to Delete</li>
+			<!-- ko foreach : claims.open_claims-->
+			<li>
+				<input data-bind="checked: marked, attr: { id: 'deleteclaims'+$index() }" type="checkbox" value="1" />
+                <label data-bind="attr: { for: 'deleteclaims'+$index() },text: data.claimFileID+' '+displayTitle()" class="btn btn-block icon-">Preliminary</label>
+			</li>
+			<!-- /ko -->
+		</ul>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span12">
+		<span data-bind="text:claims.marked().length"></span> claims marked for deletion.
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span12">
+		<a href="#" data-bind="fastClick: deleteReports" class="btn btn-block">Delete Reports</a>
+	</div>
+</div>
+</form>

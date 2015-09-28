@@ -1,101 +1,116 @@
 <div class="well" data-bind="visible: typeof(selectedClaim()) == 'undefined'">
-    <div class="row-fluid">
-        <div class="span12">
-            <p>Please choose a claim by clicking on the Claims button above.</p>
-        </div>
-    </div>
+	<div class="row-fluid">
+		<div class="span12">
+			<p>Please choose a claim by clicking on the Claims button above.</p>
+		</div>
+	</div>
 </div>
 <div class="report_functions" data-bind="with: selectedClaim">
-    <div class="well">
-        <div class="row-fluid">
-           <div class="span6">
-                <div class="row-fluid">
-                    <div class="span12">
+	<div class="well">
+		<div class="row-fluid">
+			<div class="span6">
+				<div class="row-fluid">
+					<div class="span12">
 						<!-- ko if: data.last_name -->
-                        <h3 data-bind="text: data.last_name+', '+data.first_name">Name</h3>
-                        <!-- /ko -->
-                        <!-- ko ifnot: data.last_name -->
-                        <h3 data-bind="text: displayTitle()">Name</h3>
-                        <!-- /ko -->
+						<h3 data-bind="text: data.last_name+', '+data.first_name">Name</h3>
+						<!-- /ko -->
+						<!-- ko ifnot: data.last_name -->
+						<h3 data-bind="text: displayTitle()">Name</h3>
+						<!-- /ko -->
 						<h4 data-bind="text: 'Claim: '+data.claimFileID">NUMBER</h4>
 						<h4 data-bind="text: 'Policy: '+data.policy_number">NUMBER</h4>
-                        <h4 data-bind="html: data.address1+'<br />'+data.city+', '+data.state+' '+data.zip">1234 Street Ave.<br />Amarillo, TX 79102</h4>
-                        <h4 data-bind="text: data.phone">Phone Number</a>
-                    </div>
-                </div>
-            </div>
-            <div class="span6">
-                <div class="row-fluid">
-                    <div class="span12">
-                        <a href="#" data-bind="fastClick: preliminary" class="btn btn-block btn-large">
-                            <!-- ko if: data.complete_preliminary -->
-                            <i class="icon-check"></i>
-                            <!-- /ko -->
-                            <!-- ko ifnot: data.complete_preliminary -->
-                            <i class="icon-check-empty"></i>
-                            <!-- /ko -->
-                            Preliminary Report
-                        </a>
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span12">
-                        <a href="#" data-bind="fastClick: pictures" class="btn btn-block btn-large">
-                            <!-- ko if: data.complete_pictures -->
-                            <i class="icon-check"></i>
-                            <!-- /ko -->
-                            <!-- ko ifnot: data.complete_pictures -->
-                            <i class="icon-check-empty"></i>
-                            <!-- /ko -->
-                            Pictures
-                        </a>
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span12">
-                        <a href="#" data-bind="fastClick: advanced" class="btn btn-block btn-large">
-                            <!-- ko if: data.complete_advanced -->
-                            <i class="icon-check"></i>
-                            <!-- /ko -->
-                            <!-- ko ifnot: data.complete_advanced -->
-                            <i class="icon-check-empty"></i>
-                            <!-- /ko -->
-                            Advanced Payment Request
-                        </a>
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span12">
-                        <a href="#" data-bind="fastClick: engineer" class="btn btn-block btn-large">
-                            <!-- ko if: data.complete_engineer -->
-                            <i class="icon-check"></i>
-                            <!-- /ko -->
-                            <!-- ko ifnot: data.complete_engineer -->
-                            <i class="icon-check-empty"></i>
-                            <!-- /ko -->
-                            Engineer Request
-                        </a>
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span12">
-                        <a href="#" data-bind="fastClick: inspection" class="btn btn-block btn-large">
-                            <!-- ko if: data.complete_inspection -->
-                            <i class="icon-check"></i>
-                            <!-- /ko -->
-                            <!-- ko ifnot: data.complete_inspection -->
-                            <i class="icon-check-empty"></i>
-                            <!-- /ko -->
-                            Inspection For Residential
-                        </a>
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span4 offset8">
-                        <a href="#" data-bind="fastClick: close" class="btn btn-block">Delete</a>
-                    </div>
-                </div>
-            </div>
+						<h4 data-bind="html: data.address1+'<br />'+data.city+', '+data.state+' '+data.zip">1234 Street Ave.
+							<br />Amarillo, TX 79102</h4>
+						<h4 data-bind="text: data.phone">Phone Number</a>
+					</div>
+				</div>
+			</div>
+			<div class="span6">
+				<div class="buttons">
+					<div class="row-fluid">
+						<div class="span12">
+							<a href="#" data-bind="fastClick: preliminary" class="btn btn-block btn-large">
+								<!-- ko if: data.complete_preliminary -->
+								<i class="icon-check"></i>
+								<!-- /ko -->
+								<!-- ko ifnot: data.complete_preliminary -->
+								<i class="icon-check-empty"></i>
+								<!-- /ko -->Flood Prelim</a>
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="span12">
+							<a href="#" data-bind="fastClick: pictures" class="btn btn-block btn-large">
+								<!-- ko if: data.complete_pictures -->
+								<i class="icon-check"></i>
+								<!-- /ko -->
+								<!-- ko ifnot: data.complete_pictures -->
+								<i class="icon-check-empty"></i>
+								<!-- /ko -->Pictures</a>
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="span12">
+							<a href="#" data-bind="fastClick: advanced" class="btn btn-block btn-large">
+								<!-- ko if: data.complete_advanced -->
+								<i class="icon-check"></i>
+								<!-- /ko -->
+								<!-- ko ifnot: data.complete_advanced -->
+								<i class="icon-check-empty"></i>
+								<!-- /ko -->Flood Adv Payment</a>
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="span12">
+							<a href="#" data-bind="fastClick: engineer" class="btn btn-block btn-large">
+								<!-- ko if: data.complete_engineer -->
+								<i class="icon-check"></i>
+								<!-- /ko -->
+								<!-- ko ifnot: data.complete_engineer -->
+								<i class="icon-check-empty"></i>
+								<!-- /ko -->Flood Eng Request</a>
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="span12">
+							<a href="#" data-bind="fastClick: preliminary" class="btn btn-block btn-large">
+								<!-- ko if: data.complete_preliminary -->
+								<i class="icon-check"></i>
+								<!-- /ko -->
+								<!-- ko ifnot: data.complete_preliminary -->
+								<i class="icon-check-empty"></i>
+								<!-- /ko -->HO Prelim</a>
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="span12">
+							<a href="#" data-bind="fastClick: inspection" class="btn btn-block btn-large">
+								<!-- ko if: data.complete_inspection -->
+								<i class="icon-check"></i>
+								<!-- /ko -->
+								<!-- ko ifnot: data.complete_inspection -->
+								<i class="icon-check-empty"></i>
+								<!-- /ko -->HO UW Inspection</a>
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="span12">
+							<a href="#" data-bind="fastClick: preliminary" class="btn btn-block btn-large">
+								<!-- ko if: data.complete_preliminary -->
+								<i class="icon-check"></i>
+								<!-- /ko -->
+								<!-- ko ifnot: data.complete_preliminary -->
+								<i class="icon-check-empty"></i>
+								<!-- /ko -->HO Reserve Report</a>
+						</div>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="span4 offset8">
+						<a href="#" data-bind="fastClick: checkClose" class="btn btn-block">Delete</a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
