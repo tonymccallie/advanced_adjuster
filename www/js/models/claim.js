@@ -120,13 +120,13 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 			self.closeClaim = claim;
 
 			try {
-				var dir = viewModel.selectedClaim().data.claimFileID + '_images';
+				var dir = claim.data.claimFileID + '_images';
 				window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) {
 					fileSystem.root.getDirectory(dir, {
 						create: true
 					}, function (dirEntry) {
 						dirEntry.removeRecursively(function () {
-							router.request('app/claims/close', self.closeProcess, {
+							router.request('app/claims/close', process, {
 								data: {
 									Claim: {
 										id: claim.data.id,
@@ -135,7 +135,7 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 								}
 							});
 						}, function () {
-							viewModel.log('removeRecusrsively failed');
+							viewModel.log('removeRecursively failed');
 						});
 					}, function () {
 						viewModel.log('getDirectory failed');
