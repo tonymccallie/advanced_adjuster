@@ -98,6 +98,7 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
         }
         
         self.updateProcess = function(data) {
+			console.log(data);
             var claim = null;
             $.each(data, function(index, item) {
                 if(self.claim_ids.indexOf(item.Claim.id) < 0) {

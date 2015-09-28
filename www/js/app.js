@@ -74,7 +74,6 @@ define(['knockout', 'router', 'models/user', 'models/claims'], function (ko, rou
 			navigator.notification.confirm('Are you sure you want to delete these claims? This can\'t be undone', function (response) {
 				if (response === 1) {
 					ko.utils.arrayFilter(self.claims.marked(), function (claim) {
-						console.log(claim);
 						claim.close(claim, function (data) {
 							viewModel.claims.open_claims.remove(claim);
 						})
