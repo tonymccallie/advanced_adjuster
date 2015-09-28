@@ -16,7 +16,7 @@ define(['jquery','knockout'], function(jquery,ko) {
             }
             
             var options = {
-                url: DOMAIN+url+'.json',
+                url: DOMAIN+url+'.json?'+Date.now(),
                 crossDomain: true,
                 success: function (data) {
                     if(data.status == 'SUCCESS') {

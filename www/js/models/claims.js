@@ -94,7 +94,7 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
         }
         
         self.update = function() {
-            router.request('app/claims/list?'+Date.now(),self.updateProcess,{data:{User:{id:viewModel.user().user_id()}}});
+            router.request('app/claims/list',self.updateProcess,{data:{User:{id:viewModel.user().user_id()}}});
         }
         
         self.updateProcess = function(data) {
