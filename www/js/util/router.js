@@ -14,14 +14,11 @@ define(['jquery','knockout'], function(jquery,ko) {
             } else {
                 $('#refresh i').addClass('icon-spin');
             }
-            
-			console.log(DOMAIN+url+'.json');
 			
             var options = {
                 url: DOMAIN+url+'.json',
                 crossDomain: true,
                 success: function (data) {
-					console.log(data);
                     if(data.status == 'SUCCESS') {
                         callback(data.data);
                     } else {

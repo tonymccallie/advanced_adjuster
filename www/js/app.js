@@ -1,5 +1,6 @@
 define(['knockout', 'router', 'models/user', 'models/claims'], function (ko, router, User, Claims) {
 	return function AppViewModel() {
+		appLog('AppViewModel');
 		var self = this;
 		self.memory = ko.observable(0);
 		self.user = ko.observable(new User());
@@ -9,6 +10,7 @@ define(['knockout', 'router', 'models/user', 'models/claims'], function (ko, rou
 		self.logs = ko.observableArray([]);
 
 		self.loadPage = function (url) {
+			appLog('loadPage');
 			router.loadPage(url);
 		}
 
@@ -17,6 +19,7 @@ define(['knockout', 'router', 'models/user', 'models/claims'], function (ko, rou
 		}
 
 		self.initialize = function () {
+			appLog('initialize');
 			if (isMobile) {
 				window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) {
 					gFileSystem = fileSystem;
@@ -71,15 +74,18 @@ define(['knockout', 'router', 'models/user', 'models/claims'], function (ko, rou
 		}
 
 		self.deleteReports = function () {
+			appLog('deleteReports');
 			navigator.notification.confirm('Are you sure you want to delete these claims? This can\'t be undone', function (response) {
 				if (response === 1) {
 					ko.utils.arrayFilter(self.claims.marked(), function (claim) {
 						claim.close(claim, function (data) {
-							viewModel.claims.open_claims.remove(claim);
+							appLog('app.close process');
+							claim.removeClaim(claim).then(function() {
+								viewModel.selectedClaim = ko.observable();
+								viewModel.claims.store();
+							})
 						})
 					});
-					viewModel.selectedClaim = ko.observable();
-					viewModel.claims.store();
 				}
 			});
 		}

@@ -22,8 +22,9 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 		self.upload_advanced = ko.observable(false);
 		self.upload_engineer = ko.observable(false);
 		self.upload_inspection = ko.observable(false);
+		self.upload_reserve = ko.observable(false);
 		self.upload = ko.computed(function () {
-			if ((self.upload_preliminary()) || (self.upload_advanced()) || (self.upload_engineer()) || (self.upload_inspection())) {
+			if ((self.upload_preliminary()) || (self.upload_advanced()) || (self.upload_engineer()) || (self.upload_inspection()) || (self.upload_reserve())) {
 				return true;
 			} else {
 				return false;
@@ -117,44 +118,79 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 		}
 
 		self.close = function (claim, process) {
+			appLog('claim.close');
 			self.closeClaim = claim;
 
 			try {
 				var dir = claim.data.claimFileID + '_images';
 				window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) {
-					fileSystem.root.getDirectory(dir, {
-						create: true
-					}, function (dirEntry) {
-						dirEntry.removeRecursively(function () {
-							router.request('app/claims/close', process, {
-								data: {
-									Claim: {
-										id: claim.data.id,
-										status: 'CLOSED'
-									}
+					appLog('requestFileSystem');
+					if(typeof fileSystem.root.getDirectory == 'undefined') {
+						router.request('app/claims/close', process, {
+							data: {
+								Claim: {
+									id: claim.data.id,
+									status: 'CLOSED'
 								}
+							}
+						});
+					} else {
+						fileSystem.root.getDirectory(dir, {
+							create: true
+						}, function (dirEntry) {
+							appLog('getDirectory')
+							dirEntry.removeRecursively(function () {
+								appLog('removeRecursively');
+								router.request('app/claims/close', process, {
+									data: {
+										Claim: {
+											id: claim.data.id,
+											status: 'CLOSED'
+										}
+									}
+								});
+							}, function () {
+								viewModel.log('removeRecursively failed');
 							});
 						}, function () {
-							viewModel.log('removeRecursively failed');
+							viewModel.log('getDirectory failed');
 						});
-					}, function () {
-						viewModel.log('getDirectory failed');
-					});
+					}
 				}, function () {
 					viewModel.log('requestFileSystem failed');
 				});
 			} catch (e) {
+				appLog('catch delete: ' + e)
 				viewModel.log('catch delete: ' + e);
 			}
 		}
 
 		self.closeProcess = function (data) {
-			viewModel.log('closed');
-			viewModel.selectedClaim = ko.observable();
-			viewModel.claims.open_claims.remove(self.closeClaim);
-			viewModel.claims.store();
-
-			router.loadPage('reports');
+			appLog('closeProcess');
+			self.removeClaim(self.closeClaim).then(function() {
+				appLog(viewModel.claims.open_claims());
+				viewModel.selectedClaim = ko.observable();
+				viewModel.claims.store();
+				router.loadPage('reports');
+			});
+		}
+		
+		self.removeClaim = function(claim) {
+			appLog('removeClaim');
+			var deferred = jQuery.Deferred();
+			
+			var claim_id_index = viewModel.claims.claim_ids.indexOf(claim.data.id);
+			if(claim_id_index > -1) {
+				viewModel.claims.claim_ids.splice(claim_id_index,1);
+			}
+			
+			viewModel.claims.open_claims.remove(claim);
+			
+			setTimeout(function() {
+				deferred.resolve('done');
+			},0);
+			
+			return deferred.promise();
 		}
 
 		//PICTURES
@@ -234,7 +270,7 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 			try {
 				router.loadPage('advanced_copy');
 			} catch (e) {
-				console.log(e);
+				appLog(e);
 			}
 		}
 
@@ -283,6 +319,17 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 			viewModel.claims.store();
 			router.loadPage('reports');
 		}
+		
+		self.reserve = function () {
+			self.open_claim();
+			router.loadPage('reserve');
+		}
+
+		self.saveReserve = function () {
+			self.data.complete_reserve = true;
+			viewModel.claims.store();
+			router.loadPage('reports');
+		}
 
 		self.inspection = function () {
 			self.open_claim();
@@ -303,7 +350,7 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 		}
 
 		self.mark = function (claim) {
-			console.log(claim);
+			appLog(claim);
 		}
 
 	}

@@ -24,6 +24,17 @@ var DOMAIN = 'http://advadj.greyback.net/';
         DOMAIN = 'http://office.threeleaf.net:8080/adjuster_bridge/';
         isMobile = false;
     }
+localStorage.setItem('advadj_log',JSON.stringify([]));
+var appLog = function(log) {
+	var logs = JSON.parse(localStorage.getItem('advadj_log'));
+	logs.push(log);
+	localStorage.setItem('advadj_log',JSON.stringify(logs));
+}
+
+var viewLog = function() {
+	var logs = JSON.parse(localStorage.getItem('advadj_log'));
+	console.log(logs);
+}
 
 var PICS = ['pic_front_right','pic_front_left','pic_rear_left','pic_rear_right','pic_water_inside','pic_water_outside','pic_roof_front','pic_roof_rear',
 			'pic_optional1','pic_optional2','pic_optional3','pic_optional4','pic_optional5','pic_optional6','pic_optional7','pic_optional8','pic_optional9','pic_optional10',
@@ -76,7 +87,7 @@ require(['config','util/fastbutton','util/bootstrap','jquery','knockout','app','
                 }
                 $(element).text(parseInt(dateParts[2])+'/'+dateParts[3]+' - '+dateParts[4]+':'+dateParts[5]+ampm);
             } catch(e) {
-                console.log(e)
+                appLog(e)
             }
         }
     }

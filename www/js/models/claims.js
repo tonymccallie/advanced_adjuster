@@ -61,7 +61,7 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
         self.toUpload = ko.computed(function() {
             var tmplist = [];
             $.each(self.open_claims(), function(index, item) {
-                if((item.upload_preliminary()) || (item.upload_advanced()) || (item.upload_engineer()) || (item.upload_inspection())) {
+                if((item.upload_preliminary()) || (item.upload_advanced()) || (item.upload_engineer()) || (item.upload_inspection()) || (item.upload_reserve())) {
                     tmplist.push(item);
                 }
             });
@@ -70,12 +70,14 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
         self.overall_current = 0;
 
         self.init = function() {
+			appLog('Claims.init');
             if(localStorage.getItem('advadj_claims') !== null) {
                 var claims = ko.utils.parseJson(localStorage.getItem('advadj_claims'));
                 $.each(claims, function(index,item) {
                     self.open_claims.push(new Claim(item));
                     self.claim_ids.push(item.Claim.id);
                 });
+				appLog(claims);
                 
                 self.open_claims.sort(function(left,right) {
                     return left.data.claimFileID == right.data.claimFileID ? 0 : (left.data.claimFileID > right.data.claimFileID) ? -1 : 1;
@@ -98,7 +100,7 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
         }
         
         self.updateProcess = function(data) {
-			console.log(data);
+			appLog('updateProcess');
             var claim = null;
             $.each(data, function(index, item) {
                 if(self.claim_ids.indexOf(item.Claim.id) < 0) {

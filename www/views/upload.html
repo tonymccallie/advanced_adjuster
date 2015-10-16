@@ -14,19 +14,23 @@
                         </div>
                         <div class="span2">
                             <input data-bind="checked: upload_preliminary, attr: { id: 'upload_preliminary'+$index() }" type="checkbox" value="1" />
-                            <label data-bind="attr: { for: 'upload_preliminary'+$index() }" class="btn btn-block icon-">Preliminary</label>
+                            <label data-bind="attr: { for: 'upload_preliminary'+$index() }" class="btn btn-block icon-">Prelim</label>
                         </div>
                         <div class="span2">
                             <input data-bind="checked: upload_advanced, attr: { id: 'upload_advanced'+$index() }" type="checkbox" value="1" />
-                            <label data-bind="attr: { for: 'upload_advanced'+$index() }" class="btn btn-block icon-">Advanced</label>
+                            <label data-bind="attr: { for: 'upload_advanced'+$index() }" class="btn btn-block icon-">Flood Adv Payment</label>
                         </div>
                         <div class="span2">
                             <input data-bind="checked: upload_engineer, attr: { id: 'upload_engineer'+$index() }" type="checkbox" value="1" />
-                            <label data-bind="attr: { for: 'upload_engineer'+$index() }" class="btn btn-block icon-">Engineer</label>
+                            <label data-bind="attr: { for: 'upload_engineer'+$index() }" class="btn btn-block icon-">Flood Eng Request</label>
                         </div>
                         <div class="span2">
                             <input data-bind="checked: upload_inspection, attr: { id: 'upload_inspection'+$index() }" type="checkbox" value="1" />
-                            <label data-bind="attr: { for: 'upload_inspection'+$index() }" class="btn btn-block icon-">Inspection</label>
+                            <label data-bind="attr: { for: 'upload_inspection'+$index() }" class="btn btn-block icon-">HO UW Inspection</label>
+                        </div>
+                        <div class="span2">
+                            <input data-bind="checked: upload_reserve, attr: { id: 'upload_reserve'+$index() }" type="checkbox" value="1" />
+                            <label data-bind="attr: { for: 'upload_reserve'+$index() }" class="btn btn-block icon-">HO Reserve Report</label>
                         </div>
                     </div>
                     <div data-bind="visible: upload" class="row-fluid">
