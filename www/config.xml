@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="net.greyback.advadj" version="1.5.0" versionCode="1500" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="net.greyback.advadj" version="1.5.0" versionCode="1501" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 	<gap:config-file platform="ios" parent="CFBundleShortVersionString"> 
-		<string>1500</string> 
+		<string>1501</string> 
 	</gap:config-file>
     <name>AdvAdj</name>
     <description>
@@ -46,13 +46,13 @@
     <gap:splash gap:platform="ios" height="1024" src="res/screen/ios/screen-ipad-portrait.png" width="768" />
     <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="ios" height="1136" src="res/screen/ios/screen-iphone5.png" width="640" />
-	<gap:plugin name="org.apache.cordova.camera" />
-    <gap:plugin name="org.apache.cordova.media" />
-    <gap:plugin name="org.apache.cordova.media-capture" />
-    <gap:plugin name="org.apache.cordova.file"  />
-    <gap:plugin name="org.apache.cordova.file-transfer" />
-	<gap:plugin name="org.apache.cordova.network-information" />
-	<gap:plugin name="org.apache.cordova.dialogs"  />
+	<gap:plugin name="org.apache.cordova.camera" src="npm" />
+    <gap:plugin name="org.apache.cordova.media" src="npm" />
+    <gap:plugin name="org.apache.cordova.media-capture" src="npm" />
+    <gap:plugin name="org.apache.cordova.file" src="npm"  />
+    <gap:plugin name="org.apache.cordova.file-transfer" src="npm" />
+	<gap:plugin name="org.apache.cordova.network-information" src="npm" />
+	<gap:plugin name="org.apache.cordova.dialogs" src="npm"  />
     <gap:platform name="ios" />
     <gap:platform name="android" />
     <access origin="*" />
