@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="net.greyback.advadj" version="1.4.9" versionCode="1491" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="net.greyback.advadj" version="1.5.0" versionCode="1500" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 	<gap:config-file platform="ios" parent="CFBundleShortVersionString"> 
-		<string>1491</string> 
+		<string>1500</string> 
 	</gap:config-file>
     <name>AdvAdj</name>
     <description>
@@ -11,7 +11,6 @@
         GreyBack Labs, LLP.
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
-    <preference name="phonegap-version" value="3.6.3" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="true" />
