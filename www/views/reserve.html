@@ -72,6 +72,17 @@
 						<input data-bind="value: data.reserve_other" type="text" name="data[Claim][reserve_other]" class="span12" placeholder="Other">
 					</div>
 				</div>
+				<div class="control-group">
+					<label class="control-label">Signs of Long Term Damage:</label>
+					<div class="controls">
+						<div class="btn-groupx">
+							<input data-bind="checked: data.reserve_damages" type="radio" name="data[Claim][reserve_damages]" id="reserve_damages0" value="1" />
+							<label class="btn icon-" for="reserve_damages0">Yes</label>
+							<input data-bind="checked: data.reserve_damages" type="radio" name="data[Claim][reserve_damages]" id="reserve_damages1" value="0" />
+							<label class="btn icon-" for="reserve_damages1">No</label>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="row-fluid">
