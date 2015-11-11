@@ -4,7 +4,7 @@ function SignatureCapture( canvasID ) {
 	this.canvas = $("#"+canvasID);
 	this.context = this.canvas.get(0).getContext("2d");	
 	this.context.strokeStyle = "#000000";
-	this.context.lineWidth = 3;
+	this.context.lineWidth = 5;
 	this.lastMousePoint = {x:0, y:0};
 	
 	this.canvas[0].width = this.canvas.parent().innerWidth();
