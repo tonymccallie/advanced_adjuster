@@ -44,7 +44,6 @@
 	<plugin name="org.apache.cordova.inappbrowser" />
 	<plugin name="org.apache.cordova.media" />
 	<plugin name="org.apache.cordova.network-information" />
-	<plugin name="com.ionic.keyboard" source="pgb" version="1.0.3" />
 	<plugin name="cordova-plugin-whitelist" source="npm" />
     <platform name="ios">
     <icon src="resources/ios/icon/icon.png" width="57" height="57"/>
