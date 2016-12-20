@@ -29,7 +29,10 @@
     <preference name="android-minSdkVersion" value="12" />
     <preference name="android-targetSdkVersion" value="14" />
     <plugin name="org.apache.cordova.battery-status" />
-	<plugin name="org.apache.cordova.camera" />
+	<plugin name="org.apache.cordova.camera">
+		<variable name="CAMERA_USAGE_DESCRIPTION" value="(app name) would like to access your camera to take pictures for claim reports." />
+        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="(app name) would like to access your photo library to let you select a pictures for claim reports." />
+	</plugin>
 	<plugin name="org.apache.cordova.media-capture" />
 	<plugin name="org.apache.cordova.console" />
 	<plugin name="org.apache.cordova.contacts" />
