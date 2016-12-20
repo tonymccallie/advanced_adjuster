@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="net.greyback.advadj" version="1.6.0" versionCode="1600" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 	<gap:config-file platform="ios" parent="CFBundleShortVersionString"> 
-		<string>1602</string> 
+		<string>1603</string> 
 	</gap:config-file>
     <name>AdvAdj</name>
     <description>
