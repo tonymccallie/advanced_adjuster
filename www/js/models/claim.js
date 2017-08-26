@@ -360,7 +360,7 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 		self.principle = function () {
 			self.open_claim();
 			if (!self.data.principleSig) {
-				self.data.principleFirst = "";
+				self.data.principleSig = "";
 			}
 			if (!self.data.principleFirst) {
 				self.data.principleFirst = self.data.first_name;
