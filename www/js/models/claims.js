@@ -239,6 +239,15 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
                     }
                     if(item.upload_inspection()) {
                         item.upload_inspection(false);
+					}
+					if(item.upload_reserve()) {
+                        item.upload_reserve(false);
+					}
+					if(item.upload_principle()) {
+                        item.upload_principle(false);
+					}
+					if(item.upload_primary()) {
+                        item.upload_primary(false);
                     }
                 });
             }).fail(function(data){
