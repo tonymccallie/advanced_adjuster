@@ -1,60 +1,68 @@
 <div class="row-fluid">
 	<div class="span12">
-        Please choose the claims you wish to upload:
-    </div>
+		Please choose the claims you wish to upload:
+	</div>
 </div>
 <div class="row-fluid">
 	<div class="span12">
-        <form id="upload_settings">
-                <!-- ko foreach : claims.open_claims-->
-                <div class="well">
-                    <div class="row-fluid">
-                        <div class="span4" data-bind="text: data.claimFileID+' '+data.last_name">
-                                FileID and Last Name
-                        </div>
-                        <div class="span2">
-                            <input data-bind="checked: upload_preliminary, attr: { id: 'upload_preliminary'+$index() }" type="checkbox" value="1" />
-                            <label data-bind="attr: { for: 'upload_preliminary'+$index() }" class="btn btn-block icon-">Prelim</label>
-                        </div>
-                        <div class="span2">
-                            <input data-bind="checked: upload_advanced, attr: { id: 'upload_advanced'+$index() }" type="checkbox" value="1" />
-                            <label data-bind="attr: { for: 'upload_advanced'+$index() }" class="btn btn-block icon-">Flood Adv Payment</label>
-                        </div>
-                        <div class="span2">
-                            <input data-bind="checked: upload_engineer, attr: { id: 'upload_engineer'+$index() }" type="checkbox" value="1" />
-                            <label data-bind="attr: { for: 'upload_engineer'+$index() }" class="btn btn-block icon-">Flood Eng Request</label>
-                        </div>
-                        <div class="span2">
-                            <input data-bind="checked: upload_inspection, attr: { id: 'upload_inspection'+$index() }" type="checkbox" value="1" />
-                            <label data-bind="attr: { for: 'upload_inspection'+$index() }" class="btn btn-block icon-">HO UW Inspection</label>
-                        </div>
-                        <div class="span2">
-                            <input data-bind="checked: upload_reserve, attr: { id: 'upload_reserve'+$index() }" type="checkbox" value="1" />
-                            <label data-bind="attr: { for: 'upload_reserve'+$index() }" class="btn btn-block icon-">HO Reserve Report</label>
-                        </div>
-                    </div>
-                    <div data-bind="visible: upload" class="row-fluid">
-                        <div class="span4"><i>Progress:</i></div>
-                        <div class="span8">
-                            <div class="progress">
-                                <div class="bar" data-bind="attr:{ style: 'width:'+progress()+'%;' }"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /ko -->
-        </form>
+		<form id="upload_settings">
+			<!-- ko foreach : claims.open_claims-->
+			<div class="well">
+				<div class="row-fluid">
+					<div class="span4" data-bind="text: data.claimFileID+' '+data.last_name">
+						FileID and Last Name
+					</div>
+					<div class="span2">
+						<input data-bind="checked: upload_preliminary, attr: { id: 'upload_preliminary'+$index() }" type="checkbox" value="1" />
+						<label data-bind="attr: { for: 'upload_preliminary'+$index() }" class="btn btn-block icon-">Prelim</label>
+					</div>
+					<div class="span2">
+						<input data-bind="checked: upload_advanced, attr: { id: 'upload_advanced'+$index() }" type="checkbox" value="1" />
+						<label data-bind="attr: { for: 'upload_advanced'+$index() }" class="btn btn-block icon-">Flood Adv Payment</label>
+					</div>
+					<div class="span2">
+						<input data-bind="checked: upload_engineer, attr: { id: 'upload_engineer'+$index() }" type="checkbox" value="1" />
+						<label data-bind="attr: { for: 'upload_engineer'+$index() }" class="btn btn-block icon-">Flood Eng Request</label>
+					</div>
+					<div class="span2">
+						<input data-bind="checked: upload_inspection, attr: { id: 'upload_inspection'+$index() }" type="checkbox" value="1" />
+						<label data-bind="attr: { for: 'upload_inspection'+$index() }" class="btn btn-block icon-">HO UW Inspection</label>
+					</div>
+					<div class="span2">
+						<input data-bind="checked: upload_reserve, attr: { id: 'upload_reserve'+$index() }" type="checkbox" value="1" />
+						<label data-bind="attr: { for: 'upload_reserve'+$index() }" class="btn btn-block icon-">HO Reserve Report</label>
+					</div>
+					<div class="span2">
+						<input data-bind="checked: upload_principle, attr: { id: 'upload_principle'+$index() }" type="checkbox" value="1" />
+						<label data-bind="attr: { for: 'upload_principle'+$index() }" class="btn btn-block icon-">Principle Form</label>
+					</div>
+					<div class="span2">
+						<input data-bind="checked: upload_primary, attr: { id: 'upload_primary'+$index() }" type="checkbox" value="1" />
+						<label data-bind="attr: { for: 'upload_primary'+$index() }" class="btn btn-block icon-">Primary Form</label>
+					</div>
+				</div>
+				<div data-bind="visible: upload" class="row-fluid">
+					<div class="span4"><i>Progress:</i></div>
+					<div class="span8">
+						<div class="progress">
+							<div class="bar" data-bind="attr:{ style: 'width:'+progress()+'%;' }"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /ko -->
+		</form>
 	</div>
 </div>
 <div data-bind="visible: claims.toUpload().length > 0" class="row-fluid">
 	<div class="span12">
-		<a id="upload_btn" href="#" onclick="return false;"  data-bind="fastClick: claims.upload" class="btn btn-primary btn-block"><i id="updload_spin" style="display:none;" class="icon-refresh icon-spin"></i> Upload Now</a>
+		<a id="upload_btn" href="#" onclick="return false;" data-bind="fastClick: claims.upload" class="btn btn-primary btn-block"><i id="updload_spin" style="display:none;" class="icon-refresh icon-spin"></i> Upload Now</a>
 	</div>
 </div>
 <div class="row-fluid">
-    <div class="span12">
-        <a href="#" data-bind="fastClick: claims.finish_upload" class="btn pull-right">Back to Reports</a>
-    </div>
+	<div class="span12">
+		<a href="#" data-bind="fastClick: claims.finish_upload" class="btn pull-right">Back to Reports</a>
+	</div>
 </div>
 <div class="row-fluid">
 	<div class="span12">

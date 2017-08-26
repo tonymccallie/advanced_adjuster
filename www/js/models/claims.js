@@ -105,7 +105,9 @@ define(['knockout','router','models/claim','sizeof'],function(ko, router, Claim,
             $.each(data, function(index, item) {
                 if(self.claim_ids.indexOf(item.Claim.id) < 0) {
                     item.Claim.signature = "";
-                    item.Claim.witness = "";
+					item.Claim.witness = "";
+					item.Claim.principleSig = "";
+                    item.Claim.primarySig = "";
                     self.new_claims.push(new Claim(item));
                     self.claim_ids.push(item.Claim.id);
                 }

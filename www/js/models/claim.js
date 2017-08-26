@@ -25,6 +25,8 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 		self.upload_engineer = ko.observable(false);
 		self.upload_inspection = ko.observable(false);
 		self.upload_reserve = ko.observable(false);
+		self.upload_principle = ko.observable(false);
+		self.upload_primary = ko.observable(false);
 		self.upload = ko.computed(function () {
 			if ((self.upload_preliminary()) || (self.upload_advanced()) || (self.upload_engineer()) || (self.upload_inspection()) || (self.upload_reserve())) {
 				return true;
@@ -357,6 +359,12 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 		//Principle Residence
 		self.principle = function () {
 			self.open_claim();
+			if (!self.data.principleAddress) {
+				self.data.principleAddress = self.data.address1;
+				self.data.principleCity = self.data.city;
+				self.data.principleState = self.data.state;
+				self.data.principleZip = self.data.zip;
+			}
 			router.loadPage('principle', self.processPrinciple);
 		}
 
