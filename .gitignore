@@ -3,3 +3,4 @@ plugins/
 /www/node_modules/
 /undefined
 /www/img/test_image.jpeg
+.DS_Store
