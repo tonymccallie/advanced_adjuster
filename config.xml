@@ -36,21 +36,16 @@
 	<config-file platform="ios" parent="NSPhotoLibraryUsageDescription" mode="replace">
 		<string>AdvAdj would like to access your photo library to let you select a pictures for claim reports..</string>
 	</config-file>
-	<plugin name="org.apache.cordova.media-capture" />
-	<plugin name="org.apache.cordova.console" />
-	<plugin name="org.apache.cordova.contacts" />
-	<plugin name="org.apache.cordova.device" />
-	<plugin name="org.apache.cordova.device-motion" />
-	<plugin name="org.apache.cordova.device-orientation" />
-	<plugin name="org.apache.cordova.dialogs" />
-	<plugin name="org.apache.cordova.file" />
-	<plugin name="org.apache.cordova.file-transfer" />
-	<plugin name="org.apache.cordova.geolocation" />
-	<plugin name="org.apache.cordova.globalization" />
-	<plugin name="org.apache.cordova.inappbrowser" />
-	<plugin name="org.apache.cordova.media" />
-	<plugin name="org.apache.cordova.network-information" />
-	<plugin name="cordova-plugin-whitelist" source="npm" />
+	<plugin name="cordova-plugin-media-capture" />
+	<plugin name="cordova-plugin-device" />
+	<plugin name="cordova-plugin-file" />
+	<plugin name="cordova-plugin-file-transfer" />
+	<plugin name="cordova-plugin-console" />
+	<plugin name="cordova-plugin-whitelist" />
+	<plugin name="cordova-plugin-splashscreen" />
+	<plugin name="cordova-plugin-statusbar" />
+	<plugin name="ionic-plugin-keyboard" />
+	<plugin name="cordova-plugin-inappbrowser" />
 	<platform name="ios">
 		<icon src="resources/ios/icon/icon.png" width="57" height="57" />
 		<icon src="resources/ios/icon/icon@2x.png" width="114" height="114" />
