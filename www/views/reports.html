@@ -93,6 +93,28 @@
 								<!-- /ko -->HO Reserve Report</a>
 						</div>
 					</div>
+					<div class="row-fluid">
+						<div class="span12">
+							<a href="#" data-bind="fastClick: principle" class="btn btn-block btn-large">
+								<!-- ko if: data.complete_principle -->
+								<i class="icon-check"></i>
+								<!-- /ko -->
+								<!-- ko ifnot: data.complete_principle -->
+								<i class="icon-check-empty"></i>
+								<!-- /ko -->Principle Residence</a>
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="span12">
+							<a href="#" data-bind="fastClick: primary" class="btn btn-block btn-large">
+								<!-- ko if: data.complete_primary -->
+								<i class="icon-check"></i>
+								<!-- /ko -->
+								<!-- ko ifnot: data.complete_primary -->
+								<i class="icon-check-empty"></i>
+								<!-- /ko -->Primary Residence</a>
+						</div>
+					</div>
 				</div>
 				<div class="row-fluid">
 					<div class="span4 offset8">

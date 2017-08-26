@@ -48,7 +48,9 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 			complete_pictures: false,
 			complete_advanced: false,
 			complete_engineer: false,
-			complete_inspection: false
+			complete_inspection: false,
+			complete_pinciple: false,
+			complete_primary: false
 		};
 
 		self.images = {};
@@ -345,6 +347,42 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 
 		self.saveInspection = function () {
 			self.data.complete_inspection = true;
+			viewModel.claims.store();
+			router.loadPage('reports');
+		}
+
+		self.principle = function () {
+			self.open_claim();
+			router.loadPage('principle');
+		}
+
+		self.principleProcess = function () {
+			self.data.complete_principle = true;
+			viewModel.claims.store();
+			self.open_claim();
+			router.loadPage('reports');
+		}
+
+		self.savePrinciple = function () {
+			self.data.complete_principle = true;
+			viewModel.claims.store();
+			router.loadPage('reports');
+		}
+
+		self.primary = function () {
+			self.open_claim();
+			router.loadPage('primary');
+		}
+
+		self.primaryProcess = function () {
+			self.data.complete_primary = true;
+			viewModel.claims.store();
+			self.open_claim();
+			router.loadPage('reports');
+		}
+
+		self.savePrimary = function () {
+			self.data.complete_primary = true;
 			viewModel.claims.store();
 			router.loadPage('reports');
 		}

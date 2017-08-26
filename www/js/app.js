@@ -80,7 +80,7 @@ define(['knockout', 'router', 'models/user', 'models/claims'], function (ko, rou
 					ko.utils.arrayFilter(self.claims.marked(), function (claim) {
 						claim.close(claim, function (data) {
 							appLog('app.close process');
-							claim.removeClaim(claim).then(function() {
+							claim.removeClaim(claim).then(function () {
 								viewModel.selectedClaim = ko.observable();
 								viewModel.claims.store();
 							})
