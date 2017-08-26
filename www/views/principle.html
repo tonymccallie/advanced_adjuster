@@ -6,19 +6,18 @@
 	</div>
 	<div class="row-fluid">
 		<div class="span12">
-			<div class="well">
-				<!-- ko if: data.last_name -->
-				<h3 data-bind="text: data.last_name+', '+data.first_name">Name</h3>
-				<!-- /ko -->
-				<!-- ko ifnot: data.last_name -->
-				<h3 data-bind="text: displayTitle()">Name</h3>
-				<!-- /ko -->
-				<h4 data-bind="html: data.address1+'<br />'+data.city+', '+data.state+' '+data.zip">1234 Street Ave.<br />Amarillo, TX 79102</h4>
+			<div class="control-group">
+				<label class="control-label">First Name</label>
+				<div class="controls">
+					<input data-bind="value: data.principleFirst" type="text" name="data[Claim][principleFirst]" class="span12" placeholder="">
+				</div>
 			</div>
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span12">
+			<div class="control-group">
+				<label class="control-label">Last Name</label>
+				<div class="controls">
+					<input data-bind="value: data.principleLast" type="text" name="data[Claim][principleLast]" class="span12" placeholder="">
+				</div>
+			</div>
 			<div class="control-group">
 				<label class="control-label">Address</label>
 				<div class="controls">

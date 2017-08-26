@@ -359,12 +359,25 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 		//Principle Residence
 		self.principle = function () {
 			self.open_claim();
+			if (!self.data.principleFirst) {
+				self.data.principleFirst = self.data.first_name;
+			}
+			if (!self.data.principleLast) {
+				self.data.principleLast = self.data.last_name;
+			}
 			if (!self.data.principleAddress) {
 				self.data.principleAddress = self.data.address1;
+			}
+			if (!self.data.principleCity) {
 				self.data.principleCity = self.data.city;
+			}
+			if (!self.data.principleState) {
 				self.data.principleState = self.data.state;
+			}
+			if (!self.data.principleZip) {
 				self.data.principleZip = self.data.zip;
 			}
+
 			router.loadPage('principle', self.processPrinciple);
 		}
 
@@ -392,6 +405,24 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 		//Primary Residence
 		self.primary = function () {
 			self.open_claim();
+			if (!self.data.primaryFirst) {
+				self.data.primaryFirst = self.data.first_name;
+			}
+			if (!self.data.primaryLast) {
+				self.data.primaryLast = self.data.last_name;
+			}
+			if (!self.data.primaryAddress) {
+				self.data.primaryAddress = self.data.address1;
+			}
+			if (!self.data.primaryCity) {
+				self.data.primaryCity = self.data.city;
+			}
+			if (!self.data.primaryState) {
+				self.data.primaryState = self.data.state;
+			}
+			if (!self.data.primaryZip) {
+				self.data.primaryZip = self.data.zip;
+			}
 			router.loadPage('primary', self.processPrimary);
 		}
 
