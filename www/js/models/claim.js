@@ -17,6 +17,8 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 		self.marked = ko.observable(false);
 		self.signature = null;
 		self.witness = null;
+		self.principleSig = null;
+		self.primarySig = null;
 
 		self.upload_preliminary = ko.observable(false);
 		self.upload_advanced = ko.observable(false);
@@ -49,7 +51,7 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 			complete_advanced: false,
 			complete_engineer: false,
 			complete_inspection: false,
-			complete_pinciple: false,
+			complete_principle: false,
 			complete_primary: false
 		};
 
@@ -127,7 +129,7 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 				var dir = claim.data.claimFileID + '_images';
 				window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) {
 					appLog('requestFileSystem');
-					if(typeof fileSystem.root.getDirectory == 'undefined') {
+					if (typeof fileSystem.root.getDirectory == 'undefined') {
 						router.request('app/claims/close', process, {
 							data: {
 								Claim: {
@@ -169,29 +171,29 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 
 		self.closeProcess = function (data) {
 			appLog('closeProcess');
-			self.removeClaim(self.closeClaim).then(function() {
+			self.removeClaim(self.closeClaim).then(function () {
 				appLog(viewModel.claims.open_claims());
 				viewModel.selectedClaim = ko.observable();
 				viewModel.claims.store();
 				router.loadPage('reports');
 			});
 		}
-		
-		self.removeClaim = function(claim) {
+
+		self.removeClaim = function (claim) {
 			appLog('removeClaim');
 			var deferred = jQuery.Deferred();
-			
+
 			var claim_id_index = viewModel.claims.claim_ids.indexOf(claim.data.id);
-			if(claim_id_index > -1) {
-				viewModel.claims.claim_ids.splice(claim_id_index,1);
+			if (claim_id_index > -1) {
+				viewModel.claims.claim_ids.splice(claim_id_index, 1);
 			}
-			
+
 			viewModel.claims.open_claims.remove(claim);
-			
-			setTimeout(function() {
+
+			setTimeout(function () {
 				deferred.resolve('done');
-			},0);
-			
+			}, 0);
+
 			return deferred.promise();
 		}
 
@@ -321,7 +323,7 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 			viewModel.claims.store();
 			router.loadPage('reports');
 		}
-		
+
 		self.reserve = function () {
 			self.open_claim();
 			router.loadPage('reserve');
@@ -351,44 +353,58 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 			router.loadPage('reports');
 		}
 
+
+		//Principle Residence
 		self.principle = function () {
 			self.open_claim();
-			router.loadPage('principle');
+			router.loadPage('principle', self.processPrinciple);
 		}
 
-		self.principleProcess = function () {
-			self.data.complete_principle = true;
-			viewModel.claims.store();
-			self.open_claim();
-			router.loadPage('reports');
+		self.processPrinciple = function () {
+			if (!self.data.principleSig) {
+				self.principleSig = new SignatureCapture("principleSig");
+			}
+		}
+
+		self.clearPrinciple = function () {
+			self.principleSig.clear();
 		}
 
 		self.savePrinciple = function () {
+			if (!self.data.principleSig) {
+				self.data.principleSig = self.principleSig.toString();
+				self.principleSig = null;
+			}
 			self.data.complete_principle = true;
 			viewModel.claims.store();
 			router.loadPage('reports');
 		}
 
+
+		//Primary Residence
 		self.primary = function () {
 			self.open_claim();
-			router.loadPage('primary');
+			router.loadPage('primary', self.processPrimary);
 		}
 
-		self.primaryProcess = function () {
-			self.data.complete_primary = true;
-			viewModel.claims.store();
-			self.open_claim();
-			router.loadPage('reports');
+		self.processPrimary = function () {
+			if (!self.data.primarySig) {
+				self.primarySig = new SignatureCapture("primarySig");
+			}
+		}
+
+		self.clearPrimary = function () {
+			self.primarySig.clear();
 		}
 
 		self.savePrimary = function () {
+			if (!self.data.primarySig) {
+				self.data.primarySig = self.primarySig.toString();
+				self.primarySig = null;
+			}
 			self.data.complete_primary = true;
 			viewModel.claims.store();
 			router.loadPage('reports');
-		}
-
-		self.mark = function (claim) {
-			appLog(claim);
 		}
 
 	}
