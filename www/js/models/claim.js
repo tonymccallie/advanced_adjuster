@@ -359,6 +359,9 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 		//Principle Residence
 		self.principle = function () {
 			self.open_claim();
+			if (!self.data.principleSig) {
+				self.data.principleFirst = "";
+			}
 			if (!self.data.principleFirst) {
 				self.data.principleFirst = self.data.first_name;
 			}
@@ -405,6 +408,9 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 		//Primary Residence
 		self.primary = function () {
 			self.open_claim();
+			if (!self.data.primarySig) {
+				self.data.primarySig = "";
+			}
 			if (!self.data.primaryFirst) {
 				self.data.primaryFirst = self.data.first_name;
 			}
