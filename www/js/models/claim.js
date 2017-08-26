@@ -28,7 +28,7 @@ define(['knockout', 'router', 'jquery', 'util/signature'], function (ko, router,
 		self.upload_principle = ko.observable(false);
 		self.upload_primary = ko.observable(false);
 		self.upload = ko.computed(function () {
-			if ((self.upload_preliminary()) || (self.upload_advanced()) || (self.upload_engineer()) || (self.upload_inspection()) || (self.upload_reserve())|| (self.upload_princile())|| (self.upload_primary())) {
+			if ((self.upload_preliminary()) || (self.upload_advanced()) || (self.upload_engineer()) || (self.upload_inspection()) || (self.upload_reserve())|| (self.upload_principle())|| (self.upload_primary())) {
 				return true;
 			} else {
 				return false;
